@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\bmak-ecommerce.API.props" />
+</Project>

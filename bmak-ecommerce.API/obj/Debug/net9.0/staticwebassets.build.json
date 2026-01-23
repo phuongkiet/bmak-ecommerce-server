@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "YlDL+Pikh6Zb3NKzeUiYwvrg+q4NVZ1y8BBmgj/HAb8=",
+  "Source": "bmak-ecommerce.API",
+  "BasePath": "_content/bmak-ecommerce.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

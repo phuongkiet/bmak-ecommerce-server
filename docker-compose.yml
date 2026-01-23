@@ -1,0 +1,57 @@
+﻿services:
+  # 1. MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: bmak_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345 
+      MYSQL_DATABASE: bmak_ecommerce          
+    ports:
+      - "3306:3306" 
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # 2. Redis
+  redis:
+    image: redis:alpine        
+    container_name: my-redis   
+    ports:
+      - "6379:6379"            
+    volumes:
+      - redis_data:/data       
+
+  # 3. RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: bmak_rabbitmq
+    ports:
+      - "5672:5672"   # Cổng App
+      - "15672:15672" # Cổng Web UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq  
+
+  # 4. Web API
+  api:
+    image: bmak-ecommerce-api
+    container_name: bmak_api
+    build:
+      context: .
+      dockerfile: bmak-ecommerce.API/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=bmak_ecommerce;User=root;Password=12345;
+      # Lưu ý: Service tên là "redis" nên host là "redis" (dù container_name là my-redis)
+      - ConnectionStrings__Redis=redis:6379,abortConnect=false 
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+
+# --- KHAI BÁO CÁC VOLUME Ở ĐÂY ---
+volumes:
+  mysql_data:
+  redis_data:    # <-- Bổ sung cái này
+  rabbitmq_data: # <-- Bổ sung cái này

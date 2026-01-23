@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmak-ecommerce.API", "bmak-ecommerce.API\bmak-ecommerce.API.csproj", "{5B7B30EA-2BE1-4363-986C-81B2A9B76441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmak-ecommerce.Domain", "bmak-ecommerce.Domain\bmak-ecommerce.Domain.csproj", "{7750C37F-22CA-44CA-A5BF-BD0A05145318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmak-ecommerce.Infrastructure", "bmak-ecommerce.Infrastructure\bmak-ecommerce.Infrastructure.csproj", "{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmak-ecommerce.Application", "bmak-ecommerce.Application\bmak-ecommerce.Application.csproj", "{986FCE64-9275-4856-A10A-D04D27473EED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B7B30EA-2BE1-4363-986C-81B2A9B76441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7B30EA-2BE1-4363-986C-81B2A9B76441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7B30EA-2BE1-4363-986C-81B2A9B76441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7B30EA-2BE1-4363-986C-81B2A9B76441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7750C37F-22CA-44CA-A5BF-BD0A05145318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7750C37F-22CA-44CA-A5BF-BD0A05145318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7750C37F-22CA-44CA-A5BF-BD0A05145318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7750C37F-22CA-44CA-A5BF-BD0A05145318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986FCE64-9275-4856-A10A-D04D27473EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986FCE64-9275-4856-A10A-D04D27473EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986FCE64-9275-4856-A10A-D04D27473EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986FCE64-9275-4856-A10A-D04D27473EED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A1FD1A2-D4C1-4CA4-B023-AB6DD1A7D2EA}
+	EndGlobalSection
+EndGlobal

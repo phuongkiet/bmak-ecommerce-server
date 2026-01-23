@@ -1,0 +1,15 @@
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\bin\Debug\net9.0\bmak-ecommerce.Application.deps.json
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\bin\Debug\net9.0\bmak-ecommerce.Application.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\bin\Debug\net9.0\bmak-ecommerce.Application.pdb
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\bin\Debug\net9.0\bmak-ecommerce.Domain.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\bin\Debug\net9.0\bmak-ecommerce.Domain.pdb
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.csproj.AssemblyReference.cache
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.AssemblyInfoInputs.cache
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.AssemblyInfo.cs
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.csproj.CoreCompileInputs.cache
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-eco.424CB098.Up2Date
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\refint\bmak-ecommerce.Application.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.pdb
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\ref\bmak-ecommerce.Application.dll
