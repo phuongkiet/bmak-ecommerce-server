@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllProducts
 {
-    public class GetProductsQuery
+    public class GetProductsQuery // : IRequest<ProductListResponse> (nếu dùng MediatR)
     {
         public ProductSpecParams Params { get; set; }
 

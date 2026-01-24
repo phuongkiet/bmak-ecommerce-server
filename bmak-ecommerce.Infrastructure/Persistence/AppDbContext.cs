@@ -24,6 +24,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Order> Orders { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

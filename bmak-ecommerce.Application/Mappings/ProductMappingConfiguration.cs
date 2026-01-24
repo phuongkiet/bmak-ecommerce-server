@@ -16,7 +16,7 @@ namespace Application.Mappings
                 .ForMember(dest => dest.CategorySlug, opt => opt.MapFrom(src => src.Category.Slug))
                 .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeValues))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.ProductTags.Select(pt => pt.Tag)))
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => ExtractImageUrlFromSpecifications(src.SpecificationsJson)));
+                .ForMember(dest => dest.Thumbnail, opt => opt.MapFrom(src => ExtractImageUrlFromSpecifications(src.SpecificationsJson)));
 
             CreateMap<ProductAttributeValue, ProductAttributeDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attribute.Name))

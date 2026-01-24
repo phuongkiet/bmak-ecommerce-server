@@ -64,7 +64,7 @@ namespace bmak_ecommerce.Application
             //services.AddScoped<ICalculatorService, CalculatorService>();
             services.AddScoped<ICreateOrderCommandHandler, CreateOrderCommandHandler>();
             services.AddScoped<IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>>,GetOrdersHandler>();
-            services.AddScoped<IQueryHandler<GetProductsQuery, PagedList<ProductDto>>,GetProductsHandler>();
+            services.AddScoped<IQueryHandler<GetProductsQuery, ProductListResponse>, GetProductsHandler>();
 
             return services;
         }

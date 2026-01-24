@@ -1,4 +1,6 @@
-﻿using bmak_ecommerce.Domain.Entities.Catalog;
+﻿using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
+using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
+using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Infrastructure.Persistence;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
-    public class ProductRepository : GenericRepository<Product>, IProductRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository, ICatalogReadRepository
     {
         public ProductRepository(AppDbContext context) : base(context)
         {
@@ -27,6 +29,7 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                     .ThenInclude(pt => pt.Tag)
                 .Include(p => p.TierPrices)
                 .Include(p => p.Stocks)
+                .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -71,27 +74,27 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             if (productParams.MaxPrice.HasValue)
                 query = query.Where(p => p.SalePrice <= productParams.MaxPrice);
 
-            // 3. Apply Attribute Filter (Lọc nâng cao - Phần khó nhất)
-            // Giả sử params.Attributes có dạng "size:60x60,color:grey"
-            if (!string.IsNullOrEmpty(productParams.Attributes))
-            {
-                var attrs = productParams.Attributes.Split(','); // ["size:60x60", "color:grey"]
+            //// 3. Apply Attribute Filter (Lọc nâng cao - Phần khó nhất)
+            //// Giả sử params.Attributes có dạng "size:60x60,color:grey"
+            //if (!string.IsNullOrEmpty(productParams.Attributes))
+            //{
+            //    var attrs = productParams.Attributes.Split(','); // ["size:60x60", "color:grey"]
 
-                foreach (var attr in attrs)
-                {
-                    var parts = attr.Split(':');
-                    if (parts.Length == 2)
-                    {
-                        var code = parts[0].Trim(); // "size"
-                        var value = parts[1].Trim(); // "60x60"
+            //    foreach (var attr in attrs)
+            //    {
+            //        var parts = attr.Split(':');
+            //        if (parts.Length == 2)
+            //        {
+            //            var code = parts[0].Trim(); // "size"
+            //            var value = parts[1].Trim(); // "60x60"
 
-                        // Query lồng: Tìm sản phẩm CÓ chứa AttributeValue khớp Code và Value
-                        query = query.Where(p => p.AttributeValues.Any(av =>
-                            av.Attribute.Code.ToLower() == code.ToLower() &&
-                            av.Value == value));
-                    }
-                }
-            }
+            //            // Query lồng: Tìm sản phẩm CÓ chứa AttributeValue khớp Code và Value
+            //            query = query.Where(p => p.AttributeValues.Any(av =>
+            //                av.Attribute.Code.ToLower() == code.ToLower() &&
+            //                av.Value == value));
+            //        }
+            //    }
+            //}
 
             // 4. Filter by Tags (Lọc theo Tag IDs)
             // Nếu có nhiều TagIds, sẽ filter products có TẤT CẢ các tags đó (AND logic)
@@ -131,6 +134,127 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             return await _context.Products
                 .Where(p => ids.Contains(p.Id))
                 .ToListAsync();
+        }
+
+        // Nhớ thêm từ khóa 'async' vào đầu hàm
+        public async Task<ProductListResponse> GetCatalogDataAsync(ProductSpecParams specParams)
+        {
+            // ---------------------------------------------------------
+            // PHẦN 1: TẠO QUERY CƠ SỞ
+            // ---------------------------------------------------------
+            var query = _context.Products
+                .AsNoTracking()
+                .Include(p => p.Category)
+                // FIX: Tên property trong Product.cs là 'Attributes' chứ không phải 'AttributeValues'
+                .Include(p => p.AttributeValues)
+                    // FIX: Tên property trong ProductAttributeValue.cs là 'ProductAttribute'
+                    .ThenInclude(pav => pav.Attribute)
+                .AsQueryable();
+
+            // 1. Lọc cơ bản
+            if (!string.IsNullOrEmpty(specParams.Search))
+                query = query.Where(p => p.Name.Contains(specParams.Search));
+
+            if (!string.IsNullOrEmpty(specParams.CategorySlug))
+                query = query.Where(p => p.Category.Slug == specParams.CategorySlug);
+
+            // 2. Lọc theo Attributes (Dynamic)
+            if (!string.IsNullOrEmpty(specParams.Color))
+            {
+                // FIX: pav.ProductAttribute.Code
+                query = query.Where(p => p.AttributeValues.Any(pav =>
+                    pav.Attribute.Code == "COLOR" && pav.Value == specParams.Color));
+            }
+
+            if (!string.IsNullOrEmpty(specParams.Size))
+            {
+                query = query.Where(p => p.AttributeValues.Any(pav =>
+                    pav.Attribute.Code == "SIZE" && pav.Value == specParams.Size));
+            }
+
+            // 3. Lọc giá (FIX: Dùng SalePrice thay vì Price)
+            if (specParams.MinPrice.HasValue)
+                query = query.Where(p => p.SalePrice >= specParams.MinPrice);
+
+            if (specParams.MaxPrice.HasValue)
+                query = query.Where(p => p.SalePrice <= specParams.MaxPrice);
+
+            // ---------------------------------------------------------
+            // PHẦN 2: AGGREGATION (TÍNH TOÁN FILTER)
+            // ---------------------------------------------------------
+            var rawAttributes = await query
+                .SelectMany(p => p.AttributeValues) // FIX: Attributes
+                                               // FIX: Group theo ProductAttribute.Code
+                .GroupBy(pav => new { pav.Attribute.Code, pav.Attribute.Name, pav.Value })
+                .Select(g => new
+                {
+                    Code = g.Key.Code,
+                    Label = g.Key.Name,
+                    Value = g.Key.Value,
+                    Count = g.Count()
+                })
+                .ToListAsync();
+
+            var filtersDto = new ProductFilterAggregationDto
+            {
+                // FIX: Dùng SalePrice để tính min/max
+                MinPrice = await query.AnyAsync() ? await query.MinAsync(p => p.SalePrice) : 0,
+                MaxPrice = await query.AnyAsync() ? await query.MaxAsync(p => p.SalePrice) : 0,
+
+                Attributes = rawAttributes
+                    .GroupBy(x => x.Code)
+                    .Select(g => new FilterGroupDto
+                    {
+                        Code = g.Key,
+                        Label = g.First().Label,
+                        Options = g.Select(opt => new FilterOptionDto
+                        {
+                            Value = opt.Value,
+                            Label = opt.Value,
+                            Count = opt.Count
+                        }).ToList()
+                    }).ToList()
+            };
+
+            // ---------------------------------------------------------
+            // PHẦN 3: LẤY LIST SẢN PHẨM
+            // ---------------------------------------------------------
+
+            // Sort (FIX: Dùng SalePrice và CreatedAt)
+            query = specParams.Sort switch
+            {
+                "priceAsc" => query.OrderBy(p => p.SalePrice),
+                "priceDesc" => query.OrderByDescending(p => p.SalePrice),
+                _ => query.OrderByDescending(p => p.CreatedAt) // BaseEntity dùng CreatedAt
+            };
+
+            var totalCount = await query.CountAsync();
+
+            var products = await query
+                .Skip((specParams.PageIndex - 1) * specParams.PageSize)
+                .Take(specParams.PageSize)
+                .Select(p => new ProductSummaryDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.SalePrice, // Map SalePrice vào Price của DTO
+                    Thumbnail = p.Thumbnail, // FIX: Product.cs dùng ImageUrl
+                    Slug = p.Slug,
+                    Sku = p.SKU,
+                    // Map thêm CategoryName nếu cần thiết
+                    // CategoryName = p.Category.Name 
+                })
+                .ToListAsync();
+
+            // ---------------------------------------------------------
+            // PHẦN 4: RETURN
+            // ---------------------------------------------------------
+            return new ProductListResponse
+            {
+                // FIX: Property tên là PageNumber chứ không phải PageIndex (check file PagedList.cs)
+                Products = new PagedList<ProductSummaryDto>(products, totalCount, specParams.PageIndex, specParams.PageSize),
+                Filters = filtersDto
+            };
         }
     }
 }

@@ -10,3 +10,4 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Domain\obj\Debug\net9.0\bmak-
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Domain\obj\Debug\net9.0\refint\bmak-ecommerce.Domain.dll
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Domain\obj\Debug\net9.0\bmak-ecommerce.Domain.pdb
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Domain\obj\Debug\net9.0\ref\bmak-ecommerce.Domain.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Domain\obj\Debug\net9.0\bmak-ecommerce.Domain.sourcelink.json

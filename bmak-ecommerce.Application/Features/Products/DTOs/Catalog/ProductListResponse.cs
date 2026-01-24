@@ -9,11 +9,7 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 {
     public class ProductListResponse
     {
-        // 1. Dữ liệu danh sách (đã phân trang)
         public PagedList<ProductSummaryDto> Products { get; set; }
-
-        // 2. Dữ liệu bộ lọc (Sidebar)
-        // Có thể null nếu request chỉ reload danh sách (ajax pagination)
-        public ProductFilterAggregationDto? Filters { get; set; }
+        public ProductFilterAggregationDto Filters { get; set; }
     }
 }

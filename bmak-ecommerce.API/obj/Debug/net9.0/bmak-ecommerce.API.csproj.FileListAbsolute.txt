@@ -78,3 +78,4 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\refint\b
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.pdb
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.genruntimeconfig.cache
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\ref\bmak-ecommerce.API.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.sourcelink.json

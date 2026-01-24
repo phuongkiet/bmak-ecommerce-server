@@ -10,7 +10,8 @@ using StackExchange.Redis;
 using bmak_ecommerce.Infrastructure.MessageBus.Consumers;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Infrastructure.MessageBus;
-using MassTransit; // Bắt buộc
+using MassTransit;
+using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface; // Bắt buộc
 
 namespace bmak_ecommerce.Infrastructure
 {
@@ -40,7 +41,11 @@ namespace bmak_ecommerce.Infrastructure
             // 3. Đăng ký Repositories & UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            // Đăng ký Repository cũ (cho Domain logic)
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            // Đăng ký thêm Read Repository (cho Application Query logic)
+            services.AddScoped<ICatalogReadRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 

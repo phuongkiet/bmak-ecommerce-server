@@ -36,6 +36,12 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
+        // 1. Ảnh đại diện (Lưu thừa 1 chút để query list cho nhanh)
+        public string? Thumbnail { get; set; }
+
+        // 2. Danh sách ảnh chi tiết (Relation)
+        public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+
         public virtual ICollection<ProductAttributeValue> AttributeValues { get; set; } = new List<ProductAttributeValue>();
         public virtual ICollection<ProductTierPrice> TierPrices { get; set; } = new List<ProductTierPrice>();
         public virtual ICollection<ProductStock> Stocks { get; set; } = new List<ProductStock>();

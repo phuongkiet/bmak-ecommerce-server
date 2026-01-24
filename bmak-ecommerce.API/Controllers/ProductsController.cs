@@ -17,9 +17,9 @@ namespace bmak_ecommerce.API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IQueryHandler<GetProductsQuery, PagedList<ProductDto>> _getProductsHandler;
+        private readonly IQueryHandler<GetProductsQuery, ProductListResponse> _getProductsHandler;
 
-        public ProductsController(IMediator mediator, IQueryHandler<GetProductsQuery, PagedList<ProductDto>> getProductsHandler)
+        public ProductsController(IMediator mediator, IQueryHandler<GetProductsQuery, ProductListResponse> getProductsHandler)
         {
             _mediator = mediator;
             _getProductsHandler = getProductsHandler;
@@ -35,16 +35,22 @@ namespace bmak_ecommerce.API.Controllers
         //}
 
         [HttpGet]
-        public async Task<ActionResult<PagedList<ProductDto>>> GetProducts([FromQuery] ProductSpecParams specParams)
+        public async Task<ActionResult<ProductListResponse>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
-            // 1. Tạo Query Object
             var query = new GetProductsQuery(specParams);
 
-            // 2. Gọi Handler xử lý trực tiếp
+            // Gọi Handler
             var result = await _getProductsHandler.Handle(query);
 
-            // 3. Trả về kết quả
-            Response.AddPaginationHeader(result.PageIndex, result.PageSize, result.TotalCount, result.TotalPages);
+            if (result?.Products != null)
+            {
+                Response.AddPaginationHeader(
+                    result.Products.PageIndex,
+                    result.Products.PageSize,
+                    result.Products.TotalCount,
+                    result.Products.TotalPages
+                );
+            }
 
             return Ok(result);
         }

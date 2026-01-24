@@ -17,3 +17,4 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Infrastructure\obj\Debug\net9
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Infrastructure\obj\Debug\net9.0\bmak-ecommerce.Infrastructure.pdb
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Infrastructure\obj\Debug\net9.0\bmak-ecommerce.Infrastructure.genruntimeconfig.cache
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Infrastructure\obj\Debug\net9.0\ref\bmak-ecommerce.Infrastructure.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Infrastructure\obj\Debug\net9.0\bmak-ecommerce.Infrastructure.sourcelink.json

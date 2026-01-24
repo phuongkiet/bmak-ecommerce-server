@@ -17,7 +17,8 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
         public int TotalSold { get; set; }
         public DateTime? SaleStartDate { get; set; } // Ngày bắt đầu giảm giá
         public DateTime? SaleEndDate { get; set; } // Ngày kết thúc giảm giá
-        public string ImageUrl { get; set; } // Giả sử bạn có ảnh
+        public string Thumbnail { get; set; }
+        public List<ProductImageDto> Images { get; set; } = new();
 
         // Flatten category (Chỉ lấy tên cho gọn)
         public string CategoryName { get; set; }

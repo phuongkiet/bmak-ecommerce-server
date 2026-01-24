@@ -13,3 +13,4 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\refint\bmak-ecommerce.Application.dll
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.pdb
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\ref\bmak-ecommerce.Application.dll
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.Application\obj\Debug\net9.0\bmak-ecommerce.Application.sourcelink.json

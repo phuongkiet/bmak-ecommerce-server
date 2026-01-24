@@ -280,6 +280,11 @@
         "IsRequired": false
       },
       {
+        "Name": "CategorySlug",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "CategoryId",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
@@ -300,7 +305,22 @@
         "IsRequired": false
       },
       {
-        "Name": "Attributes",
+        "Name": "Color",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Size",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TagIdsString",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -308,16 +328,11 @@
         "Name": "TagIds",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
-      },
-      {
-        "Name": "TagIdsString",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductListResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

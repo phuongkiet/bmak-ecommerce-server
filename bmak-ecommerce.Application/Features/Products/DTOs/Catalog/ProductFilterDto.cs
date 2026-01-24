@@ -8,27 +8,25 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 {
     public class ProductFilterAggregationDto
     {
+        // Thống kê giá thấp nhất/cao nhất trong tập kết quả
         public decimal MinPrice { get; set; }
         public decimal MaxPrice { get; set; }
-        public List<FilterGroupDto> Categories { get; set; } = new();
-        public List<FilterGroupDto> Brands { get; set; } = new();
-        public List<FilterGroupDto> Attributes { get; set; } = new(); // Màu sắc, Kích thước...
+
+        // Các nhóm thuộc tính (Màu sắc, Kích thước...)
+        public List<FilterGroupDto> Attributes { get; set; } = new();
     }
 
-    // Nhóm bộ lọc (Ví dụ: Nhóm "Màu sắc")
     public class FilterGroupDto
     {
-        public string Label { get; set; } = string.Empty; // Tên hiển thị: "Màu sắc"
-        public string Code { get; set; } = string.Empty;  // Key để gửi lên API: "color"
+        public string Code { get; set; } // VD: COLOR
+        public string Label { get; set; } // VD: Màu sắc
         public List<FilterOptionDto> Options { get; set; } = new();
     }
 
-    // Tùy chọn con (Ví dụ: "Đỏ", "Xanh")
     public class FilterOptionDto
     {
-        public string Label { get; set; } = string.Empty; // "Đỏ"
-        public string Value { get; set; } = string.Empty; // "red" (hoặc ID)
-        public int Count { get; set; } // Số lượng sản phẩm có thuộc tính này (15)
-        public bool IsActive { get; set; } // Frontend tự xử lý, hoặc BE trả về nếu cần
+        public string Value { get; set; } // VD: Red
+        public string Label { get; set; } // VD: Đỏ
+        public int Count { get; set; }    // Số lượng sản phẩm (quan trọng cho dynamic filter)
     }
 }
