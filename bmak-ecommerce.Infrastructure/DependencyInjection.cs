@@ -48,6 +48,7 @@ namespace bmak_ecommerce.Infrastructure
             services.AddScoped<ICatalogReadRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
 
             // =================================================================
             // 4. CẤU HÌNH MASSTRANSIT (ĐÂY LÀ CHỖ QUAN TRỌNG ĐỂ FIX LỖI)

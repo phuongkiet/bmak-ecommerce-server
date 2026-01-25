@@ -1,6 +1,12 @@
 ﻿using Application.Mappings;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Application.Features.Cart.Commands.AddToCart;
+using bmak_ecommerce.Application.Features.Cart.Commands.ClearCart;
+using bmak_ecommerce.Application.Features.Cart.Commands.DeleteCartItem;
+using bmak_ecommerce.Application.Features.Cart.Commands.UpdateCartItem;
+using bmak_ecommerce.Application.Features.Cart.Models;
+using bmak_ecommerce.Application.Features.Cart.Queries.GetCart;
 using bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder;
 using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
@@ -70,10 +76,15 @@ namespace bmak_ecommerce.Application
             services.AddScoped<IQueryHandler<GetProductsQuery, ProductListResponse>, GetProductsHandler>();
             services.AddScoped<IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>,GetTopSellingProductsHandler>();
             services.AddScoped<IQueryHandler<GetProductByIdQuery, ProductDto?>, GetProductByIdHandler>();
+            services.AddScoped<IQueryHandler<GetCartQuery, ShoppingCart>, GetCartHandler>();
 
             //Command DI
             services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
             services.AddScoped<ICommandHandler<CreateOrderCommand, Result<int>>, CreateOrderCommandHandler>();
+            services.AddScoped<ICommandHandler<AddToCartCommand, ShoppingCart>, AddToCartHandler>();
+            services.AddScoped<ICommandHandler<UpdateCartItemCommand, ShoppingCart>, UpdateCartItemHandler>();
+            services.AddScoped<ICommandHandler<DeleteCartItemCommand, ShoppingCart>, DeleteCartItemHandler>();
+            services.AddScoped<ICommandHandler<ClearCartCommand, ShoppingCart>, ClearCartHandler>();
 
             return services;
         }

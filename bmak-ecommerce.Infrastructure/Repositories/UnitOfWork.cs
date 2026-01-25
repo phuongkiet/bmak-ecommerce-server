@@ -1,4 +1,5 @@
 ﻿// File: UnitOfWork.cs
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Domain.Common;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
@@ -14,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
     // Khai báo biến private để cache
     private IProductRepository _productRepository;
     private IOrderRepository _orderRepository;
+    private ICartRepository _cartRepository;
 
     public UnitOfWork(AppDbContext context)
     {
