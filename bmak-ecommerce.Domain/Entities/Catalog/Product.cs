@@ -12,6 +12,9 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public string Name { get; set; }
         public string SKU { get; set; } // Mã sản phẩm
         public string Slug { get; set; }
+        public bool AllowBackorder { get; set; } = true;
+
+        public bool ManageStock { get; set; } = true;
 
         // Giá & Đơn vị
         public decimal BasePrice { get; set; } // Giá bán thường (giá gốc)

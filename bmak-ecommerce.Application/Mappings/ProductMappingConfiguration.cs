@@ -13,9 +13,10 @@ namespace Application.Mappings
             // 1. Map Entity -> DTO (Chiều trả về cho khách)
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
-                .ForMember(dest => dest.CategorySlug, opt => opt.MapFrom(src => src.Category.Slug))
                 .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeValues))
-                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.ProductTags.Select(pt => pt.Tag)))
+                .ForMember(dest => dest.SalesUnit, opt => opt.MapFrom(src => src.SalesUnit))
+                .ForMember(dest => dest.PriceUnit, opt => opt.MapFrom(src => src.PriceUnit))
+                .ForMember(dest => dest.ConversionFactor, opt => opt.MapFrom(src => src.ConversionFactor))
                 .ForMember(dest => dest.Thumbnail, opt => opt.MapFrom(src => ExtractImageUrlFromSpecifications(src.SpecificationsJson)));
 
             CreateMap<ProductAttributeValue, ProductAttributeDto>()

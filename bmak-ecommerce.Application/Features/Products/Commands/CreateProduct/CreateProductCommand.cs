@@ -18,6 +18,12 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
         public float ConversionFactor { get; set; }
         public int CategoryId { get; set; }
 
+        public bool? AllowBackorder { get; set; } // Default: true
+        public bool? ManageStock { get; set; }    // Default: true
+
+        public float? InitialStock { get; set; }
+        public string? WarehouseName { get; set; }
+
         // Thông tin giảm giá (optional)
         public DateTime? SaleStartDate { get; set; } // Ngày bắt đầu giảm giá
         public DateTime? SaleEndDate { get; set; } // Ngày kết thúc giảm giá

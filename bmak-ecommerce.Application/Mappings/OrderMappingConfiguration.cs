@@ -48,6 +48,7 @@ namespace bmak_ecommerce.Application.Mappings
             CreateMap<OrderItem, OrderItemDto>()
                 // Nếu OrderItem chưa lưu tên/ảnh snapshot, có thể map từ Product (nếu có Include)
                 // .ForMember(dest => dest.ProductImage, opt => opt.MapFrom(src => src.Product.ImageUrl)) 
+                .ForMember(dest => dest.QuantitySquareMeter, opt => opt.MapFrom(src => src.QuantitySquareMeter))
                 ;
         }
     }

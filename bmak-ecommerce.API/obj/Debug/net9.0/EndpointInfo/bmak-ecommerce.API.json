@@ -302,7 +302,24 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32Result"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32Result"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32Result"
+                }
+              }
+            }
           }
         }
       }
@@ -963,11 +980,11 @@
             "type": "string",
             "nullable": true
           },
-          "customerName": {
+          "shippingAddress": {
             "type": "string",
             "nullable": true
           },
-          "address": {
+          "paymentMethod": {
             "type": "string",
             "nullable": true
           }
@@ -1058,6 +1075,23 @@
           "categoryId": {
             "type": "integer",
             "format": "int32"
+          },
+          "allowBackorder": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "manageStock": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "initialStock": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "warehouseName": {
+            "type": "string",
+            "nullable": true
           },
           "saleStartDate": {
             "type": "string",
@@ -1157,6 +1191,26 @@
         },
         "additionalProperties": false
       },
+      "Int32Result": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "error": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OrderItemDto": {
         "type": "object",
         "properties": {
@@ -1164,9 +1218,30 @@
             "type": "integer",
             "format": "int32"
           },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          },
           "quantity": {
             "type": "integer",
             "format": "int32"
+          },
+          "quantitySquareMeter": {
+            "type": "number",
+            "format": "float"
+          },
+          "totalLineAmount": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
           }
         },
         "additionalProperties": false

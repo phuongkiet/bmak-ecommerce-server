@@ -8,26 +8,31 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 {
     public class ProductDto
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string SKU { get; set; }
-        public string Slug { get; set; }
-        public decimal BasePrice { get; set; } // Giá bán thường
-        public decimal SalePrice { get; set; } // Giá giảm
-        public int TotalSold { get; set; }
-        public DateTime? SaleStartDate { get; set; } // Ngày bắt đầu giảm giá
-        public DateTime? SaleEndDate { get; set; } // Ngày kết thúc giảm giá
-        public string Thumbnail { get; set; }
-        public List<ProductImageDto> Images { get; set; } = new();
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string Slug { get; set; }
+		public string Sku { get; set; }
+		public string? ShortDescription { get; set; }
+		public string? Description { get; set; }
+		public string? SpecificationsJson { get; set; } // JSON thông số kỹ thuật
+		public string SalesUnit { get; set; }  // "Thùng", "Viên"
+		public string PriceUnit { get; set; }  // "m2", "Viên"
+		public float ConversionFactor { get; set; } // Hệ số quy đổi (VD: 0.36)
 
-        // Flatten category (Chỉ lấy tên cho gọn)
-        public string CategoryName { get; set; }
-        public string CategorySlug { get; set; }
+		// Giá & Kho
+		public decimal Price { get; set; }       // SalePrice
+		public decimal? OriginalPrice { get; set; } // BasePrice
+		public int StockQuantity { get; set; }
 
-        // List thuộc tính để hiển thị (VD: Kích thước: 60x60, Màu: Xám)
-        public List<ProductAttributeDto> Attributes { get; set; }
+		// Hình ảnh
+		public string? Thumbnail { get; set; }
+		public List<ProductImageDto> Images { get; set; } = new();
 
-        // List tags (VD: "Bán chạy", "Mới", "Khuyến mãi")
-        public List<TagDto> Tags { get; set; }
-    }
+		// Thuộc tính (Để hiển thị: Màu Titan, RAM 8GB...)
+		public List<ProductAttributeDto> Attributes { get; set; } = new();
+
+		// Danh mục
+		public int CategoryId { get; set; }
+		public string CategoryName { get; set; }
+	}
 }

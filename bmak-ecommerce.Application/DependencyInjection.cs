@@ -2,10 +2,13 @@
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder;
+using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
 using bmak_ecommerce.Application.Features.Products.Queries.Orders.GetAllOrders;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllProducts;
+using bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById;
+using bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct;
 using bmak_ecommerce.Domain.Models;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -61,10 +64,16 @@ namespace bmak_ecommerce.Application
             }
 
             //// 4. Nếu có các Service logic thuần (không dính DB), đăng ký ở đây
-            //services.AddScoped<ICalculatorService, CalculatorService>();
-            services.AddScoped<ICreateOrderCommandHandler, CreateOrderCommandHandler>();
+
+            //Query DI
             services.AddScoped<IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>>,GetOrdersHandler>();
             services.AddScoped<IQueryHandler<GetProductsQuery, ProductListResponse>, GetProductsHandler>();
+            services.AddScoped<IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>,GetTopSellingProductsHandler>();
+            services.AddScoped<IQueryHandler<GetProductByIdQuery, ProductDto?>, GetProductByIdHandler>();
+
+            //Command DI
+            services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
+            services.AddScoped<ICommandHandler<CreateOrderCommand, Result<int>>, CreateOrderCommandHandler>();
 
             return services;
         }

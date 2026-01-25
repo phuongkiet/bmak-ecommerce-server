@@ -40,6 +40,9 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetProdu
                 Price = product.SalePrice,
                 OriginalPrice = product.BasePrice,
                 //StockQuantity = product.Stocks.Select(s => s.QuantityOnHand),
+                SalesUnit = product.SalesUnit,          // "Viên"
+                PriceUnit = product.PriceUnit,          // "m2"
+                ConversionFactor = product.ConversionFactor, // 0.36
                 Thumbnail = product.Thumbnail,
                 CategoryId = product.CategoryId,
                 CategoryName = product.Category?.Name ?? string.Empty,

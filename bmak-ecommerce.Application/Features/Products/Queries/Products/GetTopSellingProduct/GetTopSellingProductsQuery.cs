@@ -1,12 +1,7 @@
-﻿using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct
+﻿namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct
 {
-    public record GetTopSellingProductsQuery : IRequest<List<ProductDto>>;
+    public class GetTopSellingProductsQuery
+    {
+        public int Count { get; set; } = 10; // Ví dụ: Cho phép FE tùy chỉnh số lượng lấy
+    }
 }

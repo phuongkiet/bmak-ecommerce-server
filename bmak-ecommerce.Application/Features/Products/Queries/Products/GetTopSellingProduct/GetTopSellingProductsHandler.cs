@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
+﻿using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Interfaces;
 using MediatR;
@@ -11,54 +12,66 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct
 {
-    public class GetTopSellingProductsHandler : IRequestHandler<GetTopSellingProductsQuery, List<ProductDto>>
+    public class GetTopSellingProductsHandler : IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>
     {
         private readonly IConnectionMultiplexer _redisConnection;
-        private readonly IProductRepository _productRepository; 
+        private readonly IProductRepository _productRepository;
 
-        public GetTopSellingProductsHandler(IConnectionMultiplexer redisConnection, IProductRepository productRepository)
+        public GetTopSellingProductsHandler(
+            IConnectionMultiplexer redisConnection,
+            IProductRepository productRepository)
         {
             _redisConnection = redisConnection;
             _productRepository = productRepository;
         }
 
-        public async Task<List<ProductDto>> Handle(GetTopSellingProductsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ProductSummaryDto>> Handle(GetTopSellingProductsQuery query, CancellationToken cancellationToken)
         {
             var db = _redisConnection.GetDatabase();
 
-            // 1. Lấy Top 10 ID từ Redis
-            // Order.Descending: Sắp xếp giảm dần (cao nhất đứng đầu)
-            // Take: 10
-            var topProductIdsWithScore = await db.SortedSetRangeByRankWithScoresAsync("top_selling", stop: 9, order: StackExchange.Redis.Order.Descending);
+            // 1. Lấy Top ID từ Redis (Sorted Set)
+            // Lấy theo số lượng request.Count (mặc định 10)
+            var topProductIdsWithScore = await db.SortedSetRangeByRankWithScoresAsync(
+                "top_selling",
+                stop: query.Count - 1,
+                order: StackExchange.Redis.Order.Descending
+            );
 
             if (topProductIdsWithScore.Length == 0)
             {
-                return new List<ProductDto>();
+                return new List<ProductSummaryDto>();
             }
 
-            // 2. Trích xuất list ID ra
+            // 2. Tách List ID để query DB
             var productIds = topProductIdsWithScore
                 .Select(x => int.Parse(x.Element.ToString()))
                 .ToList();
 
-            // 3. Lấy thông tin chi tiết (Tên, Giá...) từ Database dựa trên List ID
-            // Bạn nên viết hàm GetByIdsAsync trong Repository (WHERE Id IN (...))
+            // 3. Lấy thông tin chi tiết từ MySQL
             var products = await _productRepository.GetByIdsAsync(productIds);
 
-            // 4. Sắp xếp lại list products theo đúng thứ tự của Redis 
-            // (Vì SQL query WHERE IN thường trả về thứ tự lung tung)
+            // 4. Join dữ liệu để map sang DTO (Bảo toàn thứ tự từ Redis)
             var result = productIds
                 .Join(products,
                       id => id,
                       p => p.Id,
-                      (id, p) => new ProductDto
+                      (id, p) => new ProductSummaryDto
                       {
                           Id = p.Id,
                           Name = p.Name,
-                          BasePrice = p.BasePrice,
-                          SalePrice = p.SalePrice,
-                          // Mẹo: Bạn có thể lấy luôn số lượng đã bán từ Redis gán vào đây
-                          TotalSold = (int)topProductIdsWithScore.First(x => x.Element == id.ToString()).Score
+                          Slug = p.Slug,
+                          Sku = p.SKU,
+
+                          // Giá hiển thị
+                          OriginalPrice = p.BasePrice,
+                          Price = p.SalePrice > 0 ? p.SalePrice : p.BasePrice,
+
+                          Thumbnail = p.Thumbnail,
+
+                          // QUAN TRỌNG: Lấy TotalSold từ Redis Score map vào DTO
+                          TotalSold = (int)topProductIdsWithScore
+                                            .First(x => x.Element == id.ToString())
+                                            .Score
                       })
                 .ToList();
 

@@ -12,9 +12,12 @@ using bmak_ecommerce.API.Extensions;
 public class OrdersController : ControllerBase
 {
     private readonly IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>> _getOrdersHandler;
-    public OrdersController(IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>> getOrdersHandler)
+    private readonly ICommandHandler<CreateOrderCommand, Result<int>> _createOrderHandler;
+    public OrdersController(IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>> getOrdersHandler,
+        ICommandHandler<CreateOrderCommand, Result<int>> createOrderHandler)
     {
         _getOrdersHandler = getOrdersHandler;
+        _createOrderHandler = createOrderHandler;
     }
 
     [HttpGet]
@@ -39,26 +42,16 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateOrder(
-        [FromServices] ICreateOrderCommandHandler handler,
-        [FromBody] CreateOrderCommand command)
+    public async Task<ActionResult<Result<int>>> CreateOrder([FromBody] CreateOrderCommand command)
     {
-        var result = await handler.HandleAsync(
-            command,
-            HttpContext.RequestAborted);
+        // Gọi hàm Handle trực tiếp
+        var result = await _createOrderHandler.Handle(command, CancellationToken.None);
 
         if (!result.IsSuccess)
         {
-            return BadRequest(new
-            {
-                message = result.Error
-            });
+            return BadRequest(result);
         }
 
-        return Ok(new
-        {
-            message = "Đặt hàng thành công",
-            orderId = result.Value
-        });
+        return Ok(result);
     }
 }

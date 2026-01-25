@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Common.Interfaces
 {
-    public interface ICreateOrderCommandHandler
+    public interface ICommandHandler<in TCommand, TResult>
     {
-        Task<Result<int>> HandleAsync(
-            CreateOrderCommand command,
-            CancellationToken cancellationToken);
+        Task<TResult> Handle(TCommand command, CancellationToken cancellationToken = default);
     }
 }

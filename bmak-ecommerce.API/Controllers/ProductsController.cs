@@ -18,11 +18,21 @@ namespace bmak_ecommerce.API.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IQueryHandler<GetProductsQuery, ProductListResponse> _getProductsHandler;
+        private readonly IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>> _topSellingHandler;
+        private readonly IQueryHandler<GetProductByIdQuery, ProductDto?> _getProductByIdHandler;
+        private readonly ICommandHandler<CreateProductCommand, int> _createProductHandler;
 
-        public ProductsController(IMediator mediator, IQueryHandler<GetProductsQuery, ProductListResponse> getProductsHandler)
+        public ProductsController(IMediator mediator, 
+            IQueryHandler<GetProductsQuery, ProductListResponse> getProductsHandler,
+            IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>> topSellingHandler,
+            IQueryHandler<GetProductByIdQuery, ProductDto?> getProductByIdHandler,
+            ICommandHandler<CreateProductCommand, int> createProductHandler)
         {
             _mediator = mediator;
             _getProductsHandler = getProductsHandler;
+            _topSellingHandler = topSellingHandler;
+            _getProductByIdHandler = getProductByIdHandler;
+            _createProductHandler = createProductHandler;
         }
 
         //// GET: api/products?pageIndex=1&pageSize=10&sort=priceAsc&attributes=size:60x60
@@ -59,7 +69,8 @@ namespace bmak_ecommerce.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var query = new GetProductByIdQuery(id);
-            var result = await _mediator.Send(query);
+
+            var result = await _getProductByIdHandler.Handle(query, CancellationToken.None);
 
             if (result == null) return NotFound();
 
@@ -70,9 +81,10 @@ namespace bmak_ecommerce.API.Controllers
         [HttpGet("top-selling")]
         public async Task<IActionResult> GetTopSelling()
         {
-            // Bây giờ nó sẽ hiểu GetTopSellingProductsQuery là gì
-            var query = new GetTopSellingProductsQuery();
-            var result = await _mediator.Send(query);
+            var query = new GetTopSellingProductsQuery { Count = 10 };
+
+            // Gọi hàm Handle trực tiếp
+            var result = await _topSellingHandler.Handle(query, CancellationToken.None);
 
             return Ok(result);
         }
@@ -81,8 +93,11 @@ namespace bmak_ecommerce.API.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> CreateProduct([FromBody] CreateProductCommand command)
         {
-            var productId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetProducts), new { id = productId }, productId);
+            // Gọi trực tiếp Handle, không qua MediatR
+            var productId = await _createProductHandler.Handle(command, CancellationToken.None);
+
+            // Trả về 201 Created
+            return CreatedAtAction(nameof(GetById), new { id = productId }, productId);
         }
 
         // PUT: api/products/{id}
