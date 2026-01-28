@@ -44,7 +44,7 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Result<int>>> CreateOrder([FromBody] CreateOrderCommand command)
     {
-        // Gọi hàm Handle trực tiếp
+        // Frontend gửi: { "cartId": "guest-123", "shippingAddress": "..." }
         var result = await _createOrderHandler.Handle(command, CancellationToken.None);
 
         if (!result.IsSuccess)

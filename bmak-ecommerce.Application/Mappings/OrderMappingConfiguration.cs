@@ -36,13 +36,13 @@ namespace bmak_ecommerce.Application.Mappings
                 // Map thông tin khách hàng
                 .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.User.FullName))
                 .ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.User.Email))
-                .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.User.PhoneNumber))
+                .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.User.PhoneNumber));
 
-                // Map địa chỉ giao hàng (xử lý null nếu khách nhận tại kho)
-                .ForMember(dest => dest.ShippingAddress, opt => opt.MapFrom(src =>
-                    src.ShippingAddress != null
-                    ? $"{src.ShippingAddress.Street}, {src.ShippingAddress.City}" // Format tùy ý bạn
-                    : "Nhận tại cửa hàng/Kho"));
+                //// Map địa chỉ giao hàng (xử lý null nếu khách nhận tại kho)
+                //.ForMember(dest => dest.ShippingAddress, opt => opt.MapFrom(src =>
+                //    src.ShippingAddress != null
+                //    ? $"{src.ShippingAddress.FirstOrDefault() Address.City}" // Format tùy ý bạn
+                //    : "Nhận tại cửa hàng/Kho"));
 
             // Mapping chi tiết từng món hàng
             CreateMap<OrderItem, OrderItemDto>()

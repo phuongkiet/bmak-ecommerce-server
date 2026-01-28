@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bmak-ecommerce.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e6acb6eb8c3dfae884350067dad7608aa5e3035")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4d8cc7a8e832aefc160ea02da3decb284944c1f")]
 [assembly: System.Reflection.AssemblyProductAttribute("bmak-ecommerce.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bmak-ecommerce.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

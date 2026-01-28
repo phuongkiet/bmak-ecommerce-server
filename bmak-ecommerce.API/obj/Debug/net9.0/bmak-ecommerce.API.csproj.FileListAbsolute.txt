@@ -71,7 +71,6 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwe
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.bmak-ecommerce.API.props
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.bmak-ecommerce.API.props
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwebassets.pack.json
-D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-eco.9443D87F.Up2Date
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.dll
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\refint\bmak-ecommerce.API.dll
@@ -79,3 +78,4 @@ D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-eco
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.genruntimeconfig.cache
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\ref\bmak-ecommerce.API.dll
 D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\bmak-ecommerce.API.sourcelink.json
+D:\SourceCode\ASPNET\bmak-ecommerce\bmak-ecommerce.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

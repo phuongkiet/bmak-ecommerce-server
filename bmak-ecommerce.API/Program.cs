@@ -1,7 +1,10 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application;
+using bmak_ecommerce.Domain.Entities.Identity;
 using bmak_ecommerce.Infrastructure;
 using bmak_ecommerce.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,17 +36,29 @@ var app = builder.Build();
 // 1. Development Environment
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
-    // Auto Migration & Seed Data khi chạy Dev
     using (var scope = app.Services.CreateScope())
     {
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        // await dbContext.Database.MigrateAsync(); // Tự động update DB nếu cần
-        
-        // Seed dữ liệu ban đầu
-        await DbSeeder.SeedAsync(dbContext);
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<AppDbContext>();
+
+        // --- LẤY THÊM 2 SERVICES NÀY ---
+        var userManager = services.GetRequiredService<UserManager<AppUser>>();
+        var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+        // -------------------------------
+
+        var logger = services.GetRequiredService<ILogger<Program>>();
+
+        try
+        {
+            await context.Database.MigrateAsync();
+
+            // Truyền đủ 3 tham số vào
+            await DbSeeder.SeedAsync(context, userManager, roleManager);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Lỗi khi Seed dữ liệu");
+        }
     }
 }
 

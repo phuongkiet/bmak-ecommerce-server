@@ -1250,24 +1250,46 @@
       "CreateOrderCommand": {
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrderItemDto"
-            },
+          "cartId": {
+            "type": "string",
             "nullable": true
           },
           "note": {
             "type": "string",
             "nullable": true
           },
-          "shippingAddress": {
-            "type": "string",
-            "nullable": true
-          },
           "paymentMethod": {
             "type": "string",
             "nullable": true
+          },
+          "buyerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyerPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyerEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddress": {
+            "$ref": "#/components/schemas/OrderAddressDto"
+          },
+          "shipToDifferentAddress": {
+            "type": "boolean"
+          },
+          "receiverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "receiverPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "shippingAddress": {
+            "$ref": "#/components/schemas/OrderAddressDto"
           }
         },
         "additionalProperties": false
@@ -1492,37 +1514,20 @@
         },
         "additionalProperties": false
       },
-      "OrderItemDto": {
+      "OrderAddressDto": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
+          "province": {
             "type": "string",
             "nullable": true
           },
-          "productImage": {
+          "ward": {
             "type": "string",
             "nullable": true
           },
-          "unitPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "quantitySquareMeter": {
-            "type": "number",
-            "format": "float"
-          },
-          "totalLineAmount": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
+          "specificAddress": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

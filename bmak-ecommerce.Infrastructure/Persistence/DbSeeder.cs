@@ -1,4 +1,7 @@
 using bmak_ecommerce.Domain.Entities.Catalog;
+using bmak_ecommerce.Domain.Entities.Identity;
+using bmak_ecommerce.Domain.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,8 +12,92 @@ namespace bmak_ecommerce.Infrastructure.Persistence
 {
     public static class DbSeeder
     {
-        public static async Task SeedAsync(AppDbContext context)
+        public static async Task SeedAsync(AppDbContext context,
+            UserManager<AppUser> userManager,
+            RoleManager<AppRole> roleManager)
         {
+
+            // =========================================================
+            // PHẦN 1: SEED IDENTITY (USER & ROLE)
+            // =========================================================
+
+            // 1. Seed Roles
+            var roles = new[] { "Admin", "Customer", "Manager" };
+            foreach (var role in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    await roleManager.CreateAsync(new AppRole
+                    {
+                        Name = role,
+                        Description = $"Vai trò {role} trong hệ thống"
+                    });
+                }
+            }
+
+            // 2. Seed Admin User
+            var adminEmail = "admin@bmak.com";
+            if (await userManager.FindByEmailAsync(adminEmail) == null)
+            {
+                var adminUser = new AppUser
+                {
+                    UserName = "admin", // Username đăng nhập
+                    Email = adminEmail,
+                    FullName = "Super Administrator",
+                    PhoneNumber = "0909999888",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    CreatedAt = DateTime.UtcNow,
+                    IsDeleted = false,
+                    CustomerType = CustomerType.Retail // Set mặc định (Lẻ) hoặc tạo Enum Admin riêng
+                };
+
+                // Password bắt buộc phải có: Chữ hoa, thường, số, ký tự đặc biệt
+                var result = await userManager.CreateAsync(adminUser, "Admin@12345");
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(adminUser, "Admin");
+                }
+            }
+
+            // 3. Seed Demo Customer (Để test Order)
+            var customerEmail = "khachhang@gmail.com";
+            if (await userManager.FindByEmailAsync(customerEmail) == null)
+            {
+                var customerUser = new AppUser
+                {
+                    UserName = "khachhang",
+                    Email = customerEmail,
+                    FullName = "Nguyễn Văn Khách",
+                    PhoneNumber = "0912345678",
+                    EmailConfirmed = true,
+                    CreatedAt = DateTime.UtcNow,
+                    CustomerType = CustomerType.Retail // Khách lẻ
+                };
+
+                var result = await userManager.CreateAsync(customerUser, "Bmak@123");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(customerUser, "Customer");
+
+                    // Seed địa chỉ mặc định cho khách (Optional)
+                    customerUser.Addresses.Add(new Address
+                    {
+                        ReceiverName = "Nguyễn Văn Khách",
+                        Phone = "0912345678",
+                        Street = "123 Đường Số 1",
+                        Ward = "Phường An Khánh",
+                        District = "Thành phố Thủ Đức",
+                        City = "TP. Hồ Chí Minh",
+                        IsDeleted = false
+                    });
+
+                    // Lưu lại Address
+                    await userManager.UpdateAsync(customerUser);
+                }
+            }
+
             // 1. Kiểm tra nếu đã có Product thì thôi, không seed nữa để tránh duplicate
             if (await context.Products.AnyAsync()) return;
 
@@ -221,5 +308,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence
             await context.Products.AddRangeAsync(products);
             await context.SaveChangesAsync();
         }
+
+
     }
 }

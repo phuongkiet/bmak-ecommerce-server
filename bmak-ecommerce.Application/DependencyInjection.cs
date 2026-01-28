@@ -80,7 +80,7 @@ namespace bmak_ecommerce.Application
 
             //Command DI
             services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
-            services.AddScoped<ICommandHandler<CreateOrderCommand, Result<int>>, CreateOrderCommandHandler>();
+            services.AddScoped<ICommandHandler<CreateOrderCommand, Result<int>>, CreateOrderHandler>();
             services.AddScoped<ICommandHandler<AddToCartCommand, ShoppingCart>, AddToCartHandler>();
             services.AddScoped<ICommandHandler<UpdateCartItemCommand, ShoppingCart>, UpdateCartItemHandler>();
             services.AddScoped<ICommandHandler<DeleteCartItemCommand, ShoppingCart>, DeleteCartItemHandler>();

@@ -23,14 +23,23 @@ namespace bmak_ecommerce.Domain.Entities.Sales
         public decimal DiscountAmount { get; set; }
         public decimal TotalAmount { get; set; } // (Sub + Ship - Discount)
 
+        // --- SNAPSHOT NGƯỜI MUA (BILLING) ---
+        public string BuyerName { get; set; }
+        public string BuyerPhone { get; set; }
+        public string BuyerEmail { get; set; }
+        public string BillingAddress { get; set; } // Địa chỉ thanh toán full text
+
+        // --- SNAPSHOT NGƯỜI NHẬN (SHIPPING) ---
+        // Đây là thông tin quan trọng nhất cho đội vận chuyển
+        public string ReceiverName { get; set; }
+        public string ReceiverPhone { get; set; }
+        public string ShippingAddress { get; set; } // Địa chỉ giao hàng full text
+
         public string Note { get; set; } // Ghi chú giao hàng
 
         // Navigation
         public int UserId { get; set; }
         public virtual AppUser User { get; set; }
-
-        public int? ShippingAddressId { get; set; }
-        public virtual Address ShippingAddress { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }

@@ -11,7 +11,8 @@ using bmak_ecommerce.Infrastructure.MessageBus.Consumers;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Infrastructure.MessageBus;
 using MassTransit;
-using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface; // Bắt buộc
+using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
+using bmak_ecommerce.Infrastructure.Services; // Bắt buộc
 
 namespace bmak_ecommerce.Infrastructure
 {
@@ -93,6 +94,12 @@ namespace bmak_ecommerce.Infrastructure
                 options.Configuration = redisConnectionString;
                 options.InstanceName = "BmakShop_";
             });
+
+            // Cấu hình HttpContextAccessor cho UserClaim
+            services.AddHttpContextAccessor();
+
+            // Đăng ký service
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }
