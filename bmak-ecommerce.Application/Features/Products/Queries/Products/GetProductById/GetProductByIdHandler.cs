@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
 using System;
@@ -7,65 +8,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bmak_ecommerce.Application.Common.Models;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById
 {
     public class GetProductByIdHandler : IQueryHandler<GetProductByIdQuery, ProductDto?>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetProductByIdHandler(IProductRepository productRepository, IMapper mapper)
+        public GetProductByIdHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<ProductDto?> Handle(GetProductByIdQuery query, CancellationToken cancellationToken = default)
+        public async Task<Result<ProductDto?>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            // 1. Gọi Repository lấy Entity (đã Include đủ thứ)
-            var product = await _productRepository.GetProductDetailAsync(query.Id);
+            // 1. Gọi hàm Repository chuyên dụng đã viết ở Bước 1
+            var product = await _unitOfWork.Products.GetProductDetailAsync(request.Id);
 
-            if (product == null) return null;
-
-            // 2. Map Entity -> ProductDto
-            // (Bạn có thể dùng AutoMapper hoặc map tay như dưới đây cho tường minh)
-            var dto = new ProductDto
+            // 2. Kiểm tra Null -> Trả về Failure
+            if (product == null)
             {
-                Id = product.Id,
-                Name = product.Name,
-                Slug = product.Slug,
-                Sku = product.SKU,
-                SpecificationsJson = product.SpecificationsJson,
-                Price = product.SalePrice,
-                OriginalPrice = product.BasePrice,
-                //StockQuantity = product.Stocks.Select(s => s.QuantityOnHand),
-                SalesUnit = product.SalesUnit,          // "Viên"
-                PriceUnit = product.PriceUnit,          // "m2"
-                ConversionFactor = product.ConversionFactor, // 0.36
-                Thumbnail = product.Thumbnail,
-                CategoryId = product.CategoryId,
-                CategoryName = product.Category?.Name ?? string.Empty,
+                return Result<ProductDto?>.Failure($"Không tìm thấy sản phẩm có ID = {request.Id}");
+            }
 
-                // Map Images
-                Images = product.ProductImages.Select(img => new ProductImageDto
-                {
-                    Id = img.Id,
-                    Url = img.ImageUrl,
-                    IsMain = img.IsMain,
-                    SortOrder = img.SortOrder
-                }).OrderBy(i => i.SortOrder).ToList(),
+            // 3. Map Entity -> DTO
+            var productDto = _mapper.Map<ProductDto>(product);
 
-                // Map Attributes
-                Attributes = product.AttributeValues.Select(attr => new ProductAttributeDto
-                {
-                    Code = attr.Attribute.Code,
-                    Name = attr.Attribute.Name,
-                    Value = attr.Value
-                }).ToList()
-            };
+            // 4. (Tùy chọn) Logic bổ sung nếu cần
+            // Ví dụ: Tính tổng tồn kho từ list Stocks
+            if (product.Stocks != null)
+            {
+                productDto.StockQuantity = product.Stocks.Sum(x => x.QuantityOnHand);
+            }
 
-            return dto;
+            // 5. Trả về Success
+            return Result<ProductDto?>.Success(productDto);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetProdu
     public class GetProductByIdQuery
     {
         public int Id { get; set; }
-        public GetProductByIdQuery(int id) => Id = id;
+
+        public GetProductByIdQuery(int id)
+        {
+            Id = id;
+        }
     }
 }

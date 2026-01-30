@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Domain.Models;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;

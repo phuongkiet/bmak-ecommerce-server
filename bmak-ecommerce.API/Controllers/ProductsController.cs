@@ -1,113 +1,118 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Domain.Models; // Import Result
 using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
+using bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllProducts;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct;
-using bmak_ecommerce.Domain.Models;
-using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bmak_ecommerce.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    // Kế thừa BaseApiController để dùng hàm HandleResult
+    public class ProductsController : BaseApiController
     {
-        private readonly IMediator _mediator;
+        // Lưu ý: Update lại kiểu trả về trong Interface là Result<T>
         private readonly IQueryHandler<GetProductsQuery, ProductListResponse> _getProductsHandler;
         private readonly IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>> _topSellingHandler;
         private readonly IQueryHandler<GetProductByIdQuery, ProductDto?> _getProductByIdHandler;
+
+        // Command trả về Result<int>
         private readonly ICommandHandler<CreateProductCommand, int> _createProductHandler;
 
-        public ProductsController(IMediator mediator, 
+        // Command Update trả về Result<int> (hoặc Result nếu không cần trả ID)
+        private readonly ICommandHandler<UpdateProductCommand, int> _updateProductHandler;
+
+        public ProductsController(
             IQueryHandler<GetProductsQuery, ProductListResponse> getProductsHandler,
             IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>> topSellingHandler,
             IQueryHandler<GetProductByIdQuery, ProductDto?> getProductByIdHandler,
-            ICommandHandler<CreateProductCommand, int> createProductHandler)
+            ICommandHandler<CreateProductCommand, int> createProductHandler,
+            ICommandHandler<UpdateProductCommand, int> updateProductHandler)
         {
-            _mediator = mediator;
             _getProductsHandler = getProductsHandler;
             _topSellingHandler = topSellingHandler;
             _getProductByIdHandler = getProductByIdHandler;
             _createProductHandler = createProductHandler;
+            _updateProductHandler = updateProductHandler;
         }
-
-        //// GET: api/products?pageIndex=1&pageSize=10&sort=priceAsc&attributes=size:60x60
-        //[HttpGet]
-        //public async Task<ActionResult<PagedList<ProductDto>>> GetProducts([FromQuery] ProductSpecParams productParams)
-        //{
-        //    var query = new GetProductsQuery(productParams);
-        //    var result = await _mediator.Send(query);
-        //    return Ok(result);
-        //}
 
         [HttpGet]
         public async Task<ActionResult<ProductListResponse>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
             var query = new GetProductsQuery(specParams);
 
-            // Gọi Handler
+            // Result Pattern
             var result = await _getProductsHandler.Handle(query);
 
-            if (result?.Products != null)
+            // Xử lý Pagination Header (chỉ thêm nếu thành công)
+            if (result.IsSuccess && result.Value?.Products != null)
             {
                 Response.AddPaginationHeader(
-                    result.Products.PageIndex,
-                    result.Products.PageSize,
-                    result.Products.TotalCount,
-                    result.Products.TotalPages
+                    result.Value.Products.PageIndex,
+                    result.Value.Products.PageSize,
+                    result.Value.Products.TotalCount,
+                    result.Value.Products.TotalPages
                 );
             }
 
-            return Ok(result);
+            // Dùng hàm của BaseController
+            return HandleResult(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<ProductDto>> GetById(int id)
         {
             var query = new GetProductByIdQuery(id);
 
+            // Gọi Handler -> nhận Result<ProductDto?>
             var result = await _getProductByIdHandler.Handle(query, CancellationToken.None);
 
-            if (result == null) return NotFound();
-
-            return Ok(result);
+            // Trả về HTTP 200 (Success) hoặc 404 (Failure)
+            return HandleResult(result);
         }
 
-        // API lấy Top 10 bán chạy
         [HttpGet("top-selling")]
-        public async Task<IActionResult> GetTopSelling()
+        public async Task<ActionResult<List<ProductSummaryDto>>> GetTopSelling([FromQuery] int count = 10)
         {
-            var query = new GetTopSellingProductsQuery { Count = 10 };
+            var query = new GetTopSellingProductsQuery { Count = count };
 
-            // Gọi hàm Handle trực tiếp
+            // Gọi Handler -> nhận Result<List<ProductSummaryDto>>
             var result = await _topSellingHandler.Handle(query, CancellationToken.None);
 
-            return Ok(result);
+            // BaseApiController xử lý trả về
+            return HandleResult(result);
         }
 
-        // POST: api/products
         [HttpPost]
-        public async Task<ActionResult<int>> CreateProduct([FromBody] CreateProductCommand command)
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
         {
-            // Gọi trực tiếp Handle, không qua MediatR
-            var productId = await _createProductHandler.Handle(command, CancellationToken.None);
+            var result = await _createProductHandler.Handle(command);
 
-            // Trả về 201 Created
-            return CreatedAtAction(nameof(GetById), new { id = productId }, productId);
+            // Custom trả về 201 Created thay vì 200 OK mặc định của HandleResult
+            if (result.IsSuccess)
+            {
+                return CreatedAtAction(nameof(GetById), new { id = result.Value }, new { id = result.Value });
+            }
+
+            return BadRequest(new { message = result.Error });
         }
 
-        // PUT: api/products/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> UpdateProduct(int id, [FromBody] bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct.UpdateProductCommand command)
+            public async Task<ActionResult<int>> UpdateProduct(int id, [FromBody] UpdateProductCommand command)
         {
-            command.Id = id;
+            if (id != command.Id)
+            {
+                command.Id = id;
+            }
 
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            // result là Result<int>
+            var result = await _updateProductHandler.Handle(command, CancellationToken.None);
+
+            // HandleResult trả về ActionResult<int> -> Khớp với khai báo hàm -> Hết lỗi
+            return HandleResult(result);
         }
     }
 }

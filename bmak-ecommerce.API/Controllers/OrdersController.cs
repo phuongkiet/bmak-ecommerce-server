@@ -1,57 +1,64 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder;
+﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
-using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
-using bmak_ecommerce.Application.Features.Products.Queries.Orders.GetAllOrders;
 using bmak_ecommerce.Domain.Models;
-using bmak_ecommerce.Application.Common.Models;
-using bmak_ecommerce.API.Extensions;
+using bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder;
+using Microsoft.AspNetCore.Mvc;
+using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
+using bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders;
 
-[ApiController]
-[Route("api/[controller]")]
-public class OrdersController : ControllerBase
+namespace bmak_ecommerce.API.Controllers
 {
-    private readonly IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>> _getOrdersHandler;
-    private readonly ICommandHandler<CreateOrderCommand, Result<int>> _createOrderHandler;
-    public OrdersController(IQueryHandler<GetOrdersQuery, Result<PagedList<OrderSummaryDto>>> getOrdersHandler,
-        ICommandHandler<CreateOrderCommand, Result<int>> createOrderHandler)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class OrdersController : BaseApiController
     {
-        _getOrdersHandler = getOrdersHandler;
-        _createOrderHandler = createOrderHandler;
-    }
+        // 1. Sửa Generic Type: Bỏ Result<> bao bọc bên ngoài
+        private readonly IQueryHandler<GetOrdersQuery, PagedList<OrderSummaryDto>> _getOrdersHandler;
+        private readonly ICommandHandler<CreateOrderCommand, int> _createOrderHandler;
 
-    [HttpGet]
-    public async Task<IActionResult> GetOrders([FromQuery] OrderSpecParams specParams)
-    {
-        var query = new GetOrdersQuery(specParams);
-        var result = await _getOrdersHandler.Handle(query);
-
-        if (result.IsSuccess)
+        public OrdersController(
+            IQueryHandler<GetOrdersQuery, PagedList<OrderSummaryDto>> getOrdersHandler,
+            ICommandHandler<CreateOrderCommand, int> createOrderHandler)
         {
-            // Bây giờ result đã hiểu .Value và .IsSuccess
-            Response.AddPaginationHeader(
-                result.Value.PageIndex,
-                result.Value.PageSize,
-                result.Value.TotalCount,
-                result.Value.TotalPages);
-
-            return Ok(result.Value);
+            _getOrdersHandler = getOrdersHandler;
+            _createOrderHandler = createOrderHandler;
         }
 
-        return BadRequest(result.Error);
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<Result<int>>> CreateOrder([FromBody] CreateOrderCommand command)
-    {
-        // Frontend gửi: { "cartId": "guest-123", "shippingAddress": "..." }
-        var result = await _createOrderHandler.Handle(command, CancellationToken.None);
-
-        if (!result.IsSuccess)
+        // GET: api/orders
+        [HttpGet]
+        public async Task<ActionResult<PagedList<OrderSummaryDto>>> GetOrders([FromQuery] OrderSpecParams specParams)
         {
-            return BadRequest(result);
+            var query = new GetOrdersQuery(specParams);
+
+            // Result trả về là Result<PagedList<OrderSummaryDto>>
+            var result = await _getOrdersHandler.Handle(query);
+
+            // Xử lý Pagination Header nếu thành công
+            if (result.IsSuccess && result.Value != null)
+            {
+                Response.AddPaginationHeader(
+                    result.Value.PageIndex,
+                    result.Value.PageSize,
+                    result.Value.TotalCount,
+                    result.Value.TotalPages
+                );
+            }
+
+            // Dùng HandleResult của BaseApiController
+            return HandleResult(result);
         }
 
-        return Ok(result);
+        // POST: api/orders
+        [HttpPost]
+        public async Task<ActionResult<int>> CreateOrder([FromBody] CreateOrderCommand command)
+        {
+            // Frontend gửi: { "cartId": "...", "shippingAddress": ... }
+            // Result trả về là Result<int> (ID đơn hàng)
+            var result = await _createOrderHandler.Handle(command);
+
+            // Nếu thành công, trả về 200 OK kèm ID đơn hàng
+            // Nếu thất bại (lỗi validate, hết hàng...), trả về 400 Bad Request kèm message
+            return HandleResult(result);
+        }
     }
 }

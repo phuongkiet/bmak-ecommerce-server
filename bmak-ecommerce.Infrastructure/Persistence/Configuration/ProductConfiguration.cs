@@ -85,6 +85,11 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 .WithOne(tp => tp.Product)
                 .HasForeignKey(tp => tp.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(p => p.OrderItems)      // 1 Product có nhiều OrderItems
+               .WithOne(oi => oi.Product)       // 1 OrderItem thuộc về 1 Product
+               .HasForeignKey(oi => oi.ProductId) // Khóa ngoại là ProductId
+               .OnDelete(DeleteBehavior.Restrict); // QUAN TRỌNG: Xóa Product không được xóa lịch sử đơn hàng
         }
     }
 }

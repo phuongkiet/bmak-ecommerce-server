@@ -12,7 +12,7 @@ namespace bmak_ecommerce.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CartController : ControllerBase
+    public class CartController : BaseApiController
     {
         private readonly IQueryHandler<GetCartQuery, ShoppingCart> _getCartHandler;
         private readonly ICommandHandler<AddToCartCommand, ShoppingCart> _addToCartHandler;
@@ -34,48 +34,38 @@ namespace bmak_ecommerce.API.Controllers
             _clearCartHandler = clearCartHandler;
         }
 
-        // GET: api/cart?id=guest-123
+        // GET: api/cart?id=cart-123
         [HttpGet]
-        public async Task<ActionResult<ShoppingCart>> GetCart(string id)
+        public async Task<ActionResult<ShoppingCart>> GetCart([FromQuery] string id)
         {
-            var result = await _getCartHandler.Handle(new GetCartQuery(id));
-            return Ok(result);
+            var query = new GetCartQuery(id);
+            var result = await _getCartHandler.Handle(query);
+            return HandleResult(result);
         }
 
-        // POST: api/cart
+        // POST: api/cart (Add Item)
         [HttpPost]
-        public async Task<ActionResult<ShoppingCart>> AddToCart(AddToCartCommand command)
+        public async Task<ActionResult<ShoppingCart>> AddToCart([FromBody] AddToCartCommand command)
         {
             var result = await _addToCartHandler.Handle(command);
-            return Ok(result);
+            return HandleResult(result);
         }
 
+        // PUT: api/cart (Update Quantity)
         [HttpPut]
-        public async Task<ActionResult<ShoppingCart>> UpdateCartItem(UpdateCartItemCommand command)
+        public async Task<ActionResult<ShoppingCart>> UpdateItem([FromBody] UpdateCartItemCommand command)
         {
-            try
-            {
-                var result = await _updateCartItemHandler.Handle(command);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var result = await _updateCartItemHandler.Handle(command);
+            return HandleResult(result);
         }
 
+        // DELETE: api/cart/cart-123/1 (Remove Item)
         [HttpPut("item")]
-        public async Task<ActionResult<ShoppingCart>> DeleteCartItem([FromQuery] DeleteCartItemCommand command)
+        public async Task<ActionResult<ShoppingCart>> RemoveItem(string cartId, int productId)
         {
-            try
-            {
-                var result = await _deleteCartItemHandler.Handle(command, CancellationToken.None);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var command = new DeleteCartItemCommand { CartId = cartId, ProductId = productId };
+            var result = await _deleteCartItemHandler.Handle(command);
+            return HandleResult(result);
         }
 
         [HttpDelete]

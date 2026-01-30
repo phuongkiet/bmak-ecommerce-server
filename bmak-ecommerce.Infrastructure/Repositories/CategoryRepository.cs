@@ -1,4 +1,4 @@
-using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
@@ -22,7 +22,7 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<PagedList<Category>> GetCategoriesAsync(CategorySpecParams categoryParams)
+        public async Task<Domain.Models.PagedList<Category>> GetCategoriesAsync(CategorySpecParams categoryParams)
         {
             // 1. Khởi tạo Query (Chưa chạy xuống DB)
             var query = _context.Categories
@@ -69,7 +69,7 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 .ToListAsync();
 
             // 6. Trả về PagedList
-            return new PagedList<Category>(
+            return new Domain.Models.PagedList<Category>(
                 items,
                 totalCount,
                 categoryParams.PageIndex,

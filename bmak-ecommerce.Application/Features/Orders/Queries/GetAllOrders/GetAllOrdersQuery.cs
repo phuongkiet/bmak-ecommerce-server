@@ -2,7 +2,7 @@
 using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
 using bmak_ecommerce.Domain.Models;
 
-namespace bmak_ecommerce.Application.Features.Products.Queries.Orders.GetAllOrders
+namespace bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders
 {
     public class GetOrdersQuery
     {

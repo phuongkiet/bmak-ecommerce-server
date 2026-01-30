@@ -28,6 +28,13 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 //    options.InstanceName = "BmakShop_"; // Prefix cho key tránh trùng lặp
 //});
 
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    // Fix lỗi trùng tên Schema khi dùng Generic (Result<T>, PagedList<T>)
+    options.CustomSchemaIds(type => type.ToString());
+});
 
 // --- 2. Build App ---
 var app = builder.Build();
@@ -54,12 +61,17 @@ if (app.Environment.IsDevelopment())
 
             // Truyền đủ 3 tham số vào
             await DbSeeder.SeedAsync(context, userManager, roleManager);
+            await DbSeeder.SeedProvincesAsync(context);
+            await DbSeeder.SeedWardsAsync(context);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Lỗi khi Seed dữ liệu");
         }
     }
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 // 2. Global Middleware

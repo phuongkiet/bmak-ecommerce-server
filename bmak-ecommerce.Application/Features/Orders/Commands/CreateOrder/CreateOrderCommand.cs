@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
+using bmak_ecommerce.Domain.Enums;
 
 namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
 {
@@ -6,7 +7,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
     {
         public string CartId { get; set; }
         public string Note { get; set; }
-        public string PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
         // --- 1. THÔNG TIN NGƯỜI MUA / THANH TOÁN (Billing) ---
         // Dùng để liên hệ xác nhận đơn hoặc xuất hóa đơn

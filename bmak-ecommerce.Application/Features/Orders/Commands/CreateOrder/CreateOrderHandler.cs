@@ -1,58 +1,74 @@
 ﻿using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
-using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Enums;
 using bmak_ecommerce.Domain.Interfaces;
 
 namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
 {
-    public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, Result<int>>
+    public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICartRepository _cartRepository; // Inject thêm cái này
-        private readonly IMessageBus _messageBus;
-        //private readonly ICurrentUserService _currentUserService;
+        private readonly ICartRepository _cartRepository; // Service lấy giỏ hàng (Redis/DB)
+        private readonly ICurrentUserService _currentUserService; // Lấy UserId đăng nhập
 
         public CreateOrderHandler(
             IUnitOfWork unitOfWork,
             ICartRepository cartRepository,
-            IMessageBus messageBus
-            //ICurrentUserService currentUserService
-            )
+            ICurrentUserService currentUserService)
         {
             _unitOfWork = unitOfWork;
             _cartRepository = cartRepository;
-            _messageBus = messageBus;
-            //_currentUserService = currentUserService;
+            _currentUserService = currentUserService;
         }
 
         public async Task<Result<int>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            // 1. Lấy Giỏ hàng từ Redis
+            // 1. LẤY GIỎ HÀNG
             var cart = await _cartRepository.GetCartAsync(request.CartId);
+
             if (cart == null || !cart.Items.Any())
             {
-                return Result<int>.Failure("Giỏ hàng trống hoặc đã hết hạn.");
+                return Result<int>.Failure("Giỏ hàng trống hoặc không tồn tại.");
             }
 
-            // 2. Lấy thông tin sản phẩm mới nhất từ DB (Để check giá & tồn kho chuẩn)
-            var productIds = cart.Items.Select(i => i.ProductId).ToList();
-            var products = await _unitOfWork.Products.GetByIdsWithStocksAsync(productIds);
+            // 2. KIỂM TRA TỒN KHO & GIÁ (Validate Stock)
+            // Lấy danh sách ProductId trong giỏ
+            var productIds = cart.Items.Select(x => x.ProductId).ToList();
 
-            string finalReceiverName;
-            string finalReceiverPhone;
-            string finalShippingAddress;
-            string finalBillingAddress = request.BillingAddress.ToString(); // Helper method trong DTO
+            // Load Products từ DB để check tồn kho thực tế
+            // (Cần viết hàm GetProductsByIdsAsync trong Repo bao gồm cả Stocks)
+            var dbProducts = await _unitOfWork.Products.GetByIdsAsync(productIds);
+
+            foreach (var cartItem in cart.Items)
+            {
+                var dbProduct = dbProducts.FirstOrDefault(p => p.Id == cartItem.ProductId);
+
+                if (dbProduct == null)
+                    return Result<int>.Failure($"Sản phẩm ID {cartItem.ProductId} không còn tồn tại.");
+
+                if (!dbProduct.IsActive)
+                    return Result<int>.Failure($"Sản phẩm '{dbProduct.Name}' đang ngừng kinh doanh.");
+
+                // Check số lượng tồn (Tổng các kho)
+                var currentStock = dbProduct.Stocks.Sum(s => s.QuantityOnHand);
+
+                // Nếu có quản lý kho và không cho bán âm
+                if (dbProduct.ManageStock && !dbProduct.AllowBackorder && currentStock < cartItem.Quantity)
+                {
+                    return Result<int>.Failure($"Sản phẩm '{dbProduct.Name}' không đủ hàng (Còn: {currentStock}).");
+                }
+            }
+
+            // 3. XỬ LÝ LOGIC ĐỊA CHỈ (Billing vs Shipping)
+            string finalReceiverName, finalReceiverPhone, finalShippingAddress;
+            string finalBillingAddress = request.BillingAddress.ToString();
 
             if (request.ShipToDifferentAddress)
             {
-                // CASE A: Giao tới địa chỉ khác (Công trình)
-                // Bắt buộc phải có thông tin Shipping gửi lên
-                if (request.ShippingAddress == null || string.IsNullOrEmpty(request.ReceiverName))
-                {
-                    return Result<int>.Failure("Vui lòng nhập đầy đủ thông tin người nhận hàng.");
-                }
+                // Validate server side cho chắc
+                if (request.ShippingAddress == null)
+                    return Result<int>.Failure("Chưa nhập địa chỉ giao hàng.");
 
                 finalReceiverName = request.ReceiverName;
                 finalReceiverPhone = request.ReceiverPhone;
@@ -60,168 +76,125 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
             }
             else
             {
-                // CASE B: Giao tới địa chỉ người mua (Mặc định)
                 // Copy từ Billing sang
                 finalReceiverName = request.BuyerName;
                 finalReceiverPhone = request.BuyerPhone;
                 finalShippingAddress = finalBillingAddress;
             }
 
-            // 3. Khởi tạo Order
+            // 4. TẠO ORDER ENTITY
             var order = new Order
             {
-                OrderCode = GenerateOrderCode(),
-                OrderDate = DateTime.UtcNow,
-                Status = OrderStatus.Pending,
-                PaymentMethod = ParsePaymentMethod(request.PaymentMethod),
+                OrderCode = GenerateOrderCode(), // Hàm tự viết: ORDER-20231025-1234
+                Status = OrderStatus.Pending,    // Mới tạo -> Chờ xử lý
+                PaymentMethod = request.PaymentMethod,
                 Note = request.Note,
-                UserId = 1,
-                //UserId = _currentUserService.UserId != 0 ? _currentUserService.UserId : 1,
+                OrderDate = DateTime.UtcNow,
+                UserId = _currentUserService.UserId != 0 ? _currentUserService.UserId : 0, // Nếu guest thì null
 
-                // --- MAPPING SNAPSHOT ---
-                // Thông tin người mua
+                // Snapshot thông tin người mua
                 BuyerName = request.BuyerName,
                 BuyerPhone = request.BuyerPhone,
                 BuyerEmail = request.BuyerEmail,
                 BillingAddress = finalBillingAddress,
 
-                // Thông tin giao hàng (Đã xử lý logic ở trên)
+                // Snapshot thông tin nhận hàng
                 ReceiverName = finalReceiverName,
                 ReceiverPhone = finalReceiverPhone,
                 ShippingAddress = finalShippingAddress,
-                // ------------------------
 
-                OrderItems = new List<OrderItem>()
+                TotalAmount = 0 // Sẽ cộng dồn ở dưới
             };
 
-            bool needsConfirmation = false; // Cờ đánh dấu đơn hàng cần xác nhận thủ công
-
-            // 4. Duyệt từng item trong Cart
+            // 5. TẠO ORDER ITEMS & TRỪ KHO
             foreach (var cartItem in cart.Items)
             {
-                var product = products.FirstOrDefault(p => p.Id == cartItem.ProductId);
-                if (product == null) continue; // Skip nếu sản phẩm bị xóa
+                var dbProduct = dbProducts.FirstOrDefault(p => p.Id == cartItem.ProductId);
 
-                // --- LOGIC GIÁ ---
-                // Luôn lấy giá từ DB để bảo mật (tránh hack giá từ Redis/Frontend)
-                var currentPrice = product.SalePrice > 0 ? product.SalePrice : product.BasePrice;
+                // 1. Lấy hệ số quy đổi (Ví dụ: 1 viên = 0.36m2)
+                // Nếu ConversionFactor = 0 hoặc null thì mặc định là 1 để tránh lỗi chia/nhân 0
+                float factor = dbProduct.ConversionFactor > 0 ? dbProduct.ConversionFactor : 1;
 
-                // --- LOGIC CHECK TỒN KHO & SOFT STOCK ---
-                if (product.ManageStock)
-                {
-                    float totalStock = product.Stocks.Sum(s => s.QuantityOnHand);
+                // 2. Tính ra số m2 cần trừ kho
+                // Ví dụ: Khách mua 10 viên => 10 * 0.36 = 3.6 m2
+                float quantityM2 = (float)cartItem.Quantity * factor;
 
-                    // Nếu thiếu hàng
-                    if (totalStock < cartItem.Quantity)
-                    {
-                        if (!product.AllowBackorder)
-                        {
-                            return Result<int>.Failure($"Sản phẩm '{product.Name}' hiện đã hết hàng.");
-                        }
-
-                        // Cho phép đặt nhưng đánh dấu cần xác nhận
-                        needsConfirmation = true;
-                    }
-
-                    // Trừ tồn kho (Best effort)
-                    DeductStock(product, cartItem.Quantity);
-                }
-
-                // --- TẠO ORDER ITEM ---
-                // Tính lại m2 chuẩn từ DB
-                float factor = product.ConversionFactor > 0 ? product.ConversionFactor : 1;
-
+                // 3. TẠO ORDER ITEM
                 var orderItem = new OrderItem
                 {
-                    ProductId = product.Id,
-                    ProductName = product.Name,
-                    UnitPrice = currentPrice,
-                    Quantity = cartItem.Quantity,
+                    ProductId = dbProduct.Id,
+                    ProductName = dbProduct.Name,
+                    ProductSku = dbProduct.SKU,
+                    ProductImage = dbProduct.Thumbnail,
+                    Price = dbProduct.SalePrice > 0 ? dbProduct.SalePrice : dbProduct.BasePrice,
 
-                    // Logic m2 (Gạch men)
-                    QuantitySquareMeter = cartItem.Quantity * factor,
+                    // Lưu số viên (hiển thị cho khách)
+                    QuantityOnHand = cartItem.Quantity,
 
-                    TotalPrice = currentPrice * cartItem.Quantity
+                    // Lưu số m2 (để kế toán kho đối soát)
+                    QuantitySquareMeter = quantityM2,
+
+                    // Tính tổng tiền (thường vẫn tính theo Giá x Số viên)
+                    TotalPrice = (dbProduct.SalePrice > 0 ? dbProduct.SalePrice : dbProduct.BasePrice) * cartItem.Quantity
                 };
 
-                order.SubTotal += orderItem.TotalPrice;
                 order.OrderItems.Add(orderItem);
-            }
+                order.TotalAmount += orderItem.TotalPrice;
 
-            // Nếu có sản phẩm backorder, chuyển trạng thái đơn hàng
-            if (needsConfirmation)
-            {
-                order.Status = OrderStatus.Pending; // "Chờ xác nhận"
-            }
+                // 4. TRỪ TỒN KHO THEO M2 (Quan trọng)
+                if (dbProduct.ManageStock)
+                {
+                    // Kiểm tra tổng tồn kho hiện tại (đơn vị m2)
+                    var currentStockM2 = dbProduct.Stocks.Sum(s => s.QuantityOnHand);
 
-            // 5. Tính tổng tiền cuối cùng
-            order.ShippingFee = 0; // Có thể tính phí ship sau
-            order.TotalAmount = order.SubTotal + order.ShippingFee;
+                    if (!dbProduct.AllowBackorder && currentStockM2 < quantityM2)
+                    {
+                        return Result<int>.Failure($"Sản phẩm '{dbProduct.Name}' không đủ hàng (Còn: {currentStockM2} m² - Cần: {quantityM2} m²).");
+                    }
+
+                    // Logic trừ kho
+                    var m2ToDeduct = quantityM2; // Biến tạm để trừ dần
+
+                    foreach (var stock in dbProduct.Stocks.OrderBy(s => s.QuantityOnHand)) // Ưu tiên trừ kho ít trước hoặc tùy logic
+                    {
+                        if (m2ToDeduct <= 0) break;
+
+                        // stock.QuantityOnHand bây giờ là float (m2) nên trừ thoải mái
+                        if (stock.QuantityOnHand >= m2ToDeduct)
+                        {
+                            stock.QuantityOnHand -= m2ToDeduct;
+                            m2ToDeduct = 0;
+                        }
+                        else
+                        {
+                            m2ToDeduct -= stock.QuantityOnHand;
+                            stock.QuantityOnHand = 0; // Hết sạch kho này
+                        }
+                    }
+                }
+            }
 
             try
             {
-                // Lưu Order
-                await _unitOfWork.Orders.AddAsync(order);
-
-                // Lưu thay đổi Tồn kho (nếu có)
+                // 6. SAVE DB
+                await _unitOfWork.Repository<Order>().AddAsync(order);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                // 6. QUAN TRỌNG: Xóa Cart sau khi đặt thành công
+                // 7. XÓA GIỎ HÀNG
                 await _cartRepository.DeleteCartAsync(request.CartId);
+
+                return Result<int>.Success(order.Id);
             }
             catch (Exception ex)
             {
-                // Log error
-                return Result<int>.Failure("Lỗi khi tạo đơn hàng: " + ex.Message);
+                return Result<int>.Failure($"Lỗi tạo đơn hàng: {ex.Message}");
             }
-
-            // 7. Gửi Event (RabbitMQ)
-            var orderEvent = new OrderCreatedEvent
-            {
-                OrderId = order.Id,
-                OrderCode = order.OrderCode,
-                TotalAmount = order.TotalAmount,
-                CustomerEmail = "customer@example.com",
-                CreatedAt = DateTime.UtcNow
-            };
-            await _messageBus.PublishMessageAsync(orderEvent, cancellationToken);
-
-            return Result<int>.Success(order.Id);
-        }
-
-        // Helper: Trừ tồn kho ưu tiên lô cũ trước (FIFO đơn giản) hoặc kho nhiều hàng nhất
-        private void DeductStock(Domain.Entities.Catalog.Product product, int quantityNeeded)
-        {
-            var stocks = product.Stocks.OrderByDescending(s => s.QuantityOnHand).ToList();
-            float remain = quantityNeeded;
-
-            foreach (var stock in stocks)
-            {
-                if (remain <= 0) break;
-
-                if (stock.QuantityOnHand >= remain)
-                {
-                    stock.QuantityOnHand -= remain;
-                    remain = 0;
-                }
-                else
-                {
-                    remain -= stock.QuantityOnHand;
-                    stock.QuantityOnHand = 0;
-                }
-            }
-            // Lưu ý: Nếu remain > 0 (bán âm), số dư nợ sẽ không trừ vào DB 
-            // mà chỉ ghi nhận Order để nhập hàng sau.
         }
 
         private string GenerateOrderCode()
         {
-            return $"ORD-{DateTime.UtcNow:yyyyMMdd}-{new Random().Next(1000, 9999)}";
-        }
-
-        private PaymentMethod ParsePaymentMethod(string method)
-        {
-            return method?.ToUpper() == "BANK" ? PaymentMethod.BankTransfer : PaymentMethod.COD;
+            // Format: ORD-yyMMdd-Random
+            return $"ORD-{DateTime.UtcNow:yyMMdd}-{new Random().Next(1000, 9999)}";
         }
     }
 }

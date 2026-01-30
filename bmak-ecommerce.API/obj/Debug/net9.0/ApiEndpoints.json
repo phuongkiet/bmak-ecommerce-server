@@ -53,7 +53,7 @@
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.CartController",
-    "Method": "UpdateCartItem",
+    "Method": "UpdateItem",
     "RelativePath": "api/Cart",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -105,19 +105,19 @@
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.CartController",
-    "Method": "DeleteCartItem",
+    "Method": "RemoveItem",
     "RelativePath": "api/Cart/item",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "CartId",
+        "Name": "cartId",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ProductId",
+        "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -243,7 +243,7 @@
     ]
   },
   {
-    "ContainingType": "OrdersController",
+    "ContainingType": "bmak_ecommerce.API.Controllers.OrdersController",
     "Method": "GetOrders",
     "RelativePath": "api/Orders",
     "HttpMethod": "GET",
@@ -301,10 +301,20 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Sale.OrderSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "OrdersController",
+    "ContainingType": "bmak_ecommerce.API.Controllers.OrdersController",
     "Method": "CreateOrder",
     "RelativePath": "api/Orders",
     "HttpMethod": "POST",
@@ -319,7 +329,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Common.Models.Result\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.Int32",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -501,17 +511,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Int32",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.ProductsController",
@@ -527,7 +527,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.ProductsController",
@@ -550,7 +560,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "System.Int32",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -567,8 +577,65 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
+    "Parameters": [
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "bmak_ecommerce.API.Controllers.ProvinceController",
+    "Method": "GetProvinces",
+    "RelativePath": "api/Province",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Provinces.Dtos.ProvinceDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.TagsController",
@@ -638,6 +705,52 @@
     "ReturnTypes": [
       {
         "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "bmak_ecommerce.API.Controllers.WardController",
+    "Method": "GetWardsByProvince",
+    "RelativePath": "api/Ward",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProvinceId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Wards.Dtos.WardDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -12,12 +12,20 @@ namespace Application.Mappings
         {
             // 1. Map Entity -> DTO (Chiều trả về cho khách)
             CreateMap<Product, ProductDto>()
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.SalePrice))
+                .ForMember(dest => dest.OriginalPrice, opt => opt.MapFrom(src => src.BasePrice))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
                 .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeValues))
                 .ForMember(dest => dest.SalesUnit, opt => opt.MapFrom(src => src.SalesUnit))
                 .ForMember(dest => dest.PriceUnit, opt => opt.MapFrom(src => src.PriceUnit))
                 .ForMember(dest => dest.ConversionFactor, opt => opt.MapFrom(src => src.ConversionFactor))
-                .ForMember(dest => dest.Thumbnail, opt => opt.MapFrom(src => ExtractImageUrlFromSpecifications(src.SpecificationsJson)));
+                .ForMember(dest => dest.Thumbnail, opt => opt.MapFrom(src => src.Thumbnail))
+                .ReverseMap();
+
+            CreateMap<Product, ProductSummaryDto>()
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.SalePrice))
+                .ForMember(dest => dest.OriginalPrice, opt => opt.MapFrom(src => src.BasePrice))
+                .ReverseMap();
 
             CreateMap<ProductAttributeValue, ProductAttributeDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attribute.Name))

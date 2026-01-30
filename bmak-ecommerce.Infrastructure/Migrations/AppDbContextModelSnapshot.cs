@@ -539,6 +539,40 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.ToTable("Tag", (string)null);
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Directory.Province", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Provinces", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Directory.Ward", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ProvinceId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("Wards", (string)null);
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -855,23 +889,30 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProductImage")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductSku")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<float>("QuantityOnHand")
+                        .HasColumnType("float");
 
                     b.Property<float>("QuantitySquareMeter")
                         .HasColumnType("float");
 
                     b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -1029,6 +1070,17 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Directory.Ward", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Directory.Province", "Province")
+                        .WithMany("Wards")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Province");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.Address", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Identity.AppUser", "User")
@@ -1069,9 +1121,9 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -1090,6 +1142,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                 {
                     b.Navigation("AttributeValues");
 
+                    b.Navigation("OrderItems");
+
                     b.Navigation("ProductImages");
 
                     b.Navigation("ProductTags");
@@ -1107,6 +1161,11 @@ namespace bmak_ecommerce.Infrastructure.Migrations
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.Tag", b =>
                 {
                     b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Directory.Province", b =>
+                {
+                    b.Navigation("Wards");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.AppUser", b =>

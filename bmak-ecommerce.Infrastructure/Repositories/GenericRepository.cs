@@ -61,5 +61,10 @@ namespace bmak_ecommerce.Infrastructure.Repositories
         {
             _dbSet.Update(entity);
         }
+        public IQueryable<T> GetAllAsQueryable()
+        {
+            // Trả về IQueryable để tầng Service có thể .Where().Skip().Take() tiếp
+            return _dbSet.AsQueryable();
+        }
     }
 }

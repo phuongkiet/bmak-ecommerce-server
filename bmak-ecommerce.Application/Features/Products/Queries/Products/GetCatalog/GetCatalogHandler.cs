@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
 using bmak_ecommerce.Domain.Interfaces;
@@ -7,12 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bmak_ecommerce.Application.Common.Models;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog
 {
     public class GetCatalogHandler : IQueryHandler<GetCatalogQuery, ProductListResponse>
     {
-        // Inject Interface mới
+        // Inject Interface Repository (chuyên đọc dữ liệu)
         private readonly ICatalogReadRepository _catalogReadRepository;
 
         public GetCatalogHandler(ICatalogReadRepository catalogReadRepository)
@@ -20,10 +22,15 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatal
             _catalogReadRepository = catalogReadRepository;
         }
 
-        public async Task<ProductListResponse> Handle(GetCatalogQuery query, CancellationToken cancellationToken)
+        // --- SỬA Ở ĐÂY ---
+        // 1. Return Type: Phải là Task<Result<ProductListResponse>>
+        public async Task<Result<ProductListResponse>> Handle(GetCatalogQuery query, CancellationToken cancellationToken)
         {
-            // Gọi hàm từ interface mới
-            return await _catalogReadRepository.GetCatalogDataAsync(query.Params);
+            // 2. Lấy dữ liệu
+            var data = await _catalogReadRepository.GetCatalogDataAsync(query.Params);
+
+            // 3. Wrap vào Result.Success
+            return Result<ProductListResponse>.Success(data);
         }
     }
 }

@@ -16,6 +16,8 @@ public class UnitOfWork : IUnitOfWork
     private IProductRepository _productRepository;
     private IOrderRepository _orderRepository;
     private ICartRepository _cartRepository;
+    private IProvinceRepository _provinceRepository;
+    private IWardRepository _wardRepository;
 
     public UnitOfWork(AppDbContext context)
     {
@@ -40,6 +42,22 @@ public class UnitOfWork : IUnitOfWork
         get
         {
             return _orderRepository ??= new OrderRepository(_context);
+        }
+    }
+
+    public IProvinceRepository Provinces
+    {
+        get
+        {
+            return _provinceRepository ??= new ProvinceRepository(_context);
+        }
+    }
+
+    public IWardRepository Wards
+    {
+        get
+        {
+            return _wardRepository ??= new WardRepository(_context);
         }
     }
     // --------------------------------

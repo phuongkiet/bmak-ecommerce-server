@@ -256,5 +256,18 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 Filters = filtersDto
             };
         }
+
+        public async Task<List<Product>> GetTopSellingProductsAsync(int count)
+        {
+            // Logic: Sắp xếp giảm dần theo Tổng số lượng trong OrderItems
+            return await _context.Products
+                .Include(p => p.OrderItems) // Load OrderItems để tính tổng
+                .OrderByDescending(p => p.OrderItems.Sum(oi => oi.QuantityOnHand))
+                .Take(count)
+                // Include thêm ảnh/category nếu cần hiển thị ra ngoài UI
+                // .Include(p => p.Category) 
+                .AsNoTracking() // Read-only nên dùng AsNoTracking cho nhanh
+                .ToListAsync();
+        }
     }
 }

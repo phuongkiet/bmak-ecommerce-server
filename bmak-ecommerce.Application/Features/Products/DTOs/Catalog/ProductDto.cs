@@ -22,7 +22,7 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 		// Giá & Kho
 		public decimal Price { get; set; }       // SalePrice
 		public decimal? OriginalPrice { get; set; } // BasePrice
-		public int StockQuantity { get; set; }
+		public float StockQuantity { get; set; }
 
 		// Hình ảnh
 		public string? Thumbnail { get; set; }

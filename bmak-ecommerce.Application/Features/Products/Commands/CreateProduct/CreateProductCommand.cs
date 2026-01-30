@@ -7,37 +7,34 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
 {
-    public class CreateProductCommand : IRequest<int>
+    public class CreateProductCommand
     {
         public string Name { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
-        public decimal BasePrice { get; set; } // Giá bán thường (giá gốc)
-        public decimal SalePrice { get; set; } // Giá giảm (nếu có giảm giá)
-        public string SalesUnit { get; set; } = string.Empty;  // "Thùng", "Hộp"
-        public string? PriceUnit { get; set; }  // "m2", "Viên" - optional
-        public float ConversionFactor { get; set; }
+
+        // Giá & Đơn vị
+        public decimal BasePrice { get; set; }
+        public decimal SalePrice { get; set; }
+        public string SalesUnit { get; set; } = string.Empty;   // "Viên"
+        public string? PriceUnit { get; set; }                  // "m2"
+        public float ConversionFactor { get; set; }             // 0.36
+
         public int CategoryId { get; set; }
+        public DateTime? SaleStartDate { get; set; }
+        public DateTime? SaleEndDate { get; set; }
 
-        public bool? AllowBackorder { get; set; } // Default: true
-        public bool? ManageStock { get; set; }    // Default: true
+        public float? Weight { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? SpecificationsJson { get; set; }
+        public bool? IsActive { get; set; }
 
-        public float? InitialStock { get; set; }
+        // --- CẤU HÌNH KHO (MỚI) ---
+        public bool? AllowBackorder { get; set; } // Cho phép bán âm?
+        public bool? ManageStock { get; set; }    // Có quản lý kho không?
+        public float? InitialStock { get; set; }  // Số lượng nhập kho ban đầu
         public string? WarehouseName { get; set; }
 
-        // Thông tin giảm giá (optional)
-        public DateTime? SaleStartDate { get; set; } // Ngày bắt đầu giảm giá
-        public DateTime? SaleEndDate { get; set; } // Ngày kết thúc giảm giá
-
-        // Optional fields - nếu không có thì để null
-        public float? Weight { get; set; } // Cân nặng (kg) để tính ship
-        public string? ImageUrl { get; set; } // URL ảnh sản phẩm
-        public string? SpecificationsJson { get; set; } // JSON specifications - có thể là JSON string hoặc null
-        public bool? IsActive { get; set; } // Trạng thái active - default true nếu null
-
-        // List thuộc tính (nếu tạo luôn lúc add sản phẩm)
         public List<CreateProductAttributeRequest>? Attributes { get; set; }
-
-        // List Tag IDs (nếu muốn gán tags cho sản phẩm)
         public List<int>? TagIds { get; set; }
     }
 }

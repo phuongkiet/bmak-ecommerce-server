@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Domain.Common;
+using bmak_ecommerce.Domain.Entities.Sales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,5 +52,6 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         
         // Many-to-Many với Tag
         public virtual ICollection<ProductTag> ProductTags { get; set; } = new List<ProductTag>();
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }

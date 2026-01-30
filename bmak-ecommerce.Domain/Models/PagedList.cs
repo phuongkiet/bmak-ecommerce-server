@@ -10,7 +10,7 @@ namespace bmak_ecommerce.Domain.Models
     {
         public List<T> Items { get; set; }
         public int PageIndex { get; set; }
-        public int PageSize { get; private set; }
+        public int PageSize { get; set; }
         public int TotalPages { get; set; }
         public int TotalCount { get; set; }
 

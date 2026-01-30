@@ -1,5 +1,7 @@
 ﻿using bmak_ecommerce.Domain.Entities.Catalog;
+using bmak_ecommerce.Domain.Entities.Directory;
 using bmak_ecommerce.Domain.Entities.Identity;
+using bmak_ecommerce.Domain.Entities.Page;
 using bmak_ecommerce.Domain.Entities.Sales;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,9 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Ward> Wards { get; set; }
+        public DbSet<Page> Pages { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

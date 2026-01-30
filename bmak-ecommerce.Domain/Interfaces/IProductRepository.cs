@@ -12,6 +12,7 @@ namespace bmak_ecommerce.Domain.Interfaces
     {
         // Hàm lấy danh sách sản phẩm full option (Lọc, Sort, Phân trang)
         Task<PagedList<Product>> GetProductsAsync(ProductSpecParams productParams);
+        Task<List<Product>> GetTopSellingProductsAsync(int count);
 
         // Hàm lấy chi tiết sản phẩm kèm thuộc tính
         Task<Product?> GetProductDetailAsync(int id);

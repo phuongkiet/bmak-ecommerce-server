@@ -1,4 +1,5 @@
 using bmak_ecommerce.Domain.Entities.Catalog;
+using bmak_ecommerce.Domain.Entities.Directory;
 using bmak_ecommerce.Domain.Entities.Identity;
 using bmak_ecommerce.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
@@ -6,12 +7,43 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Persistence
 {
     public static class DbSeeder
     {
+        private static async Task<string> ReadEmbeddedResource(string resourceName)
+        {
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+
+                var fullResourceName = $"bmak_ecommerce.Infrastructure.Persistence.Seed.{resourceName}";
+
+                using var stream = assembly.GetManifestResourceStream(fullResourceName);
+
+                if (stream == null)
+                {
+                    using var streamBackup = assembly.GetManifestResourceStream($"bmak-ecommerce.Infrastructure.Persistence.Seed.{resourceName}");
+                    if (streamBackup == null) return null;
+
+                    using var readerBackup = new StreamReader(streamBackup);
+                    return await readerBackup.ReadToEndAsync();
+                }
+
+                using var reader = new StreamReader(stream);
+                return await reader.ReadToEndAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading resource: {ex.Message}");
+                return null;
+            }
+        }
+
         public static async Task SeedAsync(AppDbContext context,
             UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager)
@@ -309,6 +341,85 @@ namespace bmak_ecommerce.Infrastructure.Persistence
             await context.SaveChangesAsync();
         }
 
+        public static async Task SeedProvincesAsync(AppDbContext context)
+        {
+            if (await context.Provinces.AnyAsync()) return;
 
+            try
+            {
+                // 1. Đọc nội dung JSON từ DLL
+                var jsonData = await ReadEmbeddedResource("ProvinceSeed.json");
+
+                // 2. Kiểm tra nếu null hoặc rỗng thì dừng
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    Console.WriteLine("Không tìm thấy file ProvinceSeed.json hoặc file rỗng.");
+                    return;
+                }
+
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+                // 3. Deserialize trực tiếp từ chuỗi JSON (KHÔNG dùng File.ReadAllText nữa)
+                var provinces = JsonSerializer.Deserialize<List<Province>>(jsonData, options);
+
+                if (provinces != null && provinces.Any())
+                {
+                    await context.Provinces.AddRangeAsync(provinces);
+                    await context.SaveChangesAsync();
+                    Console.WriteLine($"Đã seed thành công {provinces.Count} Tỉnh/Thành.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi seed Province: {ex.Message}");
+                throw;
+            }
+        }
+
+
+        // ---------------------------------------------------------
+        // FUNCTION 2: SEED WARDS
+        // ---------------------------------------------------------
+        public static async Task SeedWardsAsync(AppDbContext context)
+        {
+            if (await context.Wards.AnyAsync()) return;
+
+            if (!await context.Provinces.AnyAsync())
+            {
+                Console.WriteLine("Chưa có dữ liệu Tỉnh/Thành, không thể seed Phường/Xã.");
+                return;
+            }
+
+            try
+            {
+                // 1. Đọc nội dung JSON từ DLL
+                var jsonData = await ReadEmbeddedResource("WardSeed.json");
+
+                // 2. Kiểm tra null
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    Console.WriteLine("Không tìm thấy file WardSeed.json hoặc file rỗng.");
+                    return;
+                }
+
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+                // 3. Deserialize trực tiếp
+                var wards = JsonSerializer.Deserialize<List<Ward>>(jsonData, options);
+
+                if (wards != null && wards.Any())
+                {
+                    // Batching nếu dữ liệu quá lớn (Optional)
+                    await context.Wards.AddRangeAsync(wards);
+                    await context.SaveChangesAsync();
+                    Console.WriteLine($"Đã seed thành công {wards.Count} Phường/Xã.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi seed Ward: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

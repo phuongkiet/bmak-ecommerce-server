@@ -9,32 +9,41 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 {
-    public class UpdateProductCommand : IRequest<bool>
+    public class UpdateProductCommand
     {
         [JsonIgnore]
-        public int Id { get; set; }
+        public int Id { get; set; } // Sẽ lấy từ URL (Route) gán vào đây
+
         public string Name { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
-        public decimal BasePrice { get; set; } // Giá bán thường (giá gốc)
-        public decimal SalePrice { get; set; } // Giá giảm (nếu có giảm giá)
+
+        // Giá & Đơn vị
+        public decimal BasePrice { get; set; }
+        public decimal SalePrice { get; set; }
         public string SalesUnit { get; set; } = string.Empty;
         public string? PriceUnit { get; set; }
         public float ConversionFactor { get; set; }
+
         public int CategoryId { get; set; }
 
-        // Thông tin giảm giá (optional)
-        public DateTime? SaleStartDate { get; set; } // Ngày bắt đầu giảm giá
-        public DateTime? SaleEndDate { get; set; } // Ngày kết thúc giảm giá
+        public DateTime? SaleStartDate { get; set; }
+        public DateTime? SaleEndDate { get; set; }
 
-        // Optional fields
         public float? Weight { get; set; }
         public string? ImageUrl { get; set; }
         public string? SpecificationsJson { get; set; }
         public bool? IsActive { get; set; }
 
-        // Attributes và Tags - khi update có thể thay đổi
-        public List<ProductAttributeDto> Attributes { get; set; } = new();
+        // Attributes
+        // Lưu ý: Dùng đúng tên class DTO bạn định nghĩa bên dưới
+        public List<UpdateProductAttributeDto> Attributes { get; set; } = new();
+
+        // Tags
         public List<int> TagIds { get; set; } = new();
+
+        // Bổ sung các field cấu hình kho (nếu bạn muốn Update cả phần này)
+        // public bool? AllowBackorder { get; set; } 
+        // public bool? ManageStock { get; set; }
     }
 
     public class UpdateProductAttributeDto

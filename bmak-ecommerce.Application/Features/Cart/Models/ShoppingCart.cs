@@ -29,6 +29,7 @@ namespace bmak_ecommerce.Application.Features.Cart.Models
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductSlug { get; set; }
+        public string ProductSku { get; set; }
 
         public decimal Price { get; set; }      // Giá tại thời điểm thêm vào giỏ
         public decimal OriginalPrice { get; set; }
