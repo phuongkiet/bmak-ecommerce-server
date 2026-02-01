@@ -1,7 +1,6 @@
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
-using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

@@ -24,6 +24,8 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
             // Tìm theo Code cực nhanh và đảm bảo Code là duy nhất
             builder.HasIndex(x => x.Slug).IsUnique();
 
+            builder.Property(p => p.ContentJson).IsRequired();
+
             // Index cho tìm kiếm theo tên
             builder.HasIndex(x => x.Title);
         }

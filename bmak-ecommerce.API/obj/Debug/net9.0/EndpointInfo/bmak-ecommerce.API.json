@@ -556,6 +556,135 @@
         }
       }
     },
+    "/api/Page": {
+      "get": {
+        "tags": [
+          "Page"
+        ],
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Domain.Models.PagedList`1[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Domain.Models.PagedList`1[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Domain.Models.PagedList`1[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto]"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Page"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.Commands.CreatePage.CreatePageCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.Commands.CreatePage.CreatePageCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.Commands.CreatePage.CreatePageCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Page/{slug}": {
+      "get": {
+        "tags": [
+          "Page"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.PageDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.PageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.PageDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/ProductAttributes": {
       "get": {
         "tags": [
@@ -1505,6 +1634,168 @@
         },
         "additionalProperties": false
       },
+      "bmak_ecommerce.Application.Features.Pages.Commands.CreatePage.CreatePageCommand": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "bmak_ecommerce.Application.Features.Pages.DTOs.HeroSlideDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "image": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "subtitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "badge": {
+            "type": "string",
+            "nullable": true
+          },
+          "buttonText": {
+            "type": "string",
+            "nullable": true
+          },
+          "buttonLink": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "bmak_ecommerce.Application.Features.Pages.DTOs.PageDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.PageSectionDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "bmak_ecommerce.Application.Features.Pages.DTOs.PageSectionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagePosition": {
+            "type": "string",
+            "nullable": true
+          },
+          "heroSlides": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.HeroSlideDto"
+            },
+            "nullable": true
+          },
+          "carouselConfig": {
+            "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.ProductCarouselConfigDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "bmak_ecommerce.Application.Features.Pages.DTOs.ProductCarouselConfigDto": {
+        "type": "object",
+        "properties": {
+          "listType": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "tag": {
+            "type": "string",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "bmak_ecommerce.Application.Features.ProductAttributeValues.Commands.CreateProductAttributeValue.CreateProductAttributeValueCommand": {
         "type": "object",
         "properties": {
@@ -2202,6 +2493,35 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "bmak_ecommerce.Domain.Models.PagedList`1[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto"
+            },
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
       },
       "bmak_ecommerce.Domain.Models.PagedList`1[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.CategoryDto]": {
         "type": "object",

@@ -340,6 +340,89 @@
     ]
   },
   {
+    "ContainingType": "bmak_ecommerce.API.Controllers.PageController",
+    "Method": "GetPages",
+    "RelativePath": "api/Page",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "bmak_ecommerce.API.Controllers.PageController",
+    "Method": "CreatePage",
+    "RelativePath": "api/Page",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "bmak_ecommerce.Application.Features.Pages.Commands.CreatePage.CreatePageCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "bmak_ecommerce.API.Controllers.PageController",
+    "Method": "GetBySlug",
+    "RelativePath": "api/Page/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Application.Features.Pages.DTOs.PageDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "bmak_ecommerce.API.Controllers.ProductAttributesController",
     "Method": "GetProductAttributes",
     "RelativePath": "api/ProductAttributes",

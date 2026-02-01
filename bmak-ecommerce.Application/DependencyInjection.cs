@@ -16,19 +16,17 @@ using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllProducts;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct;
-using bmak_ecommerce.Domain.Models;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using bmak_ecommerce.Application.Features.Provinces.Queries;
 using bmak_ecommerce.Application.Features.Provinces.Dtos;
 using bmak_ecommerce.Application.Features.Wards.Queries;
 using bmak_ecommerce.Application.Features.Wards.Dtos;
+using bmak_ecommerce.Application.Features.Pages.DTOs;
+using bmak_ecommerce.Application.Features.Pages.Queries.GetAllPages;
+using bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail;
+using bmak_ecommerce.Application.Features.Pages.Commands.CreatePage;
 
 namespace bmak_ecommerce.Application
 {
@@ -89,12 +87,17 @@ namespace bmak_ecommerce.Application
             services.AddScoped<IQueryHandler<GetCartQuery, ShoppingCart>, GetCartHandler>();
 
             services.AddScoped<IQueryHandler<GetProvinceQuery, PagedList<ProvinceDto>>, GetProvinceHandler>();
+
             services.AddScoped<IQueryHandler<GetWardQuery, PagedList<WardDto>>, GetWardHandler>();
 
+            services.AddScoped<IQueryHandler<GetPageQuery, PagedList<PageSummaryDto>>, GetPageHandler>();
+                
+            services.AddScoped<IQueryHandler<GetPageDetailQuery, PageDto?>, GetPageDetailHandler>();
 
             // --- COMMAND HANDLERS ---
 
             services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
+
             services.AddScoped<ICommandHandler<UpdateProductCommand, int>, UpdateProductHandler>();
 
             services.AddScoped<ICommandHandler<CreateOrderCommand, int>, CreateOrderHandler>();
@@ -106,6 +109,8 @@ namespace bmak_ecommerce.Application
             services.AddScoped<ICommandHandler<DeleteCartItemCommand, ShoppingCart>, DeleteCartItemHandler>();
 
             services.AddScoped<ICommandHandler<ClearCartCommand, ShoppingCart>, ClearCartHandler>();
+
+            services.AddScoped<ICommandHandler<CreatePageCommand, string>, CreatePageHandler>();
 
             return services;
         }

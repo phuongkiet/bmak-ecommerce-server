@@ -781,6 +781,41 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.ToTable("UserBehaviorTracking");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Page.Page", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ContentJson")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.HasIndex("Title");
+
+                    b.ToTable("Pages", (string)null);
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>
                 {
                     b.Property<int>("Id")

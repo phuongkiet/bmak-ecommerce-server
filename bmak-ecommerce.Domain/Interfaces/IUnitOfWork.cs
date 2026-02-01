@@ -10,6 +10,7 @@ namespace bmak_ecommerce.Domain.Interfaces
 
         IProvinceRepository Provinces { get; }
         IWardRepository Wards { get; }
+        IPageRepository Pages { get; }
 
         // Hàm Generic cũ của bạn vẫn giữ nguyên
         IGenericRepository<T> Repository<T>() where T : BaseEntity;

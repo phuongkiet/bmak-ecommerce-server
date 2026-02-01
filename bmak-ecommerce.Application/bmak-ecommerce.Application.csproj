@@ -22,4 +22,8 @@
     <ProjectReference Include="..\bmak-ecommerce.Domain\bmak-ecommerce.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Pages\Commands\UpdatePage\" />
+  </ItemGroup>
+
 </Project>
