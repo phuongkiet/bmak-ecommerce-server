@@ -22,40 +22,39 @@ namespace bmak_ecommerce.Application.Features.Pages.Commands.CreatePage
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Result<string>> Handle(CreatePageCommand command, CancellationToken cancellationToken = default)
+        public async Task<Result<string>> Handle(CreatePageCommand request, CancellationToken cancellationToken)
         {
-            // 1. Kiểm tra Slug đã tồn tại chưa
-            var slugExists = await _unitOfWork.Pages.GetPageDetailAsync(command.Slug);
-            if (slugExists != null)
-            {
-                return Result<string>.Failure("Slug này đã tồn tại, vui lòng chọn slug khác.");
-            }
+            // 1. Validate trùng lặp (nếu cần)
 
-            // 2. Khởi tạo Entity mới
-            var newPage = new Page
+            // 2. Tự sinh Slug nếu user không nhập, hoặc chuẩn hóa Slug user nhập
+            // Ví dụ: "Chính Sách" -> "chinh-sach"
+            var slug = !string.IsNullOrWhiteSpace(request.Slug)
+                ? GenerateSlug(request.Slug)
+                : GenerateSlug(request.Title);
+
+            // Check slug tồn tại trong DB chưa (Optional - Cần thêm hàm check trong Repo)
+
+            var page = new Page
             {
-                Id = Guid.NewGuid(),
-                Title = command.Title,
-                Slug = command.Slug.ToLower().Trim(),
-                Description = command.Description,
-                // Khởi tạo một mảng rỗng cho Sections để Frontend không bị lỗi khi load lần đầu
-                ContentJson = JsonSerializer.Serialize(new List<object>()),
-                UpdatedAt = DateTime.UtcNow
+                Title = request.Title,
+                Slug = slug,
+                Description = request.Description,
+                ContentJson = "",
+                CreatedAt = DateTime.UtcNow
             };
 
-            try
-            {
-                _unitOfWork.Pages.Add(newPage);
-                await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.Repository<Page>().AddAsync(page);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                // Trả về Success kèm ID
-                return Result<string>.Success(newPage.Slug);
-            }
-            catch (Exception ex)
-            {
-                // Log error here
-                return Result<string>.Failure($"Lỗi khi tạo sản phẩm: {ex.Message}");
-            }
+            return Result<string>.Success(page.Slug);
+        }
+
+        // Hàm helper đơn giản tạo slug
+        private string GenerateSlug(string phrase)
+        {
+            // Logic đơn giản: Chuyển thường, thay khoảng trắng bằng gạch ngang
+            // Bạn có thể dùng thư viện Slugify để xịn hơn
+            return phrase.ToLower().Replace(" ", "-");
         }
     }
 }

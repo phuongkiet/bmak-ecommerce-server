@@ -1,3 +1,4 @@
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Tags.Commands.CreateTag;
 using bmak_ecommerce.Application.Features.Tags.Commands.UpdateTag;
@@ -21,32 +22,53 @@ namespace bmak_ecommerce.API.Controllers
 
         // GET: api/tags
         [HttpGet]
-        public async Task<ActionResult<List<TagDto>>> GetTags()
+        public async Task<ActionResult<ApiResponse<List<TagDto>>>> GetTags()
         {
-            var query = new GetTagsQuery();
-            var tags = await _mediator.Send(query);
-            return Ok(tags);
+            try
+            {
+                var query = new GetTagsQuery();
+                var tags = await _mediator.Send(query);
+                return Ok(ApiResponse<List<TagDto>>.Success(tags, "Tags retrieved successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<List<TagDto>>.Failure(ex.Message));
+            }
         }
 
         // POST: api/tags
         [HttpPost]
-        public async Task<ActionResult<int>> CreateTag([FromBody] CreateTagCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateTag([FromBody] CreateTagCommand command)
         {
-            var tagId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(CreateTag), new { id = tagId }, tagId);
+            try
+            {
+                var tagId = await _mediator.Send(command);
+                return CreatedAtAction(nameof(CreateTag), new { id = tagId }, ApiResponse<int>.Success(tagId, "Tag created successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<int>.Failure(ex.Message));
+            }
         }
 
         // PUT: api/tags/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> UpdateTag(int id, [FromBody] UpdateTagCommand command)
+        public async Task<ActionResult<ApiResponse<bool>>> UpdateTag(int id, [FromBody] UpdateTagCommand command)
         {
-            if (id != command.Id)
+            try
             {
-                return BadRequest("ID trong URL và body không khớp");
-            }
+                if (id != command.Id)
+                {
+                    return BadRequest(ApiResponse<bool>.Failure("ID trong URL và body không khớp"));
+                }
 
-            var result = await _mediator.Send(command);
-            return Ok(result);
+                var result = await _mediator.Send(command);
+                return Ok(ApiResponse<bool>.Success(result, "Tag updated successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<bool>.Failure(ex.Message));
+            }
         }
     }
 }

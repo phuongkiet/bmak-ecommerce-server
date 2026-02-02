@@ -1,5 +1,6 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders;
 using bmak_ecommerce.Application.Features.Provinces.Dtos;
 using bmak_ecommerce.Application.Features.Provinces.Queries;
@@ -20,7 +21,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedList<ProvinceDto>>> GetProvinces([FromQuery] ProvinceSpecParams specParams)
+        public async Task<ActionResult<ApiResponse<PagedList<ProvinceDto>>>> GetProvinces([FromQuery] ProvinceSpecParams specParams)
         {
             specParams.PageSize = 1000;
             var query = new GetProvinceQuery(specParams);

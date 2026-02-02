@@ -1,5 +1,6 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Domain.Models; // Import Result
 using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
 using bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct;
@@ -40,7 +41,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ProductListResponse>> GetProducts([FromQuery] ProductSpecParams specParams)
+        public async Task<ActionResult<ApiResponse<ProductListResponse>>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
             var query = new GetProductsQuery(specParams);
 
@@ -63,7 +64,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDto>> GetById(int id)
+        public async Task<ActionResult<ApiResponse<ProductDto>>> GetById(int id)
         {
             var query = new GetProductByIdQuery(id);
 
@@ -75,7 +76,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet("top-selling")]
-        public async Task<ActionResult<List<ProductSummaryDto>>> GetTopSelling([FromQuery] int count = 10)
+        public async Task<ActionResult<ApiResponse<List<ProductSummaryDto>>>> GetTopSelling([FromQuery] int count = 10)
         {
             var query = new GetTopSellingProductsQuery { Count = count };
 
@@ -87,21 +88,21 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateProduct([FromBody] CreateProductCommand command)
         {
             var result = await _createProductHandler.Handle(command);
 
             // Custom trả về 201 Created thay vì 200 OK mặc định của HandleResult
             if (result.IsSuccess)
             {
-                return CreatedAtAction(nameof(GetById), new { id = result.Value }, new { id = result.Value });
+                return CreatedAtAction(nameof(GetById), new { id = result.Value }, ApiResponse<int>.Success(result.Value, "Product created successfully"));
             }
 
-            return BadRequest(new { message = result.Error });
+            return BadRequest(ApiResponse<int>.Failure(result.Error ?? "Failed to create product"));
         }
 
         [HttpPut("{id}")]
-            public async Task<ActionResult<int>> UpdateProduct(int id, [FromBody] UpdateProductCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> UpdateProduct(int id, [FromBody] UpdateProductCommand command)
         {
             if (id != command.Id)
             {
@@ -111,7 +112,7 @@ namespace bmak_ecommerce.API.Controllers
             // result là Result<int>
             var result = await _updateProductHandler.Handle(command, CancellationToken.None);
 
-            // HandleResult trả về ActionResult<int> -> Khớp với khai báo hàm -> Hết lỗi
+            // HandleResult trả về ActionResult<ApiResponse<int>>
             return HandleResult(result);
         }
     }

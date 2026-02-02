@@ -1,3 +1,4 @@
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Categories.Commands.CreateCategory;
 using bmak_ecommerce.Application.Features.Categories.Queries;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
@@ -21,32 +22,53 @@ namespace bmak_ecommerce.API.Controllers
 
         // GET: api/categories?pageIndex=1&pageSize=10&search=gạch&parentId=1
         [HttpGet]
-        public async Task<ActionResult<PagedList<CategoryDto>>> GetCategories([FromQuery] CategorySpecParams categoryParams)
+        public async Task<ActionResult<ApiResponse<PagedList<CategoryDto>>>> GetCategories([FromQuery] CategorySpecParams categoryParams)
         {
-            var query = new GetCategoriesQuery(categoryParams);
-            var result = await _mediator.Send(query);
-            return Ok(result);
+            try
+            {
+                var query = new GetCategoriesQuery(categoryParams);
+                var result = await _mediator.Send(query);
+                return Ok(ApiResponse<PagedList<CategoryDto>>.Success(result, "Categories retrieved successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<PagedList<CategoryDto>>.Failure(ex.Message));
+            }
         }
 
         // POST: api/categories
         [HttpPost]
-        public async Task<ActionResult<int>> CreateCategory([FromBody] CreateCategoryCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateCategory([FromBody] CreateCategoryCommand command)
         {
-            var categoryId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetCategories), new { id = categoryId }, categoryId);
+            try
+            {
+                var categoryId = await _mediator.Send(command);
+                return CreatedAtAction(nameof(GetCategories), new { id = categoryId }, ApiResponse<int>.Success(categoryId, "Category created successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<int>.Failure(ex.Message));
+            }
         }
 
         // PUT: api/categories/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> UpdateCategory(int id, [FromBody] bmak_ecommerce.Application.Features.Categories.Commands.UpdateCategory.UpdateCategoryCommand command)
+        public async Task<ActionResult<ApiResponse<bool>>> UpdateCategory(int id, [FromBody] bmak_ecommerce.Application.Features.Categories.Commands.UpdateCategory.UpdateCategoryCommand command)
         {
-            if (id != command.Id)
+            try
             {
-                return BadRequest("ID trong URL và body không khớp");
-            }
+                if (id != command.Id)
+                {
+                    return BadRequest(ApiResponse<bool>.Failure("ID trong URL và body không khớp"));
+                }
 
-            var result = await _mediator.Send(command);
-            return Ok(result);
+                var result = await _mediator.Send(command);
+                return Ok(ApiResponse<bool>.Success(result, "Category updated successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<bool>.Failure(ex.Message));
+            }
         }
     }
 }

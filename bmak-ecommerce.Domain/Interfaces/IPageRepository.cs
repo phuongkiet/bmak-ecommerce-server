@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Domain.Interfaces
 {
-    public interface IPageRepository
+    public interface IPageRepository : IGenericRepository<Page>
     {
         Task<PagedList<Page>> GetPagesAsync(PageSpecParams pageParams);
-
         Task<Page?> GetPageDetailAsync(string slug);
-        Task<Page?> GetPageByIdAsync(Guid id);
-
+        Task<Page?> GetPageByIdAsync(int id);
+        Task<Page?> GetBySlugAsync(string slug);
         void Add(Page page);
         void Delete(Page page);
     }

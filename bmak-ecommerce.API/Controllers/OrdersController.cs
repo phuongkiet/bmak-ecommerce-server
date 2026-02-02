@@ -1,5 +1,6 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // GET: api/orders
         [HttpGet]
-        public async Task<ActionResult<PagedList<OrderSummaryDto>>> GetOrders([FromQuery] OrderSpecParams specParams)
+        public async Task<ActionResult<ApiResponse<PagedList<OrderSummaryDto>>>> GetOrders([FromQuery] OrderSpecParams specParams)
         {
             var query = new GetOrdersQuery(specParams);
 
@@ -50,7 +51,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // POST: api/orders
         [HttpPost]
-        public async Task<ActionResult<int>> CreateOrder([FromBody] CreateOrderCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateOrder([FromBody] CreateOrderCommand command)
         {
             // Frontend gửi: { "cartId": "...", "shippingAddress": ... }
             // Result trả về là Result<int> (ID đơn hàng)

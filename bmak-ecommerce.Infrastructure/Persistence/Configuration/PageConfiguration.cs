@@ -25,6 +25,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
             builder.HasIndex(x => x.Slug).IsUnique();
 
             builder.Property(p => p.ContentJson).IsRequired();
+            builder.Property(x => x.ContentJson).HasColumnType("longtext");
 
             // Index cho tìm kiếm theo tên
             builder.HasIndex(x => x.Title);

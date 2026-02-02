@@ -1,3 +1,4 @@
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.ProductAttributes.Commands.CreateProductAttribute;
 using bmak_ecommerce.Application.Features.ProductAttributes.Queries;
 using bmak_ecommerce.Application.Features.ProductAttributeValues.Commands.CreateProductAttributeValue;
@@ -21,27 +22,48 @@ namespace bmak_ecommerce.API.Controllers
 
         // GET: api/productattributes
         [HttpGet]
-        public async Task<ActionResult<List<ProductAttributeListItemDto>>> GetProductAttributes()
+        public async Task<ActionResult<ApiResponse<List<ProductAttributeListItemDto>>>> GetProductAttributes()
         {
-            var query = new GetProductAttributesQuery();
-            var attributes = await _mediator.Send(query);
-            return Ok(attributes);
+            try
+            {
+                var query = new GetProductAttributesQuery();
+                var attributes = await _mediator.Send(query);
+                return Ok(ApiResponse<List<ProductAttributeListItemDto>>.Success(attributes, "Product attributes retrieved successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<List<ProductAttributeListItemDto>>.Failure(ex.Message));
+            }
         }
 
         // POST: api/productattributes
         [HttpPost]
-        public async Task<ActionResult<int>> CreateProductAttribute([FromBody] CreateProductAttributeCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateProductAttribute([FromBody] CreateProductAttributeCommand command)
         {
-            var attributeId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(CreateProductAttribute), new { id = attributeId }, attributeId);
+            try
+            {
+                var attributeId = await _mediator.Send(command);
+                return CreatedAtAction(nameof(CreateProductAttribute), new { id = attributeId }, ApiResponse<int>.Success(attributeId, "Product attribute created successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<int>.Failure(ex.Message));
+            }
         }
 
         // POST: api/productattributes/values
         [HttpPost("values")]
-        public async Task<ActionResult<int>> CreateProductAttributeValue([FromBody] CreateProductAttributeValueCommand command)
+        public async Task<ActionResult<ApiResponse<int>>> CreateProductAttributeValue([FromBody] CreateProductAttributeValueCommand command)
         {
-            var valueId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(CreateProductAttributeValue), new { id = valueId }, valueId);
+            try
+            {
+                var valueId = await _mediator.Send(command);
+                return CreatedAtAction(nameof(CreateProductAttributeValue), new { id = valueId }, ApiResponse<int>.Success(valueId, "Product attribute value created successfully"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<int>.Failure(ex.Message));
+            }
         }
     }
 }

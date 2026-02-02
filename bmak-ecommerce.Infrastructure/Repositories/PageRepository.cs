@@ -7,13 +7,9 @@ using bmak_ecommerce.Domain.Entities.Page;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
-    public class PageRepository : IPageRepository
+    public class PageRepository : GenericRepository<Page>, IPageRepository
     {
-        private readonly AppDbContext _context;
-        public PageRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        public PageRepository(AppDbContext context) : base(context) { }
 
         public void Add(Page page)
         {
@@ -33,9 +29,14 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             _context.Pages.Remove(page);
         }
 
-        public async Task<Page?> GetPageByIdAsync(Guid id)
+        public async Task<Page?> GetPageByIdAsync(int id)
         {
             return await _context.Pages.FindAsync(id);
+        }
+        public async Task<Page?> GetBySlugAsync(string slug)
+        {
+            return await _context.Pages
+                .FirstOrDefaultAsync(x => x.Slug == slug && !x.IsDeleted);
         }
 
         public async Task<Page?> GetPageDetailAsync(string slug)

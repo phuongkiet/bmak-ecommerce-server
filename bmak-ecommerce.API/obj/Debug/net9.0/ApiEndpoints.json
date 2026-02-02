@@ -15,7 +15,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -41,7 +41,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -67,7 +67,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -93,7 +93,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -124,7 +124,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -175,7 +175,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.CategoryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.CategoryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], bmak-ecommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -201,7 +201,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -232,7 +232,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -303,7 +303,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Sale.OrderSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Sale.OrderSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], bmak-ecommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -329,7 +329,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -370,7 +370,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Pages.DTOs.PageSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], bmak-ecommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -394,7 +394,48 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "bmak_ecommerce.API.Controllers.PageController",
+    "Method": "UpdatePage",
+    "RelativePath": "api/Page/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "bmak_ecommerce.Application.Features.Pages.Commands.UpdatePage.UpdatePageCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.PageController",
@@ -412,7 +453,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Pages.DTOs.PageDto",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Pages.DTOs.PageDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -432,7 +473,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductAttributeListItemDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductAttributeListItemDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -458,7 +499,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -484,7 +525,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -570,7 +611,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductListResponse",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductListResponse, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -594,7 +635,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "bmak_ecommerce.API.Controllers.ProductsController",
@@ -612,7 +663,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductDto",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -643,7 +694,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -669,7 +720,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.ProductSummaryDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -710,7 +761,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Provinces.Dtos.ProvinceDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Provinces.Dtos.ProvinceDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], bmak-ecommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -730,7 +781,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.TagDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[bmak_ecommerce.Application.Features.Products.DTOs.Catalog.TagDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -756,7 +807,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -787,7 +838,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -833,7 +884,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Wards.Dtos.WardDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "bmak_ecommerce.Application.Common.Models.ApiResponse\u00601[[bmak_ecommerce.Domain.Models.PagedList\u00601[[bmak_ecommerce.Application.Features.Wards.Dtos.WardDto, bmak-ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], bmak-ecommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

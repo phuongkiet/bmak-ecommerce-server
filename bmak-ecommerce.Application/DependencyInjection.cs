@@ -27,6 +27,7 @@ using bmak_ecommerce.Application.Features.Pages.DTOs;
 using bmak_ecommerce.Application.Features.Pages.Queries.GetAllPages;
 using bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail;
 using bmak_ecommerce.Application.Features.Pages.Commands.CreatePage;
+using bmak_ecommerce.Application.Features.Pages.Commands.UpdatePage;
 
 namespace bmak_ecommerce.Application
 {
@@ -91,8 +92,8 @@ namespace bmak_ecommerce.Application
             services.AddScoped<IQueryHandler<GetWardQuery, PagedList<WardDto>>, GetWardHandler>();
 
             services.AddScoped<IQueryHandler<GetPageQuery, PagedList<PageSummaryDto>>, GetPageHandler>();
-                
-            services.AddScoped<IQueryHandler<GetPageDetailQuery, PageDto?>, GetPageDetailHandler>();
+
+            services.AddScoped<IQueryHandler<GetPageDetailQuery, PageDto>, GetPageDetailHandler>();
 
             // --- COMMAND HANDLERS ---
 
@@ -111,6 +112,8 @@ namespace bmak_ecommerce.Application
             services.AddScoped<ICommandHandler<ClearCartCommand, ShoppingCart>, ClearCartHandler>();
 
             services.AddScoped<ICommandHandler<CreatePageCommand, string>, CreatePageHandler>();
+
+            services.AddScoped<ICommandHandler<UpdatePageCommand, string>, UpdatePageHandler>();
 
             return services;
         }

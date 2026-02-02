@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Cart.Commands.AddToCart;
 using bmak_ecommerce.Application.Features.Cart.Commands.ClearCart;
 using bmak_ecommerce.Application.Features.Cart.Commands.DeleteCartItem;
@@ -36,7 +37,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // GET: api/cart?id=cart-123
         [HttpGet]
-        public async Task<ActionResult<ShoppingCart>> GetCart([FromQuery] string id)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> GetCart([FromQuery] string id)
         {
             var query = new GetCartQuery(id);
             var result = await _getCartHandler.Handle(query);
@@ -45,7 +46,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // POST: api/cart (Add Item)
         [HttpPost]
-        public async Task<ActionResult<ShoppingCart>> AddToCart([FromBody] AddToCartCommand command)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> AddToCart([FromBody] AddToCartCommand command)
         {
             var result = await _addToCartHandler.Handle(command);
             return HandleResult(result);
@@ -53,7 +54,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // PUT: api/cart (Update Quantity)
         [HttpPut]
-        public async Task<ActionResult<ShoppingCart>> UpdateItem([FromBody] UpdateCartItemCommand command)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> UpdateItem([FromBody] UpdateCartItemCommand command)
         {
             var result = await _updateCartItemHandler.Handle(command);
             return HandleResult(result);
@@ -61,7 +62,7 @@ namespace bmak_ecommerce.API.Controllers
 
         // DELETE: api/cart/cart-123/1 (Remove Item)
         [HttpPut("item")]
-        public async Task<ActionResult<ShoppingCart>> RemoveItem(string cartId, int productId)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> RemoveItem(string cartId, int productId)
         {
             var command = new DeleteCartItemCommand { CartId = cartId, ProductId = productId };
             var result = await _deleteCartItemHandler.Handle(command);
@@ -69,16 +70,18 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult<ShoppingCart>> ClearCart([FromQuery] ClearCartCommand command)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> ClearCart([FromQuery] ClearCartCommand command)
         {
             try
             {
                 var result = await _clearCartHandler.Handle(command, CancellationToken.None);
-                return Ok(result);
+                if (result.IsSuccess)
+                    return Ok(ApiResponse<ShoppingCart>.Success(result.Value, "Cart cleared successfully"));
+                return BadRequest(ApiResponse<ShoppingCart>.Failure(result.Error ?? "Failed to clear cart"));
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(ApiResponse<ShoppingCart>.Failure(ex.Message));
             }
         }
     }

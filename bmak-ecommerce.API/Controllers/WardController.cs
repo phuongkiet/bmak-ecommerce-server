@@ -1,5 +1,6 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Provinces.Dtos;
 using bmak_ecommerce.Application.Features.Provinces.Queries;
 using bmak_ecommerce.Application.Features.Wards.Dtos;
@@ -22,7 +23,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedList<WardDto>>> GetWardsByProvince([FromQuery] WardSpecParams specParams)
+        public async Task<ActionResult<ApiResponse<PagedList<WardDto>>>> GetWardsByProvince([FromQuery] WardSpecParams specParams)
         {
             specParams.PageSize = 1000;
             var query = new GetWardQuery(specParams);

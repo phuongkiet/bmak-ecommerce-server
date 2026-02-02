@@ -8,7 +8,7 @@ namespace bmak_ecommerce.Application.Features.Pages.DTOs
 {
     public class PageDto
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Slug { get; set; }
         public List<PageSectionDto> Sections { get; set; }

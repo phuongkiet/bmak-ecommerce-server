@@ -8,11 +8,10 @@ namespace bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail
 {
     public class GetPageDetailQuery
     {
-        public string Slug { get; set; }
+        public int? Id { get; set; }
+        public string? Slug { get; set; } // Thêm trường này
 
-        public GetPageDetailQuery(string slug)
-        {
-            Slug = slug;
-        }
+        public GetPageDetailQuery(int id) { Id = id; }
+        public GetPageDetailQuery(string slug) { Slug = slug; }
     }
 }
