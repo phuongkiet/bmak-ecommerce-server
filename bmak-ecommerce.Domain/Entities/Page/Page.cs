@@ -12,7 +12,7 @@ namespace bmak_ecommerce.Domain.Entities.Page
     {
         public string Title { get; set; }
         public string Slug { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public string? ContentJson { get; set; }
         public PageStatusType Status { get; set; }
     }

@@ -4,9 +4,12 @@ using bmak_ecommerce.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Entities.Page;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
+
     public class PageRepository : GenericRepository<Page>, IPageRepository
     {
         public PageRepository(AppDbContext context) : base(context) { }

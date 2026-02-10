@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Features.Cart.Models;
 using StackExchange.Redis;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
     public class CartRepository : ICartRepository
     {
         private readonly IDatabase _database;

@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
+
     public class ProductRepository : GenericRepository<Product>, IProductRepository, ICatalogReadRepository
     {
         public ProductRepository(AppDbContext context) : base(context)
@@ -206,8 +209,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                     .Select(g => new FilterGroupDto
                     {
                         Code = g.Key,
-                        Label = g.First().Label,
-                        Options = g.Select(opt => new FilterOptionDto
+                        Name = g.First().Label,
+                        Options = g.Select(opt => new FilterItemDto
                         {
                             Value = opt.Value,
                             Label = opt.Value,

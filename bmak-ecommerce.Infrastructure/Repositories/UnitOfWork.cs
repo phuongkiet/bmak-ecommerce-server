@@ -1,4 +1,5 @@
 ﻿// File: UnitOfWork.cs
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Domain.Common;
 using bmak_ecommerce.Domain.Entities.Catalog;
@@ -6,6 +7,8 @@ using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Infrastructure.Persistence;
 using bmak_ecommerce.Infrastructure.Repositories;
 using System.Collections; // Import Product
+
+[AutoRegister]
 
 public class UnitOfWork : IUnitOfWork
 {

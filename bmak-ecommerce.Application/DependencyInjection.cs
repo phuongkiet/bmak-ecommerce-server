@@ -28,6 +28,20 @@ using bmak_ecommerce.Application.Features.Pages.Queries.GetAllPages;
 using bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail;
 using bmak_ecommerce.Application.Features.Pages.Commands.CreatePage;
 using bmak_ecommerce.Application.Features.Pages.Commands.UpdatePage;
+using bmak_ecommerce.Application.Features.Authentications.Commands.Login;
+using bmak_ecommerce.Application.Features.Authentications.Commands.Register;
+using bmak_ecommerce.Application.Features.Authentications.DTOs;
+using bmak_ecommerce.Application.Features.Authentications.Commands.RefreshToken;
+using bmak_ecommerce.Application.Features.Authentications.Commands.Logout;
+using bmak_ecommerce.Application.Features.Users.Dtos;
+using bmak_ecommerce.Application.Features.Users.Queries.GetUserDetail;
+using bmak_ecommerce.Application.Features.Users.Queries.GetAllUsers;
+using bmak_ecommerce.Application.Features.Users.Commands.DeleteUser;
+using bmak_ecommerce.Application.Features.Users.Commands.UpdateUser;
+using bmak_ecommerce.Application.Features.Users.Commands.CreateNewUser;
+using bmak_ecommerce.Application.Features.Media.Commands.UploadImage;
+using bmak_ecommerce.Application.Features.Media.DTOs;
+using bmak_ecommerce.Application.Features.Media.Queries.GetImages;
 
 namespace bmak_ecommerce.Application
 {
@@ -75,45 +89,67 @@ namespace bmak_ecommerce.Application
 
             //// 4. Nếu có các Service logic thuần (không dính DB), đăng ký ở đây
 
-            // --- QUERY HANDLERS ---
+            //// --- QUERY HANDLERS ---
 
-            services.AddScoped<IQueryHandler<GetOrdersQuery, PagedList<OrderSummaryDto>>, GetOrdersHandler>();
+            //services.AddScoped<IQueryHandler<GetOrdersQuery, PagedList<OrderSummaryDto>>, GetOrdersHandler>();
 
-            services.AddScoped<IQueryHandler<GetProductsQuery, ProductListResponse>, GetProductsHandler>();
+            //services.AddScoped<IQueryHandler<GetProductsQuery, ProductListResponse>, GetProductsHandler>();
 
-            services.AddScoped<IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>, GetTopSellingHandler>();
+            //services.AddScoped<IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>, GetTopSellingHandler>();
 
-            services.AddScoped<IQueryHandler<GetProductByIdQuery, ProductDto?>, GetProductByIdHandler>();
+            //services.AddScoped<IQueryHandler<GetProductByIdQuery, ProductDto?>, GetProductByIdHandler>();
 
-            services.AddScoped<IQueryHandler<GetCartQuery, ShoppingCart>, GetCartHandler>();
+            //services.AddScoped<IQueryHandler<GetCartQuery, ShoppingCart>, GetCartHandler>();
 
-            services.AddScoped<IQueryHandler<GetProvinceQuery, PagedList<ProvinceDto>>, GetProvinceHandler>();
+            //services.AddScoped<IQueryHandler<GetProvinceQuery, PagedList<ProvinceDto>>, GetProvinceHandler>();
 
-            services.AddScoped<IQueryHandler<GetWardQuery, PagedList<WardDto>>, GetWardHandler>();
+            //services.AddScoped<IQueryHandler<GetWardQuery, PagedList<WardDto>>, GetWardHandler>();
 
-            services.AddScoped<IQueryHandler<GetPageQuery, PagedList<PageSummaryDto>>, GetPageHandler>();
+            //services.AddScoped<IQueryHandler<GetPageQuery, PagedList<PageSummaryDto>>, GetPageHandler>();
 
-            services.AddScoped<IQueryHandler<GetPageDetailQuery, PageDto>, GetPageDetailHandler>();
+            //services.AddScoped<IQueryHandler<GetPageDetailQuery, PageDto>, GetPageDetailHandler>();
 
-            // --- COMMAND HANDLERS ---
+            //services.AddScoped<IQueryHandler<GetAllUsersQuery, PagedList<UserSummaryDto>>, GetAllUsersHandler>();
 
-            services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
+            //services.AddScoped<IQueryHandler<GetUserDetailQuery, UserDto>, GetUserDetailHandler>();
 
-            services.AddScoped<ICommandHandler<UpdateProductCommand, int>, UpdateProductHandler>();
+            //// --- COMMAND HANDLERS ---
 
-            services.AddScoped<ICommandHandler<CreateOrderCommand, int>, CreateOrderHandler>();
+            //services.AddScoped<ICommandHandler<CreateProductCommand, int>, CreateProductHandler>();
 
-            services.AddScoped<ICommandHandler<AddToCartCommand, ShoppingCart>, AddToCartHandler>();
+            //services.AddScoped<ICommandHandler<UpdateProductCommand, int>, UpdateProductHandler>();
 
-            services.AddScoped<ICommandHandler<UpdateCartItemCommand, ShoppingCart>, UpdateCartItemHandler>();
+            //services.AddScoped<ICommandHandler<CreateOrderCommand, int>, CreateOrderHandler>();
 
-            services.AddScoped<ICommandHandler<DeleteCartItemCommand, ShoppingCart>, DeleteCartItemHandler>();
+            //services.AddScoped<ICommandHandler<AddToCartCommand, ShoppingCart>, AddToCartHandler>();
 
-            services.AddScoped<ICommandHandler<ClearCartCommand, ShoppingCart>, ClearCartHandler>();
+            //services.AddScoped<ICommandHandler<UpdateCartItemCommand, ShoppingCart>, UpdateCartItemHandler>();
 
-            services.AddScoped<ICommandHandler<CreatePageCommand, string>, CreatePageHandler>();
+            //services.AddScoped<ICommandHandler<DeleteCartItemCommand, ShoppingCart>, DeleteCartItemHandler>();
 
-            services.AddScoped<ICommandHandler<UpdatePageCommand, string>, UpdatePageHandler>();
+            //services.AddScoped<ICommandHandler<ClearCartCommand, ShoppingCart>, ClearCartHandler>();
+
+            //services.AddScoped<ICommandHandler<CreatePageCommand, string>, CreatePageHandler>();
+
+            //services.AddScoped<ICommandHandler<UpdatePageCommand, string>, UpdatePageHandler>();
+
+            //services.AddScoped<ICommandHandler<LoginCommand, AuthResponse>, LoginHandler>();
+
+            //services.AddScoped<ICommandHandler<RegisterCommand, string>, RegisterHandler>();
+
+            //services.AddScoped<ICommandHandler<RefreshTokenCommand, AuthResponse>, RefreshTokenHandler>();
+
+            //services.AddScoped<ICommandHandler<LogoutCommand, bool>, LogoutHandler>();
+
+            //services.AddScoped<ICommandHandler<CreateNewUserCommand, int>, CreateNewUserHandler>();
+
+            //services.AddScoped<ICommandHandler<UpdateUserCommand, bool>, UpdateUserHandler>();
+
+            //services.AddScoped<ICommandHandler<DeleteUserCommand, bool>, DeleteUserHandler>();
+
+            //services.AddScoped<ICommandHandler<UploadImageCommand, AppImageDto>, UploadImageHandler>();
+
+            //services.AddScoped<IQueryHandler<GetImagesQuery, PagedList<AppImageDto>>, GetImagesHandler>();
 
             return services;
         }

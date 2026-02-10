@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
@@ -9,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders
 {
+    [AutoRegister]
+
     public class GetOrdersHandler : IQueryHandler<GetOrdersQuery, PagedList<OrderSummaryDto>>
     {
         private readonly IUnitOfWork _unitOfWork;

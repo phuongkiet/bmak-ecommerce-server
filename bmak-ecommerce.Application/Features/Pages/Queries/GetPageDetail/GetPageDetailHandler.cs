@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Pages.DTOs;
@@ -15,6 +16,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail
 {
+    [AutoRegister]
+
     public class GetPageDetailHandler : IQueryHandler<GetPageDetailQuery, PageDto>
     {
         private readonly IUnitOfWork _unitOfWork; // Dùng UoW để access repository

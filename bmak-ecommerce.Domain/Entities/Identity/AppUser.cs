@@ -10,6 +10,9 @@ namespace bmak_ecommerce.Domain.Entities.Identity
 
         // Custom fields cho ngành xây dựng
         public CustomerType CustomerType { get; set; } // Lẻ / Thầu / Đại lý
+        public Gender? Gender { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public DateTime? LastLoginDate { get; set; }
 
         // Navigation Properties
         public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
@@ -18,5 +21,9 @@ namespace bmak_ecommerce.Domain.Entities.Identity
         // Các trường audit (CreatedDate...) nếu muốn có thì tự thêm hoặc implement interface
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }
+
+        //Token
+        public string? RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
     }
 }

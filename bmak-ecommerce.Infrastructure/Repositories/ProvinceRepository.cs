@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Domain.Entities.Catalog;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Entities.Directory;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
+
     public class ProvinceRepository : IProvinceRepository
     {
         private readonly AppDbContext _context;

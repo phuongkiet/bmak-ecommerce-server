@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Services
 {
+    [AutoRegister]
+
     public class CurrentUserService : ICurrentUserService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;

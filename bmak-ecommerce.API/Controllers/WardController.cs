@@ -24,7 +24,7 @@ namespace bmak_ecommerce.API.Controllers
 
         [HttpGet]
         public async Task<ActionResult<ApiResponse<PagedList<WardDto>>>> GetWardsByProvince([FromQuery] WardSpecParams specParams)
-        {
+                {
             specParams.PageSize = 1000;
             var query = new GetWardQuery(specParams);
 

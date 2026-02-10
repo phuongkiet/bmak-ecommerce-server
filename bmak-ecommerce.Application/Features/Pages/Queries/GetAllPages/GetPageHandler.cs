@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Pages.DTOs;
@@ -7,6 +8,8 @@ using bmak_ecommerce.Domain.Models;
 
 namespace bmak_ecommerce.Application.Features.Pages.Queries.GetAllPages
 {
+    [AutoRegister]
+
     public class GetPageHandler : IQueryHandler<GetPageQuery, PagedList<PageSummaryDto>>
     {
         private readonly IPageRepository _pageRepository;

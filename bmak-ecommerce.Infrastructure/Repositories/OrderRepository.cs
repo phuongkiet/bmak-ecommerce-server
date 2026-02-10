@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Domain.Entities.Sales;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Infrastructure.Persistence;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
+
     public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _context;

@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Enums;
@@ -6,6 +7,8 @@ using bmak_ecommerce.Domain.Interfaces;
 
 namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
 {
+    [AutoRegister]
+
     public class CreateOrderHandler : ICommandHandler<CreateOrderCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -90,7 +93,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                 PaymentMethod = request.PaymentMethod,
                 Note = request.Note,
                 OrderDate = DateTime.UtcNow,
-                UserId = _currentUserService.UserId != 0 ? _currentUserService.UserId : 0, // Nếu guest thì null
+                UserId = _currentUserService.UserId != 0 ? _currentUserService.UserId : 1, // Nếu guest thì null
 
                 // Snapshot thông tin người mua
                 BuyerName = request.BuyerName,

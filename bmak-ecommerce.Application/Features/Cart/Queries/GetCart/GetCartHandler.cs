@@ -1,9 +1,12 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Cart.Models;
 
 namespace bmak_ecommerce.Application.Features.Cart.Queries.GetCart
 {
+    [AutoRegister]
+
     public class GetCartHandler : IQueryHandler<GetCartQuery, ShoppingCart>
     {
         private readonly ICartRepository _cartRepository;

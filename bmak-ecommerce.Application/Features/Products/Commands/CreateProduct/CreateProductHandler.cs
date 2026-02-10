@@ -11,9 +11,12 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
 {
+    [AutoRegister]
+
     public class CreateProductHandler : ICommandHandler<CreateProductCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -9,6 +9,7 @@ namespace bmak_ecommerce.Domain.Enums
     public enum PageStatusType
     {
         Published = 1,
-        Draft = 2
+        Draft = 2,
+        Archived = 3
     }
 }

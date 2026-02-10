@@ -1,4 +1,5 @@
 using AutoMapper;
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Tags.Queries
 {
+    [AutoRegister]
+
     public class GetTagsHandler : IRequestHandler<GetTagsQuery, List<TagDto>>
     {
         private readonly IUnitOfWork _unitOfWork;

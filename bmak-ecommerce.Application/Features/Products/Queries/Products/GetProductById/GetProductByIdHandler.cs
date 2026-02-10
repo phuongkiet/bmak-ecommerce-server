@@ -9,9 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById
 {
+    [AutoRegister]
+
     public class GetProductByIdHandler : IQueryHandler<GetProductByIdQuery, ProductDto?>
     {
         private readonly IUnitOfWork _unitOfWork;

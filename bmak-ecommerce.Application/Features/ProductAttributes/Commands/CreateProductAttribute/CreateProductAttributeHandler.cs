@@ -1,4 +1,5 @@
 using AutoMapper;
+using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
 using MediatR;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.ProductAttributes.Commands.CreateProductAttribute
 {
+    [AutoRegister]
+
     public class CreateProductAttributeHandler : IRequestHandler<CreateProductAttributeCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;

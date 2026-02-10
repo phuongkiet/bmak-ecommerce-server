@@ -6,9 +6,12 @@ using bmak_ecommerce.Domain.Interfaces;
 using MediatR;
 using System.Text.Json;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 {
+    [AutoRegister]
+
     public class UpdateProductHandler : ICommandHandler<UpdateProductCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;

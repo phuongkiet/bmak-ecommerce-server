@@ -20,7 +20,7 @@ namespace bmak_ecommerce.Application.Mappings
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
 
                 // Lấy tên khách hàng từ bảng User (Flattening)
-                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.User.FullName))
+                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.BuyerName))
 
                 // Đếm số lượng sản phẩm thay vì load hết list
                 .ForMember(dest => dest.ItemCount, opt => opt.MapFrom(src => src.OrderItems.Count));

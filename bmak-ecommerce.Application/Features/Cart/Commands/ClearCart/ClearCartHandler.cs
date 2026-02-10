@@ -1,9 +1,12 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Cart.Models;
 
 namespace bmak_ecommerce.Application.Features.Cart.Commands.ClearCart
 {
+    [AutoRegister]
+
     public class ClearCartHandler : ICommandHandler<ClearCartCommand, ShoppingCart>
     {
         private readonly ICartRepository _cartRepository;

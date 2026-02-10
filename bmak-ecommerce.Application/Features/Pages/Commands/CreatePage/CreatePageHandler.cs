@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
 using bmak_ecommerce.Domain.Entities.Catalog;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Pages.Commands.CreatePage
 {
+    [AutoRegister]
+
     public class CreatePageHandler : ICommandHandler<CreatePageCommand, string>
     {
         private readonly IUnitOfWork _unitOfWork;

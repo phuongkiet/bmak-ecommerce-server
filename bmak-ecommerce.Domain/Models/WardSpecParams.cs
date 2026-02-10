@@ -8,7 +8,7 @@ namespace bmak_ecommerce.Domain.Models
 {
     public class WardSpecParams
     {
-        private const int MaxPageSize = 50;
+        private const int MaxPageSize = 10000;
         public int PageIndex { get; set; } = 1;
 
         private int _pageSize = 10;

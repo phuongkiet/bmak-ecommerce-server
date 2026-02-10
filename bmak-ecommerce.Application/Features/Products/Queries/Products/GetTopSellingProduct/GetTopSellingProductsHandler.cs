@@ -12,9 +12,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct
 {
+    [AutoRegister]
+
     public class GetTopSellingHandler : IQueryHandler<GetTopSellingProductsQuery, List<ProductSummaryDto>>
     {
         private readonly IUnitOfWork _unitOfWork;

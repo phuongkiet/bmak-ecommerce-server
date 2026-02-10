@@ -1,10 +1,13 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Cart.Models;
 using bmak_ecommerce.Domain.Interfaces;
 
 namespace bmak_ecommerce.Application.Features.Cart.Commands.AddToCart
 {
+    [AutoRegister]
+
     public class AddToCartHandler : ICommandHandler<AddToCartCommand, ShoppingCart>
     {
         private readonly ICartRepository _cartRepository;

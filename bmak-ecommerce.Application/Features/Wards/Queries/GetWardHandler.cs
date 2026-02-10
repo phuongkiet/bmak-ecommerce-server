@@ -1,4 +1,5 @@
-﻿using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Provinces.Dtos;
 using bmak_ecommerce.Application.Features.Provinces.Queries;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Wards.Queries
 {
+    [AutoRegister]
+
     public class GetWardHandler : IQueryHandler<GetWardQuery, PagedList<WardDto>>
     {
         private readonly IUnitOfWork _unitOfWork;

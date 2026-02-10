@@ -3,9 +3,11 @@ using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using bmak_ecommerce.Application.Common.Attributes;
 
 namespace bmak_ecommerce.Infrastructure.Repositories
 {
+    [AutoRegister]
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
         public CategoryRepository(AppDbContext context) : base(context)

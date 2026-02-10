@@ -12,7 +12,10 @@ using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Infrastructure.MessageBus;
 using MassTransit;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
-using bmak_ecommerce.Infrastructure.Services; // Bắt buộc
+using bmak_ecommerce.Infrastructure.Services;
+using bmak_ecommerce.Infrastructure.Services.CloudinaryService;
+using bmak_ecommerce.Infrastructure.Extensions;
+using System.Reflection; // Bắt buộc
 
 namespace bmak_ecommerce.Infrastructure
 {
@@ -39,20 +42,24 @@ namespace bmak_ecommerce.Infrastructure
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
-            // 3. Đăng ký Repositories & UnitOfWork
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            // Đăng ký Repository cũ (cho Domain logic)
-            services.AddScoped<IProductRepository, ProductRepository>();
+            //// 3. Đăng ký Repositories & UnitOfWork
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            //// Đăng ký Repository cũ (cho Domain logic)
+            //services.AddScoped<IProductRepository, ProductRepository>();
 
-            // Đăng ký thêm Read Repository (cho Application Query logic)
-            services.AddScoped<ICatalogReadRepository, ProductRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<ICartRepository, CartRepository>();
-            services.AddScoped<IPageRepository, PageRepository>();
-            services.AddScoped<IProvinceRepository, ProvinceRepository>();
-            services.AddScoped<IWardRepository, WardRepository>();
+            //// Đăng ký thêm Read Repository (cho Application Query logic)
+            //services.AddScoped<ICatalogReadRepository, ProductRepository>();
+            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //services.AddScoped<IOrderRepository, OrderRepository>();
+            //services.AddScoped<ICartRepository, CartRepository>();
+            //services.AddScoped<IPageRepository, PageRepository>();
+            //services.AddScoped<IProvinceRepository, ProvinceRepository>();
+            //services.AddScoped<IWardRepository, WardRepository>();
+
+            //services.AddTransient<IIdentityService, IdentityService>();
+            //services.AddScoped<IUserManagementService, UserManagementService>();
+            //services.AddScoped<IImageService, CloudinaryService>();
 
             // =================================================================
             // 4. CẤU HÌNH MASSTRANSIT (ĐÂY LÀ CHỖ QUAN TRỌNG ĐỂ FIX LỖI)
@@ -103,6 +110,14 @@ namespace bmak_ecommerce.Infrastructure
 
             // Đăng ký service
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            // Cấu hình Auto Register
+            var applicationAssembly = AppDomain.CurrentDomain.Load("bmak-ecommerce.Application");
+            services.AddAutoRegisteredServices(applicationAssembly);
+
+            // 2. Lấy Assembly của tầng Infrastructure (chứa Services)
+            var infrastructureAssembly = Assembly.GetExecutingAssembly();
+            services.AddAutoRegisteredServices(infrastructureAssembly);
 
             return services;
         }

@@ -5,6 +5,7 @@ using bmak_ecommerce.Infrastructure;
 using bmak_ecommerce.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,12 @@ builder.Services.AddSwaggerGen(options =>
 {
     // Fix lỗi trùng tên Schema khi dùng Generic (Result<T>, PagedList<T>)
     options.CustomSchemaIds(type => type.ToString());
+
+    options.MapType<IFormFile>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "binary"
+    });
 });
 
 // --- 2. Build App ---
