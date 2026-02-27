@@ -204,7 +204,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                         UpdatedAt = DateTime.Now,
                     }
                 },
-                Category = catPhone,
                 Thumbnail = "https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg",
                 IsActive = true,
                 IsDeleted = false,
@@ -212,9 +211,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            // Ảnh chi tiết
-            p1.ProductImages.Add(new ProductImage { ImageUrl = p1.Thumbnail, IsMain = true, SortOrder = 1 });
-            p1.ProductImages.Add(new ProductImage { ImageUrl = "https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-titan-1.jpg", IsMain = false, SortOrder = 2 });
 
             // Thuộc tính (FIX: Dùng 'Attributes' và 'ProductAttribute')
             p1.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Titan Tự Nhiên" });
@@ -247,7 +243,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                         UpdatedAt = DateTime.Now,
                     }
                 },
-                Category = catPhone,
                 Thumbnail = "https://cdn.tgdd.vn/Products/Images/42/307174/samsung-galaxy-s24-ultra-grey-thumbnew-600x600.jpg",
                 IsActive = true,
                 IsDeleted = false,
@@ -255,7 +250,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p2.ProductImages.Add(new ProductImage { ImageUrl = p2.Thumbnail, IsMain = true, SortOrder = 1 });
             p2.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Đen Titan" });
             p2.AttributeValues.Add(new ProductAttributeValue { Attribute = ramAttr, Value = "12GB" });
             p2.Stocks.Add(new ProductStock { WarehouseName = "Kho Tổng", QuantityOnHand = 20, BatchNumber = "BATCH-002" });
@@ -284,7 +278,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                         UpdatedAt = DateTime.Now,
                     }
                 },
-                Category = catFashion,
                 Thumbnail = "https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-thun-nam-tsm5193-den-4.jpg",
                 IsActive = true,
                 IsDeleted = false,
@@ -292,7 +285,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p3.ProductImages.Add(new ProductImage { ImageUrl = p3.Thumbnail, IsMain = true, SortOrder = 1 });
             p3.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Đen" });
             p3.AttributeValues.Add(new ProductAttributeValue { Attribute = sizeAttr, Value = "L" });
             p3.Stocks.Add(new ProductStock { WarehouseName = "Kho HN", QuantityOnHand = 100, BatchNumber = "BATCH-003" });
@@ -321,7 +313,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                         UpdatedAt = DateTime.Now,
                     }
                 },
-                Category = catFashion,
                 Thumbnail = "https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-thun-nam-tsm5193-trang-4.jpg",
                 IsActive = true,
                 IsDeleted = false,
@@ -329,7 +320,6 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p4.ProductImages.Add(new ProductImage { ImageUrl = p4.Thumbnail, IsMain = true, SortOrder = 1 });
             p4.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Trắng" });
             p4.AttributeValues.Add(new ProductAttributeValue { Attribute = sizeAttr, Value = "M" });
             p4.Stocks.Add(new ProductStock { WarehouseName = "Kho HCM", QuantityOnHand = 50, BatchNumber = "BATCH-004" });

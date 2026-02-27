@@ -52,9 +52,9 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
 
             // Quan hệ với Products: Một Category có nhiều Products
             // (Quan hệ này đã được cấu hình ở ProductConfiguration, nhưng khai báo lại để rõ ràng)
-            builder.HasMany(x => x.Products)
-                .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId)
+            builder.HasMany(x => x.ProductCategories)
+                .WithOne(pc => pc.Category)
+                .HasForeignKey(pc => pc.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
             // Restrict: Không cho phép xóa Category nếu đang có Product bên trong
         }

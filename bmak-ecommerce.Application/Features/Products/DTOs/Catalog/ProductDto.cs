@@ -18,9 +18,15 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 		public string SalesUnit { get; set; }  // "Thùng", "Viên"
 		public string PriceUnit { get; set; }  // "m2", "Viên"
 		public float ConversionFactor { get; set; } // Hệ số quy đổi (VD: 0.36)
+        public decimal? Width { get; set; }
+        public decimal? Height { get; set; }
+        public decimal? Thickness { get; set; }
+        public int? Random { get; set; }
+        public int? BoxQuantity { get; set; }
+		public float? Weight { get; set; }
 
-		// Giá & Kho
-		public decimal Price { get; set; }       // SalePrice
+        // Giá & Kho
+        public decimal Price { get; set; }       // SalePrice
 		public decimal? OriginalPrice { get; set; } // BasePrice
 		public float StockQuantity { get; set; }
 
@@ -31,8 +37,10 @@ namespace bmak_ecommerce.Application.Features.Products.DTOs.Catalog
 		// Thuộc tính (Để hiển thị: Màu Titan, RAM 8GB...)
 		public List<ProductAttributeDto> Attributes { get; set; } = new();
 
-		// Danh mục
-		public int CategoryId { get; set; }
-		public string CategoryName { get; set; }
-	}
+		public List<int> TagIds { get; set; } = new();
+
+        // Danh mục
+        public List<int> CategoryIds { get; set; } = new();
+        public string CategoryName { get; set; }
+    }
 }

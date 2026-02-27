@@ -25,14 +25,15 @@ namespace bmak_ecommerce.Infrastructure.Repositories
         public async Task<Product?> GetProductDetailAsync(int id)
         {
             return await _context.Products
-                .Include(p => p.Category)
+                .Include(p => p.ProductCategories)
+                    .ThenInclude(c => c.Category)
                 .Include(p => p.AttributeValues)
-                    .ThenInclude(av => av.Attribute) // Include sâu vào tên thuộc tính
+                    .ThenInclude(av => av.Attribute)
                 .Include(p => p.ProductTags)
                     .ThenInclude(pt => pt.Tag)
                 .Include(p => p.TierPrices)
                 .Include(p => p.Stocks)
-                .Include(p => p.ProductImages)
+                .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -48,7 +49,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
         {
             // 1. Khởi tạo Query (Chưa chạy xuống DB)
             var query = _context.Products
-                .Include(p => p.Category)
+                .Include(p => p.ProductCategories)
+                .ThenInclude(c => c.Category)
                 .Include(p => p.AttributeValues)
                     .ThenInclude(av => av.Attribute)
                 .Include(p => p.ProductTags)
@@ -67,7 +69,7 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             // Lọc theo danh mục
             if (productParams.CategoryId.HasValue)
             {
-                query = query.Where(p => p.CategoryId == productParams.CategoryId);
+                query = query.Where(p => p.ProductCategories.Any(pc => pc.CategoryId == productParams.CategoryId.Value));
             }
 
             // Lọc theo khoảng giá
@@ -135,6 +137,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
         {
             // Lệnh này tương đương: SELECT * FROM Products WHERE Id IN (1, 5, 9...)
             return await _context.Products
+                .Include(p => p.ProductCategories)
+                    .ThenInclude(c => c.Category)
                 .Where(p => ids.Contains(p.Id))
                 .ToListAsync();
         }
@@ -147,7 +151,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             // ---------------------------------------------------------
             var query = _context.Products
                 .AsNoTracking()
-                .Include(p => p.Category)
+                .Include(p => p.ProductCategories)
+                .ThenInclude(c => c.Category)
                 // FIX: Tên property trong Product.cs là 'Attributes' chứ không phải 'AttributeValues'
                 .Include(p => p.AttributeValues)
                     // FIX: Tên property trong ProductAttributeValue.cs là 'ProductAttribute'
@@ -159,7 +164,9 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 query = query.Where(p => p.Name.Contains(specParams.Search));
 
             if (!string.IsNullOrEmpty(specParams.CategorySlug))
-                query = query.Where(p => p.Category.Slug == specParams.CategorySlug);
+            {
+                query = query.Where(p => p.ProductCategories.Any(pc => pc.Category.Slug == specParams.CategorySlug));
+            }
 
             // 2. Lọc theo Attributes (Dynamic)
             if (!string.IsNullOrEmpty(specParams.Color))

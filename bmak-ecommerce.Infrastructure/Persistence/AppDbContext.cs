@@ -27,11 +27,11 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Order> Orders { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Ward> Wards { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<AppImage> AppImages { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -52,6 +52,11 @@ namespace bmak_ecommerce.Infrastructure.Persistence
             modelBuilder.HasCharSet("utf8mb4");
 
             // ... (Phần ApplyConfigurationsFromAssembly giữ nguyên) ...
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Images)
+                .WithMany() // AppImage không cần biết nó thuộc Product nào (Unidirectional)
+                .UsingEntity(j => j.ToTable("ProductAppImages"));
             try
             {
                 modelBuilder.ApplyConfigurationsFromAssembly(System.Reflection.Assembly.GetExecutingAssembly());

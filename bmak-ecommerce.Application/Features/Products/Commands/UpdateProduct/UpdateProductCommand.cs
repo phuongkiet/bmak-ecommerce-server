@@ -16,6 +16,9 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 
         public string Name { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
+        public string Slug { get; set; }
+        public string? ShortDescription { get; set; } // Text thường
+        public string? Description { get; set; }
 
         // Giá & Đơn vị
         public decimal BasePrice { get; set; }
@@ -24,13 +27,20 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
         public string? PriceUnit { get; set; }
         public float ConversionFactor { get; set; }
 
-        public int CategoryId { get; set; }
+        public decimal? Width { get; set; }
+        public decimal? Height { get; set; }
+        public decimal? Thickness { get; set; }
+        public int? Random { get; set; }
+        public int? BoxQuantity { get; set; }
+
+        public List<int> CategoryIds { get; set; } = new();
 
         public DateTime? SaleStartDate { get; set; }
         public DateTime? SaleEndDate { get; set; }
 
         public float? Weight { get; set; }
-        public string? ImageUrl { get; set; }
+        public string? ThumbnailUrl { get; set; }
+        public List<int>? ImageIds { get; set; }
         public string? SpecificationsJson { get; set; }
         public bool? IsActive { get; set; }
 
@@ -40,10 +50,6 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 
         // Tags
         public List<int> TagIds { get; set; } = new();
-
-        // Bổ sung các field cấu hình kho (nếu bạn muốn Update cả phần này)
-        // public bool? AllowBackorder { get; set; } 
-        // public bool? ManageStock { get; set; }
     }
 
     public class UpdateProductAttributeDto

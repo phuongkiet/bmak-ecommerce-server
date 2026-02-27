@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bmak_ecommerce.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using bmak_ecommerce.Infrastructure.Persistence;
 namespace bmak_ecommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260210125101_ReplaceProductImageWithAppImage")]
+    partial class ReplaceProductImageWithAppImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,7 +207,7 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("BoxQuantity")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<float>("ConversionFactor")
@@ -214,13 +217,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(2147483647)
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal?>("Height")
-                        .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
@@ -239,9 +235,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<string>("PriceUnit")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int?>("Random")
-                        .HasColumnType("int");
 
                     b.Property<string>("SKU")
                         .IsRequired()
@@ -262,11 +255,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ShortDescription")
-                        .HasMaxLength(255)
-                        .IsUnicode(true)
-                        .HasColumnType("varchar(255)");
-
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -277,9 +265,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("json")
                         .HasDefaultValue("{}");
-
-                    b.Property<decimal?>("Thickness")
-                        .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("Thumbnail")
                         .HasColumnType("longtext");
@@ -292,10 +277,9 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .HasColumnType("float")
                         .HasDefaultValue(0f);
 
-                    b.Property<decimal?>("Width")
-                        .HasColumnType("decimal(65,30)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("SKU")
                         .IsUnique();
@@ -383,38 +367,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("ProductId", "AttributeId");
 
                     b.ToTable("ProductAttributeValue", (string)null);
-                });
-
-            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductStock", b =>
@@ -1145,6 +1097,17 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.Product", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeValue", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.ProductAttribute", "Attribute")
@@ -1160,25 +1123,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Attribute");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductCategory", b =>
-                {
-                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Category", "Category")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("Product");
                 });
@@ -1289,7 +1233,7 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                 {
                     b.Navigation("Children");
 
-                    b.Navigation("ProductCategories");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.Product", b =>
@@ -1297,8 +1241,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("AttributeValues");
 
                     b.Navigation("OrderItems");
-
-                    b.Navigation("ProductCategories");
 
                     b.Navigation("ProductTags");
 

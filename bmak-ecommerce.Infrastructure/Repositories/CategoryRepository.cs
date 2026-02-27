@@ -19,7 +19,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             return await _context.Categories
                 .Include(c => c.Parent)
                 .Include(c => c.Children)
-                .Include(c => c.Products)
+                .Include(c => c.ProductCategories)
+                .ThenInclude(p => p.Product)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
@@ -28,7 +29,8 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             // 1. Khởi tạo Query (Chưa chạy xuống DB)
             var query = _context.Categories
                 .Include(c => c.Parent)
-                .Include(c => c.Products)
+                .Include(c => c.ProductCategories)
+                .ThenInclude(p => p.Product)
                 .AsQueryable();
 
             // 2. Apply Filters
@@ -56,7 +58,7 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             {
                 "namedesc" => query.OrderByDescending(c => c.Name),
                 "nameasc" => query.OrderBy(c => c.Name),
-                "productcountdesc" => query.OrderByDescending(c => c.Products.Count),
+                "productcountdesc" => query.OrderByDescending(c => c.ProductCategories.Select(p => p.Product.Id).Count()),
                 _ => query.OrderBy(c => c.Name) // Mặc định sắp xếp theo tên
             };
 

@@ -29,8 +29,13 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
                 .GreaterThanOrEqualTo(0).WithMessage("Giá giảm phải lớn hơn hoặc bằng 0")
                 .LessThanOrEqualTo(p => p.BasePrice).WithMessage("Giá giảm không được lớn hơn giá gốc");
 
-            RuleFor(p => p.CategoryId)
-                .GreaterThan(0).WithMessage("Vui lòng chọn danh mục");
+            // 1. Kiểm tra mảng không được null và phải có ít nhất 1 phần tử
+            RuleFor(p => p.CategoryIds)
+                .NotEmpty().WithMessage("Vui lòng chọn ít nhất một danh mục");
+
+            // 2. (Tùy chọn thêm cho chặt chẽ) Kiểm tra từng ID bên trong mảng phải lớn hơn 0
+            RuleForEach(p => p.CategoryIds)
+                .GreaterThan(0).WithMessage("ID danh mục không hợp lệ");
 
             // Validate ngày giảm giá
             RuleFor(p => p.SaleEndDate)

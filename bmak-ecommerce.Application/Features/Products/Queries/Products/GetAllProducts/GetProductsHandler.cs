@@ -29,7 +29,7 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllPr
             // 1. Khởi tạo Query (Đã filter theo search, category, price...)
             // QUAN TRỌNG: Query này chưa Skip/Take
             var query = _unitOfWork.Repository<Product>().GetAllAsQueryable()
-                .Include(p => p.Category)
+                .Include(p => p.ProductCategories)
                 .Include(p => p.AttributeValues)
                 .ThenInclude(av => av.Attribute) // Include sâu để lấy tên Attribute
                 .Where(x => x.IsActive && !x.IsDeleted); // Filter mặc định
@@ -40,6 +40,11 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllPr
             {
                 var search = specParams.Search.ToLower();
                 query = query.Where(x => x.Name.ToLower().Contains(search));
+            }
+
+            if (specParams.MaxPrice > 0)
+            {
+                query = query.Where(x => x.BasePrice <= specParams.MaxPrice);
             }
 
             // Lưu ý: Khi tính Filter động, thường người ta KHÔNG áp dụng Filter của chính attribute đó 
@@ -75,14 +80,17 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllPr
                 // 2. Thống kê Danh mục (Category Facet)
                 // Đếm xem trong kết quả tìm kiếm, mỗi danh mục có bao nhiêu sản phẩm
                 var categoryStats = await query
-                    .GroupBy(x => new { x.CategoryId, x.Category.Name })
-                    .Select(g => new FilterItemDto
-                    {
-                        Value = g.Key.CategoryId.ToString(),
-                        Label = g.Key.Name,
-                        Count = g.Count()
-                    })
-                    .ToListAsync(cancellationToken);
+                .SelectMany(p => p.ProductCategories)
+
+                .GroupBy(pc => new { pc.Category.Id, pc.Category.Name })
+
+                .Select(g => new FilterItemDto
+                {
+                    Value = g.Key.Id.ToString(),
+                    Label = g.Key.Name,
+                    Count = g.Count() // Đếm số lượng sản phẩm thuộc category này
+                })
+                .ToListAsync(cancellationToken);
 
                 filterResponse.Categories.Add(new FilterGroupDto
                 {

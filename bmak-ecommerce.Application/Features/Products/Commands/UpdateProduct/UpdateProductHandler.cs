@@ -7,6 +7,8 @@ using MediatR;
 using System.Text.Json;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Domain.Entities.Media;
+using Microsoft.EntityFrameworkCore;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 {
@@ -33,9 +35,10 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 
             // 2. Map dữ liệu cơ bản (Manual Mapping)
             product.Name = request.Name;
-            product.Slug = GenerateSlug(request.Name); // Update tên thì update luôn Slug
+            product.Slug = request.Slug ?? GenerateSlug(request.Name);
             product.SKU = request.SKU;
-            product.CategoryId = request.CategoryId;
+            product.ShortDescription = request.ShortDescription;
+            product.Description = request.Description;
 
             product.BasePrice = request.BasePrice;
             product.SalePrice = request.SalePrice;
@@ -43,21 +46,27 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
             product.PriceUnit = request.PriceUnit ?? "m²"; // Mặc định nếu null
             product.ConversionFactor = request.ConversionFactor > 0 ? request.ConversionFactor : 1;
 
+            product.Width = request.Width;
+            product.Height = request.Height;
+            product.Thickness = request.Thickness;
+            product.BoxQuantity = request.BoxQuantity;
+            product.Random = request.Random;
+
             product.SaleStartDate = request.SaleStartDate;
             product.SaleEndDate = request.SaleEndDate;
             product.Weight = request.Weight ?? 0;
             product.IsActive = request.IsActive ?? true;
 
             // Chỉ update ảnh nếu request có gửi ảnh mới lên (nếu null/empty thì giữ ảnh cũ)
-            if (!string.IsNullOrEmpty(request.ImageUrl))
+            if (!string.IsNullOrEmpty(request.ThumbnailUrl))
             {
-                product.Thumbnail = request.ImageUrl;
+                product.Thumbnail = request.ThumbnailUrl;
             }
 
             // 3. Xử lý Specifications JSON (Merge hoặc Ghi đè)
             product.SpecificationsJson = BuildSpecificationsJson(
                 request.SpecificationsJson,
-                request.ImageUrl,
+                request.ThumbnailUrl,
                 product.SpecificationsJson // Truyền JSON cũ vào
             );
 
@@ -66,6 +75,13 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 
             // 5. XỬ LÝ TAGS
             UpdateTags(product, request.TagIds);
+
+            UpdateCategories(product, request.CategoryIds);
+
+            if (request.ImageIds != null)
+            {
+                await UpdateImagesAsync(product, request.ImageIds, cancellationToken);
+            }
 
             try
             {
@@ -121,6 +137,49 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
                         // ProductId tự động được EF gán
                     });
                 }
+            }
+        }
+
+        private void UpdateCategories(Product product, List<int> requestCategoryIds)
+        {
+            if (requestCategoryIds == null) requestCategoryIds = new List<int>();
+
+            // Lọc trùng ID
+            requestCategoryIds = requestCategoryIds.Distinct().ToList();
+
+            // A. XÓA CATEGORY CŨ KHÔNG CÒN ĐƯỢC CHỌN
+            var toRemove = product.ProductCategories
+                .Where(x => !requestCategoryIds.Contains(x.CategoryId))
+                .ToList();
+
+            foreach (var item in toRemove)
+            {
+                product.ProductCategories.Remove(item);
+            }
+
+            // B. THÊM CATEGORY MỚI
+            var currentCategoryIds = product.ProductCategories.Select(x => x.CategoryId).ToList();
+            var newCategoryIds = requestCategoryIds.Except(currentCategoryIds);
+
+            foreach (var catId in newCategoryIds)
+            {
+                product.ProductCategories.Add(new ProductCategory { CategoryId = catId });
+            }
+        }
+
+        private async Task UpdateImagesAsync(Product product, List<int> requestImageIds, CancellationToken cancellationToken)
+        {
+            // Tìm các ảnh mới trong DB
+            var imageRepo = _unitOfWork.Repository<AppImage>();
+            var newImages = await imageRepo.GetAllAsQueryable()
+                .Where(img => requestImageIds.Contains(img.Id))
+                .ToListAsync(cancellationToken);
+
+            // Xóa hết ảnh cũ của sản phẩm và thay bằng list ảnh mới
+            product.Images.Clear();
+            foreach (var img in newImages)
+            {
+                product.Images.Add(img);
             }
         }
 

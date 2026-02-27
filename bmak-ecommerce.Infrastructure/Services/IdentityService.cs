@@ -32,16 +32,27 @@ namespace bmak_ecommerce.Infrastructure.Services
             if (user == null || !await _userManager.CheckPasswordAsync(user, password))
                 return Result<AuthResponse>.Failure("Tài khoản hoặc mật khẩu không đúng.");
 
-            // Tạo JWT Token (Logic chi tiết xem lại tin nhắn trước)
+            // 1. Tạo JWT Token & Refresh Token
             var token = await GenerateJwtToken(user);
+            var refreshToken = GenerateRefreshToken();
             var roles = await _userManager.GetRolesAsync(user);
 
+            // 2. SỬA LỖI TẠI ĐÂY: Lưu Refresh Token vào Database
+            user.RefreshToken = refreshToken;
+
+            // Bạn có thể lấy số ngày hết hạn từ appsettings.json, ở đây mình fix cứng 7 ngày
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+            await _userManager.UpdateAsync(user); // Lệnh quan trọng nhất!
+
+            // 3. Trả về cho người dùng
             return Result<AuthResponse>.Success(new AuthResponse
             {
                 Id = user.Id,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 FullName = user.FullName,
+                RefreshToken = refreshToken,
                 Token = token,
                 Roles = roles.ToList()
             });
@@ -71,6 +82,7 @@ namespace bmak_ecommerce.Infrastructure.Services
 
             // 3. Cập nhật DB (Thu hồi cái cũ, lưu cái mới - Token Rotation)
             user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7); // Bổ sung gia hạn thêm 7 ngày
             await _userManager.UpdateAsync(user);
 
             var roles = await _userManager.GetRolesAsync(user);
@@ -101,7 +113,8 @@ namespace bmak_ecommerce.Infrastructure.Services
 
         public async Task<Result<bool>> LogoutAsync(int userId)
         {
-            if (userId <= 0) Result<bool>.Failure("Logout failed");
+            if (userId <= 0) return Result<bool>.Failure("Logout failed"); // Sửa lại logic return
+
             var user = await _userManager.FindByIdAsync(userId.ToString());
             if (user == null) return Result<bool>.Failure("User not found");
 

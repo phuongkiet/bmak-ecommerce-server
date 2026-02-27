@@ -49,6 +49,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpPost("refresh-token")]
+        [AllowAnonymous]
         public async Task<ActionResult<ApiResponse<AuthResponse>>> RefreshToken([FromBody] RefreshTokenCommand command)
         {
             var result = await _refreshTokenHandler.Handle(command);

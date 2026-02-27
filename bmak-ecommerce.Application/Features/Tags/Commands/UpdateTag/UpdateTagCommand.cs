@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Tags.Commands.UpdateTag
 {
-    public class UpdateTagCommand : IRequest<bool>
+    public class UpdateTagCommand
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

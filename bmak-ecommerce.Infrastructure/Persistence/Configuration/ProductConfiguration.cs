@@ -32,6 +32,13 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 .HasMaxLength(255)
                 .IsUnicode(false); // Slug thường không dấu
 
+            builder.Property(x => x.ShortDescription)
+                .HasMaxLength(255)
+                .IsUnicode(true);
+
+            builder.Property(x => x.Description)
+                .HasMaxLength(int.MaxValue);
+
             // 4. Cấu hình JSON cho MySQL (Quan trọng)
             // Giúp lưu SpecificationsJson dưới dạng JSON Native của MySQL
             builder.Property(x => x.SpecificationsJson)
@@ -66,11 +73,11 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
 
             // 7. Cấu hình Relationships (Quan hệ)
 
-            // Một Product thuộc về một Category
-            builder.HasOne(x => x.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(x => x.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+            // Một Product thuộc về nhiều Category
+            builder.HasMany(x => x.ProductCategories)
+                .WithOne(pc => pc.Product)
+                .HasForeignKey(pc => pc.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
             // Restrict: Không cho phép xóa Category nếu đang có Product bên trong (An toàn dữ liệu)
 
             // Một Product có nhiều Attribute Values

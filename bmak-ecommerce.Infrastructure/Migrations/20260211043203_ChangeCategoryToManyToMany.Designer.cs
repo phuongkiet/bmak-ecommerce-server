@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bmak_ecommerce.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using bmak_ecommerce.Infrastructure.Persistence;
 namespace bmak_ecommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260211043203_ChangeCategoryToManyToMany")]
+    partial class ChangeCategoryToManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,9 +207,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("BoxQuantity")
-                        .HasColumnType("int");
-
                     b.Property<float>("ConversionFactor")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("float")
@@ -218,9 +218,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(2147483647)
                         .HasColumnType("longtext");
-
-                    b.Property<decimal?>("Height")
-                        .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
@@ -239,9 +236,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<string>("PriceUnit")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int?>("Random")
-                        .HasColumnType("int");
 
                     b.Property<string>("SKU")
                         .IsRequired()
@@ -278,9 +272,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .HasColumnType("json")
                         .HasDefaultValue("{}");
 
-                    b.Property<decimal?>("Thickness")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<string>("Thumbnail")
                         .HasColumnType("longtext");
 
@@ -291,9 +282,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("float")
                         .HasDefaultValue(0f);
-
-                    b.Property<decimal?>("Width")
-                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
 

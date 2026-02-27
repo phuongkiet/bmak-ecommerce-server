@@ -17,6 +17,8 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public int? ParentId { get; set; }
         public virtual Category Parent { get; set; }
         public virtual ICollection<Category> Children { get; set; } = new List<Category>();
-        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        //public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        // THÊM VÀO CUỐI CLASS:
+        public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
     }
 }

@@ -1,11 +1,15 @@
+using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Application.Features.Tags.Commands.CreateTag;
+using bmak_ecommerce.Application.Features.Tags.Commands.DeleteTag;
 using bmak_ecommerce.Application.Features.Tags.Commands.UpdateTag;
 using bmak_ecommerce.Application.Features.Tags.Queries;
+using MassTransit.SagaStateMachine;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace bmak_ecommerce.API.Controllers
 {
@@ -13,11 +17,23 @@ namespace bmak_ecommerce.API.Controllers
     [ApiController]
     public class TagsController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        // Khai báo các Handler cụ thể thay vì Mediator
+        private readonly IQueryHandler<GetTagsQuery, List<TagDto>> _getTagsHandler;
+        private readonly ICommandHandler<CreateTagCommand, int> _createTagHandler;
+        private readonly ICommandHandler<UpdateTagCommand, bool> _updateTagHandler;
+        private readonly ICommandHandler<DeleteTagCommand, bool> _deleteTagHandler;
 
-        public TagsController(IMediator mediator)
+        // Inject từng Handler vào Constructor
+        public TagsController(
+            IQueryHandler<GetTagsQuery, List<TagDto>> getTagsHandler,
+            ICommandHandler<CreateTagCommand, int> createTagHandler,
+            ICommandHandler<UpdateTagCommand, bool> updateTagHandler,
+            ICommandHandler<DeleteTagCommand, bool> deleteTagHandler)
         {
-            _mediator = mediator;
+            _getTagsHandler = getTagsHandler;
+            _createTagHandler = createTagHandler;
+            _updateTagHandler = updateTagHandler;
+            _deleteTagHandler = deleteTagHandler;
         }
 
         // GET: api/tags
@@ -27,8 +43,14 @@ namespace bmak_ecommerce.API.Controllers
             try
             {
                 var query = new GetTagsQuery();
-                var tags = await _mediator.Send(query);
-                return Ok(ApiResponse<List<TagDto>>.Success(tags, "Tags retrieved successfully"));
+                // Gọi trực tiếp hàm Handle của handler
+                var result = await _getTagsHandler.Handle(query, default);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(ApiResponse<List<TagDto>>.Success(result.Value, "Tags retrieved successfully"));
+                }
+                return BadRequest(ApiResponse<List<TagDto>>.Failure(result.Error));
             }
             catch (Exception ex)
             {
@@ -42,8 +64,14 @@ namespace bmak_ecommerce.API.Controllers
         {
             try
             {
-                var tagId = await _mediator.Send(command);
-                return CreatedAtAction(nameof(CreateTag), new { id = tagId }, ApiResponse<int>.Success(tagId, "Tag created successfully"));
+                // Gọi handler tạo
+                var result = await _createTagHandler.Handle(command, default);
+
+                if (result.IsSuccess)
+                {
+                    return CreatedAtAction(nameof(CreateTag), new { id = result.Value }, ApiResponse<int>.Success(result.Value, "Tag created successfully"));
+                }
+                return BadRequest(ApiResponse<int>.Failure(result.Error));
             }
             catch (Exception ex)
             {
@@ -62,8 +90,36 @@ namespace bmak_ecommerce.API.Controllers
                     return BadRequest(ApiResponse<bool>.Failure("ID trong URL và body không khớp"));
                 }
 
-                var result = await _mediator.Send(command);
-                return Ok(ApiResponse<bool>.Success(result, "Tag updated successfully"));
+                // Gọi handler update
+                var result = await _updateTagHandler.Handle(command, default);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(ApiResponse<bool>.Success(result.Value, "Tag updated successfully"));
+                }
+                return BadRequest(ApiResponse<bool>.Failure(result.Error));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse<bool>.Failure(ex.Message));
+            }
+        }
+
+        // DELETE: api/tags/{id}
+        // (Bổ sung thêm action này vì thấy bạn có inject _deleteTagHandler)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ApiResponse<bool>>> DeleteTag(int id)
+        {
+            try
+            {
+                var command = new DeleteTagCommand { Id = id };
+                var result = await _deleteTagHandler.Handle(command, default);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(ApiResponse<bool>.Success(result.Value, "Tag deleted successfully"));
+                }
+                return BadRequest(ApiResponse<bool>.Failure(result.Error));
             }
             catch (Exception ex)
             {

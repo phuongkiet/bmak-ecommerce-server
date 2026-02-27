@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\bmak-ecommerce.API.props" />
-</Project>

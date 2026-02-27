@@ -12,9 +12,15 @@ namespace Application.Mappings
         {
             // 1. Map Entity -> DTO (Chiều trả về cho khách)
             CreateMap<Product, ProductDto>()
+                .ForMember(dest => dest.Slug, opt => opt.MapFrom(src => src.Slug))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.SalePrice))
                 .ForMember(dest => dest.OriginalPrice, opt => opt.MapFrom(src => src.BasePrice))
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src =>
+                    string.Join(", ", src.ProductCategories.Select(pc => pc.Category.Name))))
+                .ForMember(dest => dest.CategoryIds, opt => opt.MapFrom(src =>
+                    src.ProductCategories.Select(pc => pc.CategoryId).ToList()))
+                .ForMember(dest => dest.TagIds, opt => opt.MapFrom(src =>
+                    src.ProductTags.Select(pc => pc.TagId).ToList()))
                 .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeValues))
                 .ForMember(dest => dest.SalesUnit, opt => opt.MapFrom(src => src.SalesUnit))
                 .ForMember(dest => dest.PriceUnit, opt => opt.MapFrom(src => src.PriceUnit))
@@ -50,20 +56,22 @@ namespace Application.Mappings
                 .ForMember(dest => dest.ProductTags, opt => opt.Ignore()) // Sẽ xử lý trong Handler
                 .ForMember(dest => dest.TierPrices, opt => opt.Ignore())
                 .ForMember(dest => dest.Stocks, opt => opt.Ignore());
-                // ImageUrl và TagIds không có trong Product Entity, sẽ được xử lý trong Handler
+            // ImageUrl và TagIds không có trong Product Entity, sẽ được xử lý trong Handler
 
             // ===== CATEGORY MAPPINGS =====
             // 1. Map Entity -> DTO (Chiều trả về cho khách)
             CreateMap<Category, CategoryDto>()
                 .ForMember(dest => dest.ParentName, opt => opt.MapFrom(src => src.Parent != null ? src.Parent.Name : null))
-                .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.Products != null ? src.Products.Count : 0));
+                // SỬA Ở ĐÂY: Dùng ProductCategories thay vì Products
+                .ForMember(dest => dest.ProductCount, opt => opt.MapFrom(src => src.ProductCategories != null ? src.ProductCategories.Count : 0));
 
             // 2. Map Command -> Entity (Chiều thêm mới)
             CreateMap<bmak_ecommerce.Application.Features.Categories.Commands.CreateCategory.CreateCategoryCommand, Category>()
                 .ForMember(dest => dest.Slug, opt => opt.Ignore()) // Slug sẽ tự sinh
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Products, opt => opt.Ignore())
+                // SỬA Ở ĐÂY: Bỏ qua ProductCategories thay vì Products
+                .ForMember(dest => dest.ProductCategories, opt => opt.Ignore())
                 .ForMember(dest => dest.Children, opt => opt.Ignore())
                 .ForMember(dest => dest.Parent, opt => opt.Ignore());
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Tags.Commands.CreateTag
 {
-    public class CreateTagCommand : IRequest<int>
+    public class CreateTagCommand
     {
         public string Name { get; set; } = string.Empty; // VD: "Bán chạy", "Mới", "Khuyến mãi"
         public string? Description { get; set; } // Mô tả (optional)

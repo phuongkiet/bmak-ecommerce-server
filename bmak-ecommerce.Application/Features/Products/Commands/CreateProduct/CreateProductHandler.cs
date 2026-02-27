@@ -12,6 +12,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Domain.Entities.Media;
+using Microsoft.EntityFrameworkCore;
 
 namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
 {
@@ -37,9 +39,11 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
             var product = new Product
             {
                 Name = request.Name,
-                Slug = GenerateSlug(request.Name),
+                Slug = request.Slug ?? GenerateSlug(request.Name),
                 SKU = request.SKU,
-                CategoryId = request.CategoryId,
+                ShortDescription = request.ShortDescription,
+                Description = request.Description,
+                ProductCategories = new List<ProductCategory>(),
 
                 BasePrice = request.BasePrice,
                 SalePrice = request.SalePrice,
@@ -47,11 +51,20 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 PriceUnit = request.PriceUnit ?? "m²",
                 ConversionFactor = request.ConversionFactor > 0 ? request.ConversionFactor : 1,
 
+                Width = request.Width,
+                Height = request.Height,
+                Thickness = request.Thickness,
+                BoxQuantity = request.BoxQuantity,
+                Random = request.Random,
+
                 SaleStartDate = request.SaleStartDate,
                 SaleEndDate = request.SaleEndDate,
                 Weight = request.Weight ?? 0,
                 IsActive = request.IsActive ?? true,
-                Thumbnail = request.ImageUrl,
+                Thumbnail = request.ThumbnailUrl,
+
+                // Khởi tạo list rỗng
+                Images = new List<AppImage>(),
 
                 // Cấu hình kho
                 AllowBackorder = request.AllowBackorder ?? true,
@@ -63,7 +76,35 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
             };
 
             // 3. Xử lý JSON Specifications
-            product.SpecificationsJson = BuildSpecificationsJson(request.SpecificationsJson, request.ImageUrl);
+            product.SpecificationsJson = BuildSpecificationsJson(request.SpecificationsJson, request.ThumbnailUrl);
+
+            if (request.ImageIds != null && request.ImageIds.Any())
+            {
+                // Cách 1: Query lấy entity từ DB (An toàn nhất)
+                // Giả sử Repository có hàm GetList hoặc dùng IUnitOfWork truy cập DbSet trực tiếp
+                // Lưu ý: UnitOfWork của bạn cần hỗ trợ query generic
+
+                var imageRepo = _unitOfWork.Repository<AppImage>();
+
+                // Lấy tất cả ảnh có Id nằm trong danh sách gửi lên
+                var selectedImages = await imageRepo.GetAllAsQueryable() // Hoặc hàm filter tương đương
+                    .Where(img => request.ImageIds.Contains(img.Id))
+                    .ToListAsync(cancellationToken);
+
+                if (selectedImages.Any())
+                {
+                    foreach (var img in selectedImages)
+                    {
+                        product.Images.Add(img);
+                    }
+
+                    // Logic phụ: Nếu chưa có Thumbnail, lấy ảnh đầu tiên làm Thumbnail luôn
+                    if (string.IsNullOrEmpty(product.Thumbnail))
+                    {
+                        product.Thumbnail = selectedImages.First().Url;
+                    }
+                }
+            }
 
             // 4. Xử lý Attributes
             if (request.Attributes != null && request.Attributes.Any())
@@ -84,6 +125,16 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 foreach (var tagId in request.TagIds)
                 {
                     product.ProductTags.Add(new ProductTag { TagId = tagId });
+                }
+            }
+
+            if (request.CategoryIds != null && request.CategoryIds.Any())
+            {
+                // Lọc trùng lặp ID nếu FE gửi lỗi
+                var distinctCategoryIds = request.CategoryIds.Distinct();
+                foreach (var catId in distinctCategoryIds)
+                {
+                    product.ProductCategories.Add(new ProductCategory { CategoryId = catId });
                 }
             }
 

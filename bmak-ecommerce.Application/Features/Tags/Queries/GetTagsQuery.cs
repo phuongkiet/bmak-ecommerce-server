@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Application.Features.Tags.Queries
 {
-    public class GetTagsQuery : IRequest<List<TagDto>>
+    public class GetTagsQuery
     {
         // Không cần params, chỉ lấy tất cả tags
     }

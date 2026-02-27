@@ -1,0 +1,2008 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\services\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\services\\identityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\services\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\services\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\login\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\login\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\mappings\\productmappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\mappings\\productmappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\dtos\\catalog\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\dtos\\catalog\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\createtag\\createtagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\createtag\\createtagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\updatetag\\updatetaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\updatetag\\updatetaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\createtag\\createtaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\createtag\\createtaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\configuration\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\configuration\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\configuration\\tagconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\configuration\\tagconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\updatetag\\updatetagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\updatetag\\updatetagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\queries\\gettagshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\queries\\gettagshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\queries\\getallusers\\getallusersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\queries\\getallusers\\getallusersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\queries\\getallusers\\getallusershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\queries\\getallusers\\getallusershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\queries\\gettagsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\queries\\gettagsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\deletetag\\deletetaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\deletetag\\deletetaghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\commands\\deleteimage\\deleteimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\commands\\deleteimage\\deleteimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\tags\\commands\\deletetag\\deletetagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\tags\\commands\\deletetag\\deletetagcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\services\\cloudinaryservice\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\services\\cloudinaryservice\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\queries\\products\\getproductbyid\\getproductbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\queries\\products\\getproductbyid\\getproductbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\catalog\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\catalog\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\queries\\products\\getallproducts\\getproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\queries\\products\\getallproducts\\getproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproductvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\updateproduct\\updateproductvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\configuration\\categoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\configuration\\categoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\catalog\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\catalog\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\catalog\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\catalog\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproductattributerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\commands\\createproduct\\createproductattributerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\media\\appimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\media\\appimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\dtos\\appimagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\dtos\\appimagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\identity\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\identity\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\dtos\\uploadimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\dtos\\uploadimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\commands\\uploadimage\\uploadimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\commands\\uploadimage\\uploadimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\page\\page.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\page\\page.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\common\\models\\imageuploadresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\common\\models\\imageuploadresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\queries\\getimages\\getimageshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\queries\\getimages\\getimageshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\queries\\getimages\\getimagesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\queries\\getimages\\getimagesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\orders\\queries\\getallorders\\getallordersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\orders\\queries\\getallorders\\getallordersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\pagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\pagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\mediacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\mediacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\models\\imagespecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\models\\imagespecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\mappings\\appimagemappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\mappings\\appimagemappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\commands\\deleteimage\\deleteimagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\commands\\deleteimage\\deleteimagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\common\\interfaces\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\common\\interfaces\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\queries\\getuserdetail\\getuserdetailhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\queries\\getuserdetail\\getuserdetailhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\register\\registerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\refreshtoken\\refreshtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\refreshtoken\\refreshtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\logout\\logouthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\logout\\logouthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\cart\\queries\\getcart\\getcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\cart\\queries\\getcart\\getcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\cart\\commands\\updatecartitem\\updatecartitemhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\cart\\commands\\updatecartitem\\updatecartitemhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\cart\\commands\\deletecartitem\\deletecartitemhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\cart\\commands\\deletecartitem\\deletecartitemhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\cart\\commands\\clearcart\\clearcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\cart\\commands\\clearcart\\clearcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\cart\\commands\\addtocart\\addtocarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\cart\\commands\\addtocart\\addtocarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\categories\\commands\\updatecategory\\updatecategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\categories\\commands\\updatecategory\\updatecategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\categories\\commands\\createcategory\\createcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\categories\\commands\\createcategory\\createcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\wards\\queries\\getwardhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\wards\\queries\\getwardhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\queries\\getuserdetail\\getuserdetailquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\queries\\getuserdetail\\getuserdetailquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\updateuser\\updateuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\updateuser\\updateuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\deleteuser\\deleteuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\deleteuser\\deleteuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\createnewuser\\createnewuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\createnewuser\\createnewuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\provinces\\queries\\getprovincehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\provinces\\queries\\getprovincehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\queries\\products\\gettopsellingproduct\\gettopsellingproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\queries\\products\\gettopsellingproduct\\gettopsellingproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\products\\queries\\products\\getcatalog\\getcataloghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\products\\queries\\products\\getcatalog\\getcataloghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\productattributevalues\\commands\\createproductattributevalue\\createproductattributevaluehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\productattributevalues\\commands\\createproductattributevalue\\createproductattributevaluehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\productattributes\\queries\\getproductattributeshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\productattributes\\queries\\getproductattributeshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\productattributes\\commands\\createproductattribute\\createproductattributehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\productattributes\\commands\\createproductattribute\\createproductattributehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\queries\\getpagedetail\\getpagedetailhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\queries\\getpagedetail\\getpagedetailhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\queries\\getallpages\\getpagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\queries\\getallpages\\getpagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\queries\\getallpages\\getpagequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\queries\\getallpages\\getpagequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\commands\\updatepage\\updatepagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\commands\\updatepage\\updatepagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\commands\\createpage\\createpagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\commands\\createpage\\createpagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\commands\\createpage\\createpagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\commands\\createpage\\createpagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\orders\\queries\\getallorders\\getallordershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\orders\\queries\\getallorders\\getallordershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\orders\\commands\\createorder\\createorderhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\orders\\commands\\createorder\\createorderhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\wardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\wardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\provincerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\provincerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\repositories\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\repositories\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\extensions\\dependencyinjectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\extensions\\dependencyinjectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\common\\attributes\\autoregisterattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\common\\attributes\\autoregisterattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\media\\commands\\uploadimage\\uploadimagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\media\\commands\\uploadimage\\uploadimagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.infrastructure\\persistence\\configuration\\appimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58BFC7E6-8261-4DE3-AD30-EFEC65D44CF7}|bmak-ecommerce.Infrastructure\\bmak-ecommerce.Infrastructure.csproj|solutionrelative:bmak-ecommerce.infrastructure\\persistence\\configuration\\appimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\bmak-ecommerce.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\bmak-ecommerce.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\dtos\\pagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\dtos\\pagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\pages\\commands\\updatepage\\updatepagevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\pages\\commands\\updatepage\\updatepagevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\dtos\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\dtos\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\updateuser\\updateusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\updateuser\\updateusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\deleteuser\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\deleteuser\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\commands\\createnewuser\\createnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\commands\\createnewuser\\createnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\dtos\\usersummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\dtos\\usersummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\users\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\users\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\models\\userspecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\models\\userspecparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\common\\interfaces\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\common\\interfaces\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\mappings\\ordermappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\mappings\\ordermappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.domain\\entities\\sales\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C37F-22CA-44CA-A5BF-BD0A05145318}|bmak-ecommerce.Domain\\bmak-ecommerce.Domain.csproj|solutionrelative:bmak-ecommerce.domain\\entities\\sales\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.api\\controllers\\wardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B7B30EA-2BE1-4363-986C-81B2A9B76441}|bmak-ecommerce.API\\bmak-ecommerce.API.csproj|solutionrelative:bmak-ecommerce.api\\controllers\\wardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\common\\interfaces\\iidentityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\common\\interfaces\\iidentityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\logout\\logoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\logout\\logoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\refreshtoken\\refreshtokencommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\refreshtoken\\refreshtokencommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\dtos\\tokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\dtos\\tokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\register\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\register\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|d:\\sourcecode\\aspnet\\bmak-ecommerce\\bmak-ecommerce.application\\features\\authentications\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{986FCE64-9275-4856-A10A-D04D27473EED}|bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj|solutionrelative:bmak-ecommerce.application\\features\\authentications\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\AppData\\Local\\Temp\\.vsdbgsrc\\e5a1dbe0d183207002a91e83b89ebbe74d6913ba12a095d2c419b7f4db2cdf87\\Task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:47:20.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductMappingConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\ProductMappingConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Mappings\\ProductMappingConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\ProductMappingConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Mappings\\ProductMappingConfiguration.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAuwBYAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T04:01:27.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Login\\LoginHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Login\\LoginHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Login\\LoginHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Login\\LoginHandler.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:01:51.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserManagementService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\UserManagementService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Services\\UserManagementService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\UserManagementService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Services\\UserManagementService.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAQwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:04:54.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IdentityService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\IdentityService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Services\\IdentityService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\IdentityService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Services\\IdentityService.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAgwIEAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:49:34.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateProductHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductHandler.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAASwB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:58.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DbSeeder.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\DbSeeder.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\DbSeeder.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\DbSeeder.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\DbSeeder.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwFcAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T09:42:16.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\appsettings.json",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\appsettings.json",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\appsettings.json",
+              "RelativeToolTip": "bmak-ecommerce.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-05T08:34:34.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAowIwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T03:28:18.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\DTOs\\Catalog\\ProductDto.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\DTOs\\Catalog\\ProductDto.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\DTOs\\Catalog\\ProductDto.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\DTOs\\Catalog\\ProductDto.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA4wCcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T04:04:57.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GetTagsHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsHandler.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAADwvyQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:42.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TagsController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\TagsController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\TagsController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\TagsController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\TagsController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAADwvz4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:19:17.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GetTagsQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Queries\\GetTagsQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:35:38.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TagConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\TagConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\TagConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\TagConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\TagConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:51:23.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UpdateTagHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagHandler.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAYwG4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:39.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CreateTagHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagHandler.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAQwEgAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:35.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateTagCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\CreateTag\\CreateTagCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:41:04.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\ProductConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\ProductConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\ProductConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\ProductConfiguration.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAowEwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T12:45:49.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UpdateTagCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\UpdateTag\\UpdateTagCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:46:59.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GetAllUsersQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:08:03.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GetAllUsersHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetAllUsers\\GetAllUsersHandler.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAMwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:12:28.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PageController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\PageController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\PageController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\PageController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\PageController.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAnwFgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T17:29:56.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAIAwwFEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:40:50.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UpdateProductHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductHandler.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAUwC4AAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:02.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DeleteTagCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:14:08.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DeleteTagHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Tags\\Commands\\DeleteTag\\DeleteTagHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T07:14:22.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DeleteImageHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageHandler.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwDIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:25:38.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UpdateProductCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductCommand.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswBIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T03:58:13.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CloudinaryService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\CloudinaryService\\CloudinaryService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Services\\CloudinaryService\\CloudinaryService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\CloudinaryService\\CloudinaryService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Services\\CloudinaryService\\CloudinaryService.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAYwD8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T17:07:57.416Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Program.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Program.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Program.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Program.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAnwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:55:50.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "GetProductByIdHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetProductById\\GetProductByIdHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetProductById\\GetProductByIdHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetProductById\\GetProductByIdHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetProductById\\GetProductByIdHandler.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwB8AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:18.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CreateProductCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T12:35:07.195Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\Product.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Catalog\\Product.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\Product.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Catalog\\Product.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T12:34:38.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "GetProductsHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetAllProducts\\GetProductsHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetAllProducts\\GetProductsHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetAllProducts\\GetProductsHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetAllProducts\\GetProductsHandler.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAcwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:10.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAkwHQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T06:51:54.727Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAowDgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T03:52:22.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "UpdateProductValidator.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductValidator.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductValidator.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductValidator.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\UpdateProduct\\UpdateProductValidator.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowCUAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T04:30:21.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CategoryConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\CategoryConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\CategoryConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\CategoryConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\CategoryConfiguration.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAowDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T04:06:12.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:33:29.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\Category.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Catalog\\Category.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\Category.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Catalog\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T03:14:30.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ProductCategory.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\ProductCategory.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Catalog\\ProductCategory.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Catalog\\ProductCategory.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Catalog\\ProductCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T03:13:52.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Identity\\AppUser.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Identity\\AppUser.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Identity\\AppUser.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Identity\\AppUser.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T07:18:48.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "GetImagesHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesHandler.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAQwDMAAAB9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:39:09.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "UploadImageRequest.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\DTOs\\UploadImageRequest.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\DTOs\\UploadImageRequest.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\DTOs\\UploadImageRequest.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\DTOs\\UploadImageRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T07:01:26.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "CreateProductAttributeRequest.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductAttributeRequest.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductAttributeRequest.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductAttributeRequest.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Commands\\CreateProduct\\CreateProductAttributeRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T12:35:05.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "AppImage.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Media\\AppImage.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Media\\AppImage.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Media\\AppImage.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Media\\AppImage.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:33:11.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Page.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Page\\Page.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Page\\Page.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Page\\Page.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Page\\Page.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:39:54.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "AppImageDto.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\DTOs\\AppImageDto.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\DTOs\\AppImageDto.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\DTOs\\AppImageDto.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\DTOs\\AppImageDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:34:23.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "UploadImageHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageHandler.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:35:09.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ImageUploadResponse.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Models\\ImageUploadResponse.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Common\\Models\\ImageUploadResponse.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Models\\ImageUploadResponse.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Common\\Models\\ImageUploadResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:32:00.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwDAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:32:12.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "PageRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\PageRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\PageRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\PageRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\PageRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T03:52:12.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "MediaController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\MediaController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\MediaController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\MediaController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\MediaController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwB4AAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:36:10.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ImageSpecParams.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Models\\ImageSpecParams.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Models\\ImageSpecParams.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Models\\ImageSpecParams.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Models\\ImageSpecParams.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:35:32.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "AppImageMappingConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\AppImageMappingConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Mappings\\AppImageMappingConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\AppImageMappingConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Mappings\\AppImageMappingConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:29:58.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "GetAllOrdersQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:30:52.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "GetImagesQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Queries\\GetImages\\GetImagesQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:38:55.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:58:57.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\DependencyInjection.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\DependencyInjection.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\DependencyInjection.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAJcAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T07:23:16.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "DeleteImageCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Commands\\DeleteImage\\DeleteImageCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:25:26.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "GetUserDetailHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailHandler.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:34:57.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "IImageService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IImageService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Common\\Interfaces\\IImageService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IImageService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Common\\Interfaces\\IImageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T04:56:29.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "UpdateCartItemHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\UpdateCartItem\\UpdateCartItemHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\UpdateCartItem\\UpdateCartItemHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\UpdateCartItem\\UpdateCartItemHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\UpdateCartItem\\UpdateCartItemHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:56.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "GetCartHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Queries\\GetCart\\GetCartHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Cart\\Queries\\GetCart\\GetCartHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Queries\\GetCart\\GetCartHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Cart\\Queries\\GetCart\\GetCartHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:07:02.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "RegisterHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:18:59.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "RefreshTokenHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T07:22:10.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "LogoutHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T09:12:58.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "DeleteCartItemHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\DeleteCartItem\\DeleteCartItemHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\DeleteCartItem\\DeleteCartItemHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\DeleteCartItem\\DeleteCartItemHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\DeleteCartItem\\DeleteCartItemHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:52.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "ClearCartHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\ClearCart\\ClearCartHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\ClearCart\\ClearCartHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\ClearCart\\ClearCartHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\ClearCart\\ClearCartHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:48.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "AddToCartHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\AddToCart\\AddToCartHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\AddToCart\\AddToCartHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Cart\\Commands\\AddToCart\\AddToCartHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Cart\\Commands\\AddToCart\\AddToCartHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:44.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "UpdateCategoryHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Categories\\Commands\\UpdateCategory\\UpdateCategoryHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Categories\\Commands\\UpdateCategory\\UpdateCategoryHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Categories\\Commands\\UpdateCategory\\UpdateCategoryHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Categories\\Commands\\UpdateCategory\\UpdateCategoryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:37.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "CreateCategoryHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:34.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "GetWardHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Wards\\Queries\\GetWardHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Wards\\Queries\\GetWardHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Wards\\Queries\\GetWardHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Wards\\Queries\\GetWardHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:06:15.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "DeleteUserHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:39:42.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "UpdateUserHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserHandler.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:38:52.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "GetUserDetailQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Queries\\GetUserDetail\\GetUserDetailQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:16:41.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "CreateNewUserHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserHandler.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:37:01.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "GetProvinceHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Provinces\\Queries\\GetProvinceHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Provinces\\Queries\\GetProvinceHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Provinces\\Queries\\GetProvinceHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Provinces\\Queries\\GetProvinceHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:29.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "GetTopSellingProductsHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetTopSellingProduct\\GetTopSellingProductsHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetTopSellingProduct\\GetTopSellingProductsHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetTopSellingProduct\\GetTopSellingProductsHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetTopSellingProduct\\GetTopSellingProductsHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:22.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "GetCatalogHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetCatalog\\GetCatalogHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetCatalog\\GetCatalogHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetCatalog\\GetCatalogHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Products\\Queries\\Products\\GetCatalog\\GetCatalogHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:05:14.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "CreateProductAttributeValueHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributeValues\\Commands\\CreateProductAttributeValue\\CreateProductAttributeValueHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\ProductAttributeValues\\Commands\\CreateProductAttributeValue\\CreateProductAttributeValueHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributeValues\\Commands\\CreateProductAttributeValue\\CreateProductAttributeValueHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\ProductAttributeValues\\Commands\\CreateProductAttributeValue\\CreateProductAttributeValueHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:51.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "GetProductAttributesHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributes\\Queries\\GetProductAttributesHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\ProductAttributes\\Queries\\GetProductAttributesHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributes\\Queries\\GetProductAttributesHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\ProductAttributes\\Queries\\GetProductAttributesHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:45.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "CreateProductAttributeHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributes\\Commands\\CreateProductAttribute\\CreateProductAttributeHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\ProductAttributes\\Commands\\CreateProductAttribute\\CreateProductAttributeHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\ProductAttributes\\Commands\\CreateProductAttribute\\CreateProductAttributeHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\ProductAttributes\\Commands\\CreateProductAttribute\\CreateProductAttributeHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:41.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "GetPageDetailHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetPageDetail\\GetPageDetailHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetPageDetail\\GetPageDetailHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetPageDetail\\GetPageDetailHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetPageDetail\\GetPageDetailHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:33.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "GetPageHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:28.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "GetPageQuery.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageQuery.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageQuery.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageQuery.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Queries\\GetAllPages\\GetPageQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:27.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "CreatePageCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:14.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "CreatePageHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\CreatePage\\CreatePageHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:04:10.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAQwD0AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:46:14.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "CreateOrderHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:32:24.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "UpdatePageHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T05:01:11.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "GetAllOrdersHandler.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersHandler.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersHandler.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersHandler.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Orders\\Queries\\GetAllOrders\\GetAllOrdersHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:30:54.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 92,
+              "Title": "CurrentUserService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\CurrentUserService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Services\\CurrentUserService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Services\\CurrentUserService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Services\\CurrentUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:59:23.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 93,
+              "Title": "WardRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\WardRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\WardRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\WardRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\WardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T03:52:29.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "ProvinceRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\ProvinceRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\ProvinceRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\ProvinceRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\ProvinceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:58:54.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:58:41.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 96,
+              "Title": "CartRepository.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\CartRepository.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Repositories\\CartRepository.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Repositories\\CartRepository.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Repositories\\CartRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T03:52:25.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 97,
+              "Title": "DependencyInjectionExtensions.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Extensions\\DependencyInjectionExtensions.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Extensions\\DependencyInjectionExtensions.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Extensions\\DependencyInjectionExtensions.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Extensions\\DependencyInjectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:56:32.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 98,
+              "Title": "AutoRegisterAttribute.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Attributes\\AutoRegisterAttribute.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Common\\Attributes\\AutoRegisterAttribute.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Attributes\\AutoRegisterAttribute.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Common\\Attributes\\AutoRegisterAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T02:55:59.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 99,
+              "Title": "UploadImageCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Media\\Commands\\UploadImage\\UploadImageCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:34:47.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 101,
+              "Title": "bmak-ecommerce.Application.csproj",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj",
+              "RelativeToolTip": "bmak-ecommerce.Application\\bmak-ecommerce.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-09T06:48:26.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 100,
+              "Title": "AppImageConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\AppImageConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\AppImageConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\AppImageConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Infrastructure\\Persistence\\Configuration\\AppImageConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T06:44:07.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 107,
+              "Title": "CreateNewUserCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\CreateNewUser\\CreateNewUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:35:56.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 104,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\AuthResponse.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\AuthResponse.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:01:30.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 108,
+              "Title": "UserSummaryDto.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserSummaryDto.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserSummaryDto.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserSummaryDto.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserSummaryDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:02:52.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 102,
+              "Title": "PageDto.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\DTOs\\PageDto.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\DTOs\\PageDto.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\DTOs\\PageDto.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\DTOs\\PageDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:45:46.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 103,
+              "Title": "UpdatePageValidator.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageValidator.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageValidator.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageValidator.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Pages\\Commands\\UpdatePage\\UpdatePageValidator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:40:19.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 106,
+              "Title": "DeleteUserCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\DeleteUser\\DeleteUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:39:16.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 105,
+              "Title": "UpdateUserCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Commands\\UpdateUser\\UpdateUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:37:50.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 109,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserDto.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserDto.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserDto.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Users\\Dtos\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:02:29.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 110,
+              "Title": "UserSpecParams.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Models\\UserSpecParams.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Models\\UserSpecParams.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Models\\UserSpecParams.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Models\\UserSpecParams.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:11:16.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 111,
+              "Title": "IUserManagementService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IUserManagementService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Common\\Interfaces\\IUserManagementService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IUserManagementService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Common\\Interfaces\\IUserManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:04:17.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 113,
+              "Title": "OrderMappingConfiguration.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\OrderMappingConfiguration.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Mappings\\OrderMappingConfiguration.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Mappings\\OrderMappingConfiguration.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Mappings\\OrderMappingConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:31:45.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 112,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Enums\\Gender.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Enums\\Gender.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Enums\\Gender.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Enums\\Gender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T02:55:33.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 116,
+              "Title": "WardController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\WardController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\WardController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\WardController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\WardController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAtwBoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:50:57.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 114,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Sales\\Order.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Domain\\Entities\\Sales\\Order.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Domain\\Entities\\Sales\\Order.cs",
+              "RelativeToolTip": "bmak-ecommerce.Domain\\Entities\\Sales\\Order.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T15:33:02.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 115,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.API\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.API\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "bmak-ecommerce.API\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAtwDYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:50:57.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 118,
+              "Title": "LogoutCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Logout\\LogoutCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T09:12:04.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 120,
+              "Title": "TokenRequest.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\TokenRequest.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\TokenRequest.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\TokenRequest.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\DTOs\\TokenRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T07:19:31.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 117,
+              "Title": "IIdentityService.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IIdentityService.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Common\\Interfaces\\IIdentityService.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Common\\Interfaces\\IIdentityService.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Common\\Interfaces\\IIdentityService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAMwA8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:21:30.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 119,
+              "Title": "RefreshTokenCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\RefreshToken\\RefreshTokenCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T07:21:32.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 122,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterCommand.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterCommand.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:18:44.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 121,
+              "Title": "RegisterValidator.cs",
+              "DocumentMoniker": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterValidator.cs",
+              "RelativeDocumentMoniker": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterValidator.cs",
+              "ToolTip": "D:\\SourceCode\\ASPNET\\bmak-ecommerce\\bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterValidator.cs",
+              "RelativeToolTip": "bmak-ecommerce.Application\\Features\\Authentications\\Commands\\Register\\RegisterValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T04:19:02.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 123,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\.vsdbgsrc\\e5a1dbe0d183207002a91e83b89ebbe74d6913ba12a095d2c419b7f4db2cdf87\\Task.cs",
+              "ToolTip": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\.vsdbgsrc\\e5a1dbe0d183207002a91e83b89ebbe74d6913ba12a095d2c419b7f4db2cdf87\\Task.cs",
+              "ViewState": "AgIAAHoGAAAAAAAAAAAtwIoGAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:59:26.177Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

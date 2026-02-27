@@ -1,5 +1,7 @@
 using AutoMapper;
 using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Interfaces;
+using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
@@ -13,8 +15,7 @@ using System.Threading.Tasks;
 namespace bmak_ecommerce.Application.Features.Tags.Queries
 {
     [AutoRegister]
-
-    public class GetTagsHandler : IRequestHandler<GetTagsQuery, List<TagDto>>
+    public class GetTagsHandler : IQueryHandler<GetTagsQuery, List<TagDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -25,16 +26,14 @@ namespace bmak_ecommerce.Application.Features.Tags.Queries
             _mapper = mapper;
         }
 
-        public async Task<List<TagDto>> Handle(GetTagsQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<TagDto>>> Handle(GetTagsQuery query, CancellationToken cancellationToken)
         {
-            // 1. Lấy tất cả tags từ repository
             var tags = await _unitOfWork.Repository<Tag>().GetAllAsync();
 
-            // 2. Map Entity -> DTO
+
             var tagDtos = _mapper.Map<List<TagDto>>(tags);
 
-            // 3. Trả về danh sách tags
-            return tagDtos;
+            return Result<List<TagDto>>.Success(tagDtos);
         }
     }
 }

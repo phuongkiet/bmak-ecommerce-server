@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Domain.Common;
+using bmak_ecommerce.Domain.Entities.Media;
 using bmak_ecommerce.Domain.Entities.Sales;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public string Name { get; set; }
         public string SKU { get; set; } // Mã sản phẩm
         public string Slug { get; set; }
+        public string? ShortDescription { get; set; } // Text thường
+        public string? Description { get; set; }
         public bool AllowBackorder { get; set; } = true;
 
         public bool ManageStock { get; set; } = true;
@@ -30,6 +33,11 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         // QUAN TRỌNG: 1 Thùng = 1.44m2
         public float ConversionFactor { get; set; }
 
+        public decimal? Width { get; set; }
+        public decimal? Height { get; set; }
+        public decimal? Thickness { get; set; }
+        public int? Random { get; set; } 
+        public int? BoxQuantity { get; set; }
         public float Weight { get; set; } // Cân nặng (kg) để tính ship
 
         // MySQL JSON Column
@@ -37,14 +45,12 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public bool IsActive { get; set; }
 
         // Navigation
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
 
         // 1. Ảnh đại diện (Lưu thừa 1 chút để query list cho nhanh)
         public string? Thumbnail { get; set; }
 
         // 2. Danh sách ảnh chi tiết (Relation)
-        public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+        public virtual ICollection<AppImage> Images { get; set; } = new List<AppImage>();
 
         public virtual ICollection<ProductAttributeValue> AttributeValues { get; set; } = new List<ProductAttributeValue>();
         public virtual ICollection<ProductTierPrice> TierPrices { get; set; } = new List<ProductTierPrice>();
@@ -52,6 +58,7 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         
         // Many-to-Many với Tag
         public virtual ICollection<ProductTag> ProductTags { get; set; } = new List<ProductTag>();
+        public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }
