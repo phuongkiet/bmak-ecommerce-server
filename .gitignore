@@ -27,5 +27,6 @@ env
 vs/
 *.user
 *.suo
+*.vs
 # Sensitive configs (untracked)
 appsettings.Development.json
