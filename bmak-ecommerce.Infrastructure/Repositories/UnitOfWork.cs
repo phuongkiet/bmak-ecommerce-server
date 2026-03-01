@@ -19,6 +19,7 @@ public class UnitOfWork : IUnitOfWork
     private IProductRepository _productRepository;
     private IOrderRepository _orderRepository;
     private ICartRepository _cartRepository;
+    private IFavoriteRepository _favoriteRepository;
     private IProvinceRepository _provinceRepository;
     private IWardRepository _wardRepository;
     private IPageRepository _pageRepository;
@@ -46,6 +47,14 @@ public class UnitOfWork : IUnitOfWork
         get
         {
             return _orderRepository ??= new OrderRepository(_context);
+        }
+    }
+
+    public IFavoriteRepository Favorites
+    {
+        get
+        {
+            return _favoriteRepository ??= new FavoriteRepository(_context);
         }
     }
 
@@ -80,7 +89,7 @@ public class UnitOfWork : IUnitOfWork
     }
 
     // Giữ nguyên logic Generic cho các bảng phụ (VD: ProductTag, Attribute...)
-    public IGenericRepository<T> Repository<T>() where T : BaseEntity
+    public IGenericRepository<T> Repository<T>() where T : class
     {
         if (_repositories == null)
             _repositories = new Hashtable();

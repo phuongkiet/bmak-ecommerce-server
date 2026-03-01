@@ -1,9 +1,7 @@
-using AutoMapper;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
-using MediatR;
 using System.Text.Json;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Common.Attributes;
@@ -71,7 +69,11 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
             );
 
             // 4. XỬ LÝ ATTRIBUTES (Khó nhất: Xóa cũ, Thêm mới, Sửa tồn tại)
-            UpdateAttributes(product, request.Attributes);
+            var updateAttributesResult = await UpdateAttributes(product, request.Attributes, cancellationToken);
+            if (!updateAttributesResult.IsSuccess)
+            {
+                return Result<int>.Failure(updateAttributesResult.Error ?? "Cập nhật thuộc tính thất bại");
+            }
 
             // 5. XỬ LÝ TAGS
             UpdateTags(product, request.TagIds);
@@ -100,44 +102,81 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
 
         // --- CÁC HÀM HELPER (TÁCH RA CHO GỌN) ---
 
-        private void UpdateAttributes(Product product, List<UpdateProductAttributeDto> requestAttrs)
+        private async Task<Result<bool>> UpdateAttributes(Product product, List<UpdateProductAttributeDto> requestAttrs, CancellationToken cancellationToken)
         {
             if (requestAttrs == null) requestAttrs = new List<UpdateProductAttributeDto>();
+
+            if (requestAttrs.Count > 5)
+            {
+                return Result<bool>.Failure("Mỗi sản phẩm chỉ được chọn tối đa 5 thuộc tính");
+            }
+
+            var duplicateAttributeIds = requestAttrs
+                .GroupBy(x => x.AttributeId)
+                .Where(g => g.Count() > 1)
+                .Select(g => g.Key)
+                .ToList();
+
+            if (duplicateAttributeIds.Any())
+            {
+                return Result<bool>.Failure("Mỗi thuộc tính chỉ được chọn một giá trị");
+            }
+
+            var requestedValueIds = requestAttrs.Select(x => x.AttributeValueId).Distinct().ToList();
+            var values = await _unitOfWork.Repository<ProductAttributeValue>()
+                .GetAllAsQueryable()
+                .Where(x => requestedValueIds.Contains(x.Id))
+                .ToDictionaryAsync(x => x.Id, cancellationToken);
+
+            foreach (var dto in requestAttrs)
+            {
+                if (!values.TryGetValue(dto.AttributeValueId, out var value))
+                {
+                    return Result<bool>.Failure($"Không tìm thấy AttributeValue với ID: {dto.AttributeValueId}");
+                }
+
+                if (value.AttributeId != dto.AttributeId)
+                {
+                    return Result<bool>.Failure(
+                        $"Giá trị thuộc tính ID {dto.AttributeValueId} không thuộc Attribute ID {dto.AttributeId}");
+                }
+            }
 
             // A. TÌM NHỮNG CÁI CẦN XÓA
             // Logic: Có trong DB nhưng KHÔNG có trong Request -> Xóa
             var requestAttrIds = requestAttrs.Select(x => x.AttributeId).ToList();
-            var toRemove = product.AttributeValues
+            var toRemove = product.AttributeSelections
                 .Where(x => !requestAttrIds.Contains(x.AttributeId))
                 .ToList();
 
             foreach (var item in toRemove)
             {
-                product.AttributeValues.Remove(item);
+                product.AttributeSelections.Remove(item);
             }
 
             // B. TÌM NHỮNG CÁI CẦN THÊM HOẶC SỬA
             foreach (var dto in requestAttrs)
             {
-                var existingAttr = product.AttributeValues
+                var existingAttr = product.AttributeSelections
                     .FirstOrDefault(x => x.AttributeId == dto.AttributeId);
 
                 if (existingAttr != null)
                 {
-                    // Case 1: Đã tồn tại -> Update giá trị
-                    existingAttr.Value = dto.Value;
+                    // Case 1: Đã tồn tại -> Update giá trị đã chọn
+                    existingAttr.AttributeValueId = dto.AttributeValueId;
                 }
                 else
                 {
                     // Case 2: Chưa có -> Thêm mới
-                    product.AttributeValues.Add(new ProductAttributeValue
+                    product.AttributeSelections.Add(new ProductAttributeSelection
                     {
                         AttributeId = dto.AttributeId,
-                        Value = dto.Value
-                        // ProductId tự động được EF gán
+                        AttributeValueId = dto.AttributeValueId
                     });
                 }
             }
+
+            return Result<bool>.Success(true);
         }
 
         private void UpdateCategories(Product product, List<int> requestCategoryIds)

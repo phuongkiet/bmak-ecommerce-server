@@ -55,7 +55,7 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
     public class UpdateProductAttributeDto
     {
         public int AttributeId { get; set; }
-        public string Value { get; set; } = string.Empty;
+        public int AttributeValueId { get; set; }
     }
 }
 

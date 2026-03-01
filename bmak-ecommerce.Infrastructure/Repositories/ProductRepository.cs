@@ -27,8 +27,10 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             return await _context.Products
                 .Include(p => p.ProductCategories)
                     .ThenInclude(c => c.Category)
-                .Include(p => p.AttributeValues)
+                .Include(p => p.AttributeSelections)
                     .ThenInclude(av => av.Attribute)
+                .Include(p => p.AttributeSelections)
+                    .ThenInclude(av => av.AttributeValue)
                 .Include(p => p.ProductTags)
                     .ThenInclude(pt => pt.Tag)
                 .Include(p => p.TierPrices)
@@ -51,8 +53,10 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             var query = _context.Products
                 .Include(p => p.ProductCategories)
                 .ThenInclude(c => c.Category)
-                .Include(p => p.AttributeValues)
+                .Include(p => p.AttributeSelections)
                     .ThenInclude(av => av.Attribute)
+                .Include(p => p.AttributeSelections)
+                    .ThenInclude(av => av.AttributeValue)
                 .Include(p => p.ProductTags)
                     .ThenInclude(pt => pt.Tag)
                 .AsQueryable();
@@ -154,9 +158,10 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 .Include(p => p.ProductCategories)
                 .ThenInclude(c => c.Category)
                 // FIX: Tên property trong Product.cs là 'Attributes' chứ không phải 'AttributeValues'
-                .Include(p => p.AttributeValues)
-                    // FIX: Tên property trong ProductAttributeValue.cs là 'ProductAttribute'
+                .Include(p => p.AttributeSelections)
                     .ThenInclude(pav => pav.Attribute)
+                .Include(p => p.AttributeSelections)
+                    .ThenInclude(pav => pav.AttributeValue)
                 .AsQueryable();
 
             // 1. Lọc cơ bản
@@ -172,14 +177,14 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             if (!string.IsNullOrEmpty(specParams.Color))
             {
                 // FIX: pav.ProductAttribute.Code
-                query = query.Where(p => p.AttributeValues.Any(pav =>
-                    pav.Attribute.Code == "COLOR" && pav.Value == specParams.Color));
+                query = query.Where(p => p.AttributeSelections.Any(pav =>
+                    pav.Attribute.Code == "COLOR" && pav.AttributeValue.Value == specParams.Color));
             }
 
             if (!string.IsNullOrEmpty(specParams.Size))
             {
-                query = query.Where(p => p.AttributeValues.Any(pav =>
-                    pav.Attribute.Code == "SIZE" && pav.Value == specParams.Size));
+                query = query.Where(p => p.AttributeSelections.Any(pav =>
+                    pav.Attribute.Code == "SIZE" && pav.AttributeValue.Value == specParams.Size));
             }
 
             // 3. Lọc giá (FIX: Dùng SalePrice thay vì Price)
@@ -193,9 +198,9 @@ namespace bmak_ecommerce.Infrastructure.Repositories
             // PHẦN 2: AGGREGATION (TÍNH TOÁN FILTER)
             // ---------------------------------------------------------
             var rawAttributes = await query
-                .SelectMany(p => p.AttributeValues) // FIX: Attributes
+                .SelectMany(p => p.AttributeSelections)
                                                // FIX: Group theo ProductAttribute.Code
-                .GroupBy(pav => new { pav.Attribute.Code, pav.Attribute.Name, pav.Value })
+                .GroupBy(pav => new { pav.Attribute.Code, pav.Attribute.Name, Value = pav.AttributeValue.Value })
                 .Select(g => new
                 {
                     Code = g.Key.Code,

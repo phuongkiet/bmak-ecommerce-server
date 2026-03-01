@@ -30,8 +30,10 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllPr
             // QUAN TRỌNG: Query này chưa Skip/Take
             var query = _unitOfWork.Repository<Product>().GetAllAsQueryable()
                 .Include(p => p.ProductCategories)
-                .Include(p => p.AttributeValues)
-                .ThenInclude(av => av.Attribute) // Include sâu để lấy tên Attribute
+                .Include(p => p.AttributeSelections)
+                .ThenInclude(av => av.Attribute)
+                .Include(p => p.AttributeSelections)
+                .ThenInclude(av => av.AttributeValue)
                 .Where(x => x.IsActive && !x.IsDeleted); // Filter mặc định
 
             // --- ÁP DỤNG CÁC FILTER TỪ REQUEST (Search, MinPrice...) ---
@@ -102,8 +104,8 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllPr
                 // 3. Thống kê Thuộc tính (Attribute Facet - Màu, Size...)
                 // Logic: Flatten danh sách sản phẩm ra thành danh sách AttributeValue -> Group lại
                 var attributeStats = await query
-                    .SelectMany(x => x.AttributeValues) // Bung nhỏ ra từng dòng value
-                    .GroupBy(x => new { x.Attribute.Code, x.Attribute.Name, x.Value }) // Group theo Loại + Giá trị
+                    .SelectMany(x => x.AttributeSelections)
+                    .GroupBy(x => new { x.Attribute.Code, x.Attribute.Name, Value = x.AttributeValue.Value })
                     .Select(g => new
                     {
                         Code = g.Key.Code,

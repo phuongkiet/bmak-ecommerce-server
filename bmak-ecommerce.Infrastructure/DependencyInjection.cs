@@ -15,7 +15,10 @@ using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.I
 using bmak_ecommerce.Infrastructure.Services;
 using bmak_ecommerce.Infrastructure.Services.CloudinaryService;
 using bmak_ecommerce.Infrastructure.Extensions;
-using System.Reflection; // Bắt buộc
+using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text; // Bắt buộc
 
 namespace bmak_ecommerce.Infrastructure
 {
@@ -60,6 +63,29 @@ namespace bmak_ecommerce.Infrastructure
             //services.AddTransient<IIdentityService, IdentityService>();
             //services.AddScoped<IUserManagementService, UserManagementService>();
             //services.AddScoped<IImageService, CloudinaryService>();
+
+            services.AddAuthentication(options =>
+            {
+                // Ép Identity bỏ Cookie đi, chuyển sang xài JWT làm mặc định
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false; // Đổi thành true khi lên production có HTTPS
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Secret"])),
+
+                    ValidateIssuer = false,   // Tạm thời để false cho dễ test, hoặc true nếu config chuẩn
+                    ValidateAudience = false, // Tạm thời để false cho dễ test
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero // Xóa độ trễ 5 phút mặc định của token
+                };
+            });
 
             // =================================================================
             // 4. CẤU HÌNH MASSTRANSIT (ĐÂY LÀ CHỖ QUAN TRỌNG ĐỂ FIX LỖI)

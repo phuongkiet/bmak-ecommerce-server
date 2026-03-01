@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace bmak_ecommerce.Domain.Interfaces
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T> where T : class
     {
         // Truy vấn
         Task<T?> GetByIdAsync(int id);

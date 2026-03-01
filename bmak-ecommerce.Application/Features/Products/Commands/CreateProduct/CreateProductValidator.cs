@@ -34,6 +34,19 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 .GreaterThan(p => p.SaleStartDate)
                 .WithMessage("Ngày kết thúc giảm giá phải sau ngày bắt đầu")
                 .When(p => p.SaleStartDate.HasValue && p.SaleEndDate.HasValue);
+
+            RuleFor(p => p.Attributes)
+                .Must(attrs => attrs == null || attrs.Count <= 5)
+                .WithMessage("Mỗi sản phẩm chỉ được chọn tối đa 5 thuộc tính");
+
+            RuleFor(p => p.Attributes)
+                .Must(attrs => attrs == null || attrs.Select(x => x.AttributeId).Distinct().Count() == attrs.Count)
+                .WithMessage("Mỗi thuộc tính chỉ được chọn một giá trị");
+
+            RuleForEach(p => p.Attributes).ChildRules(attr => {
+                attr.RuleFor(x => x.AttributeId).GreaterThan(0).WithMessage("ID thuộc tính không hợp lệ");
+                attr.RuleFor(x => x.AttributeValueId).GreaterThan(0).WithMessage("ID giá trị thuộc tính không hợp lệ");
+            });
         }
     }
 }

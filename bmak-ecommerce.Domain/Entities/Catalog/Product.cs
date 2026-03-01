@@ -52,7 +52,7 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         // 2. Danh sách ảnh chi tiết (Relation)
         public virtual ICollection<AppImage> Images { get; set; } = new List<AppImage>();
 
-        public virtual ICollection<ProductAttributeValue> AttributeValues { get; set; } = new List<ProductAttributeValue>();
+        public virtual ICollection<ProductAttributeSelection> AttributeSelections { get; set; } = new List<ProductAttributeSelection>();
         public virtual ICollection<ProductTierPrice> TierPrices { get; set; } = new List<ProductTierPrice>();
         public virtual ICollection<ProductStock> Stocks { get; set; } = new List<ProductStock>();
         

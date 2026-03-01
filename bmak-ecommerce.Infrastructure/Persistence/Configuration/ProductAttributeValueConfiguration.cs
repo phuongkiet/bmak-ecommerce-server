@@ -30,23 +30,13 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 // Lưu ý: Nếu migration hiện tại đang set nullable: false, cần tạo migration mới để update
 
             // 4. Cấu hình Index (Tối ưu hiệu năng tìm kiếm)
-            // Index cho ProductId (tìm tất cả attributes của một product)
-            builder.HasIndex(x => x.ProductId);
-
             // Index cho AttributeId (tìm tất cả values của một attribute)
             builder.HasIndex(x => x.AttributeId);
 
-            // Composite Index: Tìm nhanh giá trị attribute của một product cụ thể
-            builder.HasIndex(x => new { x.ProductId, x.AttributeId });
+            // Composite Unique: mỗi Attribute có tập Value dùng chung, không trùng lặp
+            builder.HasIndex(x => new { x.AttributeId, x.Value }).IsUnique();
 
             // 5. Cấu hình Relationships (Quan hệ)
-
-            // Quan hệ với Product: Một ProductAttributeValue thuộc về một Product
-            builder.HasOne(x => x.Product)
-                .WithMany(p => p.AttributeValues)
-                .HasForeignKey(x => x.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
-            // Cascade: Nếu xóa Product, tự động xóa sạch các ProductAttributeValue ăn theo
 
             // Quan hệ với ProductAttribute: Một ProductAttributeValue thuộc về một ProductAttribute
             builder.HasOne(x => x.Attribute)
@@ -54,6 +44,12 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 .HasForeignKey(x => x.AttributeId)
                 .OnDelete(DeleteBehavior.Restrict);
             // Restrict: Không cho phép xóa ProductAttribute nếu đang có ProductAttributeValue đang dùng
+
+            // Quan hệ với bảng map ProductAttributeSelection
+            builder.HasMany(x => x.ProductSelections)
+                .WithOne(s => s.AttributeValue)
+                .HasForeignKey(s => s.AttributeValueId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -19,9 +19,6 @@ namespace bmak_ecommerce.Application.Features.ProductAttributeValues.Commands.Cr
                 .MaximumLength(500).WithMessage("ExtraData không được vượt quá 500 ký tự")
                 .When(v => !string.IsNullOrEmpty(v.ExtraData));
 
-            RuleFor(v => v.ProductId)
-                .GreaterThan(0).WithMessage("ProductId phải lớn hơn 0");
-
             RuleFor(v => v.AttributeId)
                 .GreaterThan(0).WithMessage("AttributeId phải lớn hơn 0");
         }

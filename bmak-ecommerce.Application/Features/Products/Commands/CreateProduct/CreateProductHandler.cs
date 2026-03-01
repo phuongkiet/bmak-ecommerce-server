@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Interfaces;
-using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +68,7 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 AllowBackorder = request.AllowBackorder ?? true,
                 ManageStock = request.ManageStock ?? true,
 
-                AttributeValues = new List<ProductAttributeValue>(),
+                AttributeSelections = new List<ProductAttributeSelection>(),
                 ProductTags = new List<ProductTag>(),
                 Stocks = new List<ProductStock>()
             };
@@ -106,15 +104,48 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 }
             }
 
-            // 4. Xử lý Attributes
+            // 4. Xử lý Attributes (mô hình value dùng chung)
             if (request.Attributes != null && request.Attributes.Any())
             {
+                if (request.Attributes.Count > 5)
+                {
+                    return Result<int>.Failure("Mỗi sản phẩm chỉ được chọn tối đa 5 thuộc tính");
+                }
+
+                var duplicateAttributeIds = request.Attributes
+                    .GroupBy(x => x.AttributeId)
+                    .Where(g => g.Count() > 1)
+                    .Select(g => g.Key)
+                    .ToList();
+
+                if (duplicateAttributeIds.Any())
+                {
+                    return Result<int>.Failure("Mỗi thuộc tính chỉ được chọn một giá trị");
+                }
+
+                var requestedValueIds = request.Attributes.Select(x => x.AttributeValueId).Distinct().ToList();
+                var values = await _unitOfWork.Repository<ProductAttributeValue>()
+                    .GetAllAsQueryable()
+                    .Where(x => requestedValueIds.Contains(x.Id))
+                    .ToDictionaryAsync(x => x.Id, cancellationToken);
+
                 foreach (var attr in request.Attributes)
                 {
-                    product.AttributeValues.Add(new ProductAttributeValue
+                    if (!values.TryGetValue(attr.AttributeValueId, out var attributeValue))
+                    {
+                        return Result<int>.Failure($"Không tìm thấy AttributeValue với ID: {attr.AttributeValueId}");
+                    }
+
+                    if (attributeValue.AttributeId != attr.AttributeId)
+                    {
+                        return Result<int>.Failure(
+                            $"Giá trị thuộc tính ID {attr.AttributeValueId} không thuộc Attribute ID {attr.AttributeId}");
+                    }
+
+                    product.AttributeSelections.Add(new ProductAttributeSelection
                     {
                         AttributeId = attr.AttributeId,
-                        Value = attr.Value
+                        AttributeValueId = attr.AttributeValueId
                     });
                 }
             }

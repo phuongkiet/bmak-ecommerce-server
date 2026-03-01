@@ -25,5 +25,7 @@ namespace bmak_ecommerce.Domain.Entities.Identity
         //Token
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
+
+        public ICollection<UserFavoriteProduct> FavoriteProducts { get; set; } = new List<UserFavoriteProduct>();
     }
 }

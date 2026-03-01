@@ -80,12 +80,12 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 .OnDelete(DeleteBehavior.Cascade);
             // Restrict: Không cho phép xóa Category nếu đang có Product bên trong (An toàn dữ liệu)
 
-            // Một Product có nhiều Attribute Values
-            builder.HasMany(x => x.AttributeValues)
+            // Một Product có nhiều lựa chọn Attribute/Value
+            builder.HasMany(x => x.AttributeSelections)
                 .WithOne(av => av.Product)
                 .HasForeignKey(av => av.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
-            // Cascade: Nếu xóa Product, tự động xóa sạch các AttributeValue ăn theo (Dọn rác tự động)
+            // Cascade: Nếu xóa Product, tự động xóa các lựa chọn attribute/value của product đó
 
             // Một Product có nhiều mức giá (TierPrices)
             builder.HasMany(x => x.TierPrices)

@@ -342,6 +342,46 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.ToTable("ProductAttribute", (string)null);
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeSelection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AttributeValueId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("AttributeValueId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductId", "AttributeId")
+                        .IsUnique();
+
+                    b.ToTable("ProductAttributeSelection", (string)null);
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeValue", b =>
                 {
                     b.Property<int>("Id")
@@ -363,9 +403,6 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -378,9 +415,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
 
                     b.HasIndex("AttributeId");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductId", "AttributeId");
+                    b.HasIndex("AttributeId", "Value")
+                        .IsUnique();
 
                     b.ToTable("ProductAttributeValue", (string)null);
                 });
@@ -820,6 +856,26 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.ToTable("UserBehaviorTracking");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.UserFavoriteProduct", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+
+                    b.HasKey("UserId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("user_favorite_products", (string)null);
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Media.AppImage", b =>
                 {
                     b.Property<int>("Id")
@@ -876,6 +932,94 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("Title");
 
                     b.ToTable("AppImages", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("news_categories", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("news_posts", (string)null);
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Page.Page", b =>
@@ -1145,6 +1289,33 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeSelection", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.ProductAttribute", "Attribute")
+                        .WithMany("ProductSelections")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeValue", "AttributeValue")
+                        .WithMany("ProductSelections")
+                        .HasForeignKey("AttributeValueId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
+                        .WithMany("AttributeSelections")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("AttributeValue");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeValue", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.ProductAttribute", "Attribute")
@@ -1153,15 +1324,7 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
-                        .WithMany("AttributeValues")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Attribute");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductCategory", b =>
@@ -1255,6 +1418,43 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.UserFavoriteProduct", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("FavoriteProducts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsPost", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Identity.AppUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("bmak_ecommerce.Domain.Entities.NewFolder.NewsCategory", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Identity.AppUser", "User")
@@ -1294,7 +1494,7 @@ namespace bmak_ecommerce.Infrastructure.Migrations
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.Product", b =>
                 {
-                    b.Navigation("AttributeValues");
+                    b.Navigation("AttributeSelections");
 
                     b.Navigation("OrderItems");
 
@@ -1309,7 +1509,14 @@ namespace bmak_ecommerce.Infrastructure.Migrations
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttribute", b =>
                 {
+                    b.Navigation("ProductSelections");
+
                     b.Navigation("Values");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductAttributeValue", b =>
+                {
+                    b.Navigation("ProductSelections");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.Tag", b =>
@@ -1326,7 +1533,14 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                 {
                     b.Navigation("Addresses");
 
+                    b.Navigation("FavoriteProducts");
+
                     b.Navigation("Trackings");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsCategory", b =>
+                {
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>

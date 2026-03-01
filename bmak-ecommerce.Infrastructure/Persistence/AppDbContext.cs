@@ -24,6 +24,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public DbSet<ProductAttributeSelection> ProductAttributeSelections { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
@@ -32,6 +33,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Page> Pages { get; set; }
         public DbSet<AppImage> AppImages { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<UserFavoriteProduct> UserFavoriteProducts { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

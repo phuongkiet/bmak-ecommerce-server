@@ -160,6 +160,43 @@ namespace bmak_ecommerce.Infrastructure.Persistence
             await context.SaveChangesAsync(); // Lưu Attributes trước
 
             // ---------------------------------------------------------
+            // SEED ATTRIBUTE VALUES DÙNG CHUNG
+            // ---------------------------------------------------------
+            async Task<ProductAttributeValue> GetOrCreateAttributeValueAsync(ProductAttribute attribute, string value)
+            {
+                var existing = await context.ProductAttributeValues
+                    .FirstOrDefaultAsync(x => x.AttributeId == attribute.Id && x.Value == value);
+
+                if (existing != null)
+                {
+                    return existing;
+                }
+
+                var created = new ProductAttributeValue
+                {
+                    AttributeId = attribute.Id,
+                    Value = value,
+                    ExtraData = null,
+                    IsDeleted = false
+                };
+
+                await context.ProductAttributeValues.AddAsync(created);
+                await context.SaveChangesAsync();
+                return created;
+            }
+
+            var colorTitanNatural = await GetOrCreateAttributeValueAsync(colorAttr, "Titan Tự Nhiên");
+            var colorBlackTitan = await GetOrCreateAttributeValueAsync(colorAttr, "Đen Titan");
+            var colorBlack = await GetOrCreateAttributeValueAsync(colorAttr, "Đen");
+            var colorWhite = await GetOrCreateAttributeValueAsync(colorAttr, "Trắng");
+
+            var ram8gb = await GetOrCreateAttributeValueAsync(ramAttr, "8GB");
+            var ram12gb = await GetOrCreateAttributeValueAsync(ramAttr, "12GB");
+
+            var sizeL = await GetOrCreateAttributeValueAsync(sizeAttr, "L");
+            var sizeM = await GetOrCreateAttributeValueAsync(sizeAttr, "M");
+
+            // ---------------------------------------------------------
             // SEED CATEGORIES (Điện thoại, Thời trang)
             // ---------------------------------------------------------
             var catPhone = new Category { Name = "Điện thoại", Slug = "dien-thoai", IsDeleted = false, Description = "Điện thoại di động"};
@@ -212,9 +249,16 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 SalesUnit = "m2"
             };
 
-            // Thuộc tính (FIX: Dùng 'Attributes' và 'ProductAttribute')
-            p1.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Titan Tự Nhiên" });
-            p1.AttributeValues.Add(new ProductAttributeValue { Attribute = ramAttr, Value = "8GB" });
+            p1.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = colorAttr.Id,
+                AttributeValueId = colorTitanNatural.Id
+            });
+            p1.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = ramAttr.Id,
+                AttributeValueId = ram8gb.Id
+            });
 
             // Kho hàng (Optional: Nếu bạn tách bảng Stock riêng)
             p1.Stocks.Add(new ProductStock { WarehouseName = "Kho Tổng", QuantityOnHand = 50, BatchNumber = "BATCH-001" });
@@ -250,8 +294,16 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p2.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Đen Titan" });
-            p2.AttributeValues.Add(new ProductAttributeValue { Attribute = ramAttr, Value = "12GB" });
+            p2.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = colorAttr.Id,
+                AttributeValueId = colorBlackTitan.Id
+            });
+            p2.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = ramAttr.Id,
+                AttributeValueId = ram12gb.Id
+            });
             p2.Stocks.Add(new ProductStock { WarehouseName = "Kho Tổng", QuantityOnHand = 20, BatchNumber = "BATCH-002" });
 
             products.Add(p2);
@@ -285,8 +337,16 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p3.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Đen" });
-            p3.AttributeValues.Add(new ProductAttributeValue { Attribute = sizeAttr, Value = "L" });
+            p3.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = colorAttr.Id,
+                AttributeValueId = colorBlack.Id
+            });
+            p3.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = sizeAttr.Id,
+                AttributeValueId = sizeL.Id
+            });
             p3.Stocks.Add(new ProductStock { WarehouseName = "Kho HN", QuantityOnHand = 100, BatchNumber = "BATCH-003" });
 
             products.Add(p3);
@@ -320,8 +380,16 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                 PriceUnit = "viên",
                 SalesUnit = "m2"
             };
-            p4.AttributeValues.Add(new ProductAttributeValue { Attribute = colorAttr, Value = "Trắng" });
-            p4.AttributeValues.Add(new ProductAttributeValue { Attribute = sizeAttr, Value = "M" });
+            p4.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = colorAttr.Id,
+                AttributeValueId = colorWhite.Id
+            });
+            p4.AttributeSelections.Add(new ProductAttributeSelection
+            {
+                AttributeId = sizeAttr.Id,
+                AttributeValueId = sizeM.Id
+            });
             p4.Stocks.Add(new ProductStock { WarehouseName = "Kho HCM", QuantityOnHand = 50, BatchNumber = "BATCH-004" });
 
             products.Add(p4);

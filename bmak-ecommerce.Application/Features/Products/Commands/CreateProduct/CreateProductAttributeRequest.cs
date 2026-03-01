@@ -9,6 +9,6 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
     public class CreateProductAttributeRequest
     {
         public int AttributeId { get; set; }
-        public string Value { get; set; }
+        public int AttributeValueId { get; set; }
     }
 }

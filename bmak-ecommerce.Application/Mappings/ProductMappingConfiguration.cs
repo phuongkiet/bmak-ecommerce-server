@@ -21,7 +21,7 @@ namespace Application.Mappings
                     src.ProductCategories.Select(pc => pc.CategoryId).ToList()))
                 .ForMember(dest => dest.TagIds, opt => opt.MapFrom(src =>
                     src.ProductTags.Select(pc => pc.TagId).ToList()))
-                .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeValues))
+                .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.AttributeSelections))
                 .ForMember(dest => dest.SalesUnit, opt => opt.MapFrom(src => src.SalesUnit))
                 .ForMember(dest => dest.PriceUnit, opt => opt.MapFrom(src => src.PriceUnit))
                 .ForMember(dest => dest.ConversionFactor, opt => opt.MapFrom(src => src.ConversionFactor))
@@ -33,9 +33,11 @@ namespace Application.Mappings
                 .ForMember(dest => dest.OriginalPrice, opt => opt.MapFrom(src => src.BasePrice))
                 .ReverseMap();
 
-            CreateMap<ProductAttributeValue, ProductAttributeDto>()
+            CreateMap<ProductAttributeSelection, ProductAttributeDto>()
+                .ForMember(dest => dest.AttributeId, opt => opt.MapFrom(src => src.AttributeId))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Attribute.Name))
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Attribute.Code));
+                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Attribute.Code))
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.AttributeValue.Value));
 
             // ProductAttribute mapping (cho việc list attributes)
             CreateMap<ProductAttribute, ProductAttributeListItemDto>();
@@ -52,7 +54,7 @@ namespace Application.Mappings
                 .ForMember(dest => dest.IsActive, opt => opt.Ignore()) // Sẽ set trong Handler (có thể null từ request)
                 .ForMember(dest => dest.Weight, opt => opt.Ignore()) // Sẽ set trong Handler (có thể null từ request)
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.AttributeValues, opt => opt.Ignore()) // Sẽ xử lý trong Handler
+                .ForMember(dest => dest.AttributeSelections, opt => opt.Ignore()) // Sẽ xử lý trong Handler
                 .ForMember(dest => dest.ProductTags, opt => opt.Ignore()) // Sẽ xử lý trong Handler
                 .ForMember(dest => dest.TierPrices, opt => opt.Ignore())
                 .ForMember(dest => dest.Stocks, opt => opt.Ignore());
@@ -87,7 +89,6 @@ namespace Application.Mappings
             CreateMap<bmak_ecommerce.Application.Features.ProductAttributeValues.Commands.CreateProductAttributeValue.CreateProductAttributeValueCommand, ProductAttributeValue>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Product, opt => opt.Ignore())
                 .ForMember(dest => dest.Attribute, opt => opt.Ignore());
 
             // ===== TAG MAPPINGS =====

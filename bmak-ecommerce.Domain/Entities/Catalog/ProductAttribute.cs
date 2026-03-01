@@ -11,6 +11,7 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
     {
         public string Name { get; set; } // "Kích thước", "Bề mặt"
         public string Code { get; set; } // "SIZE", "SURFACE"
-        public virtual ICollection<ProductAttributeValue> Values { get; set; }
+        public virtual ICollection<ProductAttributeValue> Values { get; set; } = new List<ProductAttributeValue>();
+        public virtual ICollection<ProductAttributeSelection> ProductSelections { get; set; } = new List<ProductAttributeSelection>();
     }
 }

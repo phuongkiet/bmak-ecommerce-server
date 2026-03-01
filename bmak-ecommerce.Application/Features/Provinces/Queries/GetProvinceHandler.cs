@@ -1,5 +1,4 @@
-﻿using bmak_ecommerce.Application.Common.Attributes;
-using bmak_ecommerce.Application.Common.Interfaces;
+﻿using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Provinces.Dtos;
 using bmak_ecommerce.Domain.Interfaces;
@@ -8,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bmak_ecommerce.Application.Features.Provinces.Queries
 {
-    [AutoRegister]
-
     public class GetProvinceHandler : IQueryHandler<GetProvinceQuery, PagedList<ProvinceDto>>
     {
         private readonly IUnitOfWork _unitOfWork;

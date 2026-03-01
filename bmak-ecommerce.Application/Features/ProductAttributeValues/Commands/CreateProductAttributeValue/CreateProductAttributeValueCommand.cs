@@ -11,8 +11,7 @@ namespace bmak_ecommerce.Application.Features.ProductAttributeValues.Commands.Cr
     {
         public string Value { get; set; } = string.Empty; // VD: "60x60", "Xám", "Matt"
         public string? ExtraData { get; set; } // Optional: Mã màu Hex (#FF5733), Icon URL, hoặc metadata khác
-        
-        public int ProductId { get; set; } // ID của Product
+
         public int AttributeId { get; set; } // ID của ProductAttribute
     }
 }
