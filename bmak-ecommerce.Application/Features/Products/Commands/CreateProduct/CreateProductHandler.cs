@@ -60,6 +60,7 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 Weight = request.Weight ?? 0,
                 IsActive = request.IsActive ?? true,
                 Thumbnail = request.ThumbnailUrl,
+                SpecificationsJson = BuildCustomAttributesJson(request.SpecificationsJson),
 
                 // Khởi tạo list rỗng
                 Images = new List<AppImage>(),
@@ -72,9 +73,6 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
                 ProductTags = new List<ProductTag>(),
                 Stocks = new List<ProductStock>()
             };
-
-            // 3. Xử lý JSON Specifications
-            product.SpecificationsJson = BuildSpecificationsJson(request.SpecificationsJson, request.ThumbnailUrl);
 
             if (request.ImageIds != null && request.ImageIds.Any())
             {
@@ -202,30 +200,52 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
             return phrase.ToLower().Trim().Replace(" ", "-"); // Nên dùng thư viện Slugify để tốt hơn
         }
 
-        private string BuildSpecificationsJson(string? jsonInput, string? imageUrl)
+        private string BuildCustomAttributesJson(string? jsonInput)
         {
-            var dict = new Dictionary<string, object>();
-            if (!string.IsNullOrEmpty(jsonInput))
+            // Trả về mảng rỗng chuẩn JSON nếu không có dữ liệu
+            if (string.IsNullOrWhiteSpace(jsonInput)) return "[]";
+
+            try
             {
-                try
+                var attributes = new List<object>();
+                using var doc = JsonDocument.Parse(jsonInput);
+
+                // Trường hợp 1: Frontend gửi lên dạng Object phẳng { "Bề mặt": "Nhám", "Xuất xứ": "VN" }
+                if (doc.RootElement.ValueKind == JsonValueKind.Object)
                 {
-                    using var doc = JsonDocument.Parse(jsonInput);
                     foreach (var prop in doc.RootElement.EnumerateObject())
                     {
-                        switch (prop.Value.ValueKind)
+                        string val = prop.Value.ValueKind switch
                         {
-                            case JsonValueKind.String: dict[prop.Name] = prop.Value.GetString(); break;
-                            case JsonValueKind.Number: dict[prop.Name] = prop.Value.GetDecimal(); break;
-                            case JsonValueKind.True: dict[prop.Name] = true; break;
-                            case JsonValueKind.False: dict[prop.Name] = false; break;
-                            default: dict[prop.Name] = prop.Value.GetRawText(); break;
+                            JsonValueKind.String => prop.Value.GetString() ?? string.Empty,
+                            JsonValueKind.Number => prop.Value.GetDecimal().ToString(),
+                            JsonValueKind.True => "Có",     // Chuẩn hóa boolean sang text
+                            JsonValueKind.False => "Không",
+                            _ => prop.Value.GetRawText()
+                        };
+
+                        if (!string.IsNullOrWhiteSpace(val))
+                        {
+                            attributes.Add(new { Name = prop.Name.Trim(), Value = val.Trim() });
                         }
                     }
+                    return JsonSerializer.Serialize(attributes);
                 }
-                catch { }
+
+                // Trường hợp 2: Frontend đã gửi lên đúng chuẩn Array [ { "Name": "...", "Value": "..." } ]
+                if (doc.RootElement.ValueKind == JsonValueKind.Array)
+                {
+                    // Trả thẳng về DB luôn, không cần parse lại
+                    return jsonInput;
+                }
+
+                return "[]";
             }
-            if (!string.IsNullOrEmpty(imageUrl)) dict["imageUrl"] = imageUrl;
-            return dict.Count > 0 ? JsonSerializer.Serialize(dict) : "{}";
+            catch
+            {
+                // Tránh sập API nếu Frontend lỡ gửi string tào lao (không phải JSON)
+                return "[]";
+            }
         }
     }
 }

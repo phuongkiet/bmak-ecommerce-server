@@ -62,11 +62,7 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
             }
 
             // 3. Xử lý Specifications JSON (Merge hoặc Ghi đè)
-            product.SpecificationsJson = BuildSpecificationsJson(
-                request.SpecificationsJson,
-                request.ThumbnailUrl,
-                product.SpecificationsJson // Truyền JSON cũ vào
-            );
+            product.SpecificationsJson = BuildSpecificationsJsonForUpdate(request.SpecificationsJson, product.SpecificationsJson);
 
             // 4. XỬ LÝ ATTRIBUTES (Khó nhất: Xóa cũ, Thêm mới, Sửa tồn tại)
             var updateAttributesResult = await UpdateAttributes(product, request.Attributes, cancellationToken);
@@ -254,40 +250,59 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct
             return phrase.ToLower().Trim().Replace(" ", "-");
         }
 
-        private string BuildSpecificationsJson(string? newJson, string? imageUrl, string? oldJson)
+        private string BuildSpecificationsJsonForUpdate(string? newJson, string? oldJson)
         {
-            var dict = new Dictionary<string, object>();
+            // Ưu tiên dùng JSON mới, nếu FE không gửi lên thì giữ nguyên JSON cũ trong DB
+            string jsonToParse = !string.IsNullOrWhiteSpace(newJson) ? newJson : oldJson;
 
-            // Ưu tiên dùng JSON mới, nếu không có thì dùng JSON cũ
-            string jsonToParse = !string.IsNullOrEmpty(newJson) ? newJson : oldJson;
+            if (string.IsNullOrWhiteSpace(jsonToParse)) return "[]";
 
-            if (!string.IsNullOrEmpty(jsonToParse))
+            try
             {
-                try
+                using var doc = JsonDocument.Parse(jsonToParse);
+
+                // Trường hợp 1: Dữ liệu đã là mảng chuẩn [ {"Name": "...", "Value": "..."} ]
+                if (doc.RootElement.ValueKind == JsonValueKind.Array)
                 {
-                    using var doc = JsonDocument.Parse(jsonToParse);
+                    return jsonToParse; // Giữ nguyên, lưu thẳng vào DB luôn
+                }
+
+                // Trường hợp 2: Dữ liệu đang là Object phẳng { "Chất liệu": "Gốm", "imageUrl": "..." } (Chuẩn cũ)
+                if (doc.RootElement.ValueKind == JsonValueKind.Object)
+                {
+                    var attributes = new List<object>();
                     foreach (var prop in doc.RootElement.EnumerateObject())
                     {
-                        switch (prop.Value.ValueKind)
+                        // BỎ QUA imageUrl: Không coi link ảnh là một thuộc tính cấu hình
+                        if (prop.Name.Equals("imageUrl", StringComparison.OrdinalIgnoreCase))
                         {
-                            case JsonValueKind.String: dict[prop.Name] = prop.Value.GetString(); break;
-                            case JsonValueKind.Number: dict[prop.Name] = prop.Value.GetDecimal(); break;
-                            case JsonValueKind.True: dict[prop.Name] = true; break;
-                            case JsonValueKind.False: dict[prop.Name] = false; break;
-                            default: dict[prop.Name] = prop.Value.GetRawText(); break;
+                            continue;
+                        }
+
+                        string val = prop.Value.ValueKind switch
+                        {
+                            JsonValueKind.String => prop.Value.GetString() ?? string.Empty,
+                            JsonValueKind.Number => prop.Value.GetDecimal().ToString(),
+                            JsonValueKind.True => "Có",     // Chuẩn hóa UI
+                            JsonValueKind.False => "Không", // Chuẩn hóa UI
+                            _ => prop.Value.GetRawText()
+                        };
+
+                        if (!string.IsNullOrWhiteSpace(val))
+                        {
+                            attributes.Add(new { Name = prop.Name.Trim(), Value = val.Trim() });
                         }
                     }
+                    return JsonSerializer.Serialize(attributes);
                 }
-                catch { /* Ignore JSON error */ }
-            }
 
-            // Luôn đảm bảo ImageUrl mới nhất được cập nhật vào JSON
-            if (!string.IsNullOrEmpty(imageUrl))
+                return "[]";
+            }
+            catch
             {
-                dict["imageUrl"] = imageUrl;
+                // Bắt lỗi nếu chuỗi JSON bị hỏng (corrupted)
+                return "[]";
             }
-
-            return dict.Count > 0 ? JsonSerializer.Serialize(dict) : "{}";
         }
     }
 }
