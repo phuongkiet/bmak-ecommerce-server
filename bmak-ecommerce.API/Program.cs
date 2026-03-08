@@ -94,6 +94,7 @@ app.UseAuthorization();
 // 4. Map Controllers
 app.MapControllers();
 
+app.MapHub<bmak_ecommerce.Infrastructure.SignalR.AdminNotificationHub>("/admin-hub");
 
 // --- 4. Run ---
 app.Run();

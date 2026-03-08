@@ -30,3 +30,6 @@ vs/
 *.vs
 # Sensitive configs (untracked)
 appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.json

@@ -33,7 +33,7 @@ namespace bmak_ecommerce.Domain.Entities.Sales
         // 3. SỐ LƯỢNG & TÍNH TOÁN
         // ==========================================
 
-        public float QuantityOnHand { get; set; }
+        public int QuantityOnHand { get; set; }
 
         public float QuantitySquareMeter { get; set; } // Quy đổi m2 (ví dụ: 14.4m2) - Logic riêng của bạn
 

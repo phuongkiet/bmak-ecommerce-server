@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Authentications\Queries\" />
+    <Folder Include="Features\Vouchers\Commands\" />
   </ItemGroup>
 
 </Project>

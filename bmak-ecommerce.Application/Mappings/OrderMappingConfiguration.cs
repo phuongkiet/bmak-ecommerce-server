@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
+using bmak_ecommerce.Application.Features.Orders.DTOs;
 using bmak_ecommerce.Domain.Entities.Sales;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,9 @@ namespace bmak_ecommerce.Application.Mappings
             // =========================================================
             CreateMap<Order, OrderDto>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.SubTotal, opt => opt.MapFrom(src => src.SubTotal))
+                .ForMember(dest => dest.DiscountAmount, opt => opt.MapFrom(src => src.DiscountAmount))
+                .ForMember(dest => dest.ShippingFee, opt => opt.MapFrom(src => src.ShippingFee))
                 .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.ToString()))
 
                 // Map thông tin khách hàng
@@ -49,6 +52,8 @@ namespace bmak_ecommerce.Application.Mappings
                 // Nếu OrderItem chưa lưu tên/ảnh snapshot, có thể map từ Product (nếu có Include)
                 // .ForMember(dest => dest.ProductImage, opt => opt.MapFrom(src => src.Product.ImageUrl)) 
                 .ForMember(dest => dest.QuantitySquareMeter, opt => opt.MapFrom(src => src.QuantitySquareMeter))
+                .ForMember(dest => dest.UnitPrice, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.QuantityOnHand))
                 ;
         }
     }

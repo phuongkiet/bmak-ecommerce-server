@@ -1,5 +1,4 @@
-﻿using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
-using bmak_ecommerce.Domain.Enums;
+﻿using bmak_ecommerce.Domain.Enums;
 
 namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
 {
@@ -26,6 +25,11 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
         public string? ReceiverName { get; set; }
         public string? ReceiverPhone { get; set; }
         public OrderAddressDto? ShippingAddress { get; set; }
+
+        // Kept for backward compatibility with existing FE payload.
+        // Backend will always recalculate shipping fee by rule.
+        public decimal ShippingFee { get; set; } = 0;
+        public decimal DiscountAmount { get; set; } = 0;
     }
 
     // Class con để gom nhóm địa chỉ cho gọn

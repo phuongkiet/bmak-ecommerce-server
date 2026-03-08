@@ -474,8 +474,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<float>("QuantityOnHand")
-                        .HasColumnType("float");
+                    b.Property<int>("QuantityOnHand")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -1067,6 +1067,127 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.ToTable("Pages", (string)null);
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.BusinessRule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("StopProcessing")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BusinessRules", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.RuleAction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActionType")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ActionValue")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("BusinessRuleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BusinessRuleId");
+
+                    b.ToTable("RuleActions", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.RuleCondition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BusinessRuleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConditionKey")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ConditionValue")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("Operator")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BusinessRuleId");
+
+                    b.ToTable("RuleConditions", (string)null);
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -1192,8 +1313,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<float>("QuantityOnHand")
-                        .HasColumnType("float");
+                    b.Property<int>("QuantityOnHand")
+                        .HasColumnType("int");
 
                     b.Property<float>("QuantitySquareMeter")
                         .HasColumnType("float");
@@ -1211,6 +1332,71 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Voucher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<int>("DiscountType")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DiscountValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<decimal?>("MaxDiscountAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MinOrderAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PerUserLimit")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UsageLimit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsedCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.ToTable("vouchers", (string)null);
                 });
 
             modelBuilder.Entity("AppImageProduct", b =>
@@ -1455,6 +1641,28 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.RuleAction", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Rules.BusinessRule", "BusinessRule")
+                        .WithMany("Actions")
+                        .HasForeignKey("BusinessRuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BusinessRule");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.RuleCondition", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Rules.BusinessRule", "BusinessRule")
+                        .WithMany("Conditions")
+                        .HasForeignKey("BusinessRuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BusinessRule");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Identity.AppUser", "User")
@@ -1541,6 +1749,13 @@ namespace bmak_ecommerce.Infrastructure.Migrations
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsCategory", b =>
                 {
                     b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Rules.BusinessRule", b =>
+                {
+                    b.Navigation("Actions");
+
+                    b.Navigation("Conditions");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Sales.Order", b =>

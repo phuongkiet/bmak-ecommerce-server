@@ -40,7 +40,7 @@ namespace bmak_ecommerce.Application.Features.Products.Commands.CreateProduct
         // --- CẤU HÌNH KHO (MỚI) ---
         public bool? AllowBackorder { get; set; } // Cho phép bán âm?
         public bool? ManageStock { get; set; }    // Có quản lý kho không?
-        public float? InitialStock { get; set; }  // Số lượng nhập kho ban đầu
+        public int? InitialStock { get; set; }  // Số lượng nhập kho ban đầu
         public string? WarehouseName { get; set; }
 
         public List<CreateProductAttributeRequest>? Attributes { get; set; }

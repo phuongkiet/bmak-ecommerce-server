@@ -1,4 +1,5 @@
 ﻿using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
@@ -81,6 +82,14 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 .ToListAsync();
 
             return new PagedList<Order>(items, totalCount, orderSpecParams.PageIndex, orderSpecParams.PageSize);
+        }
+
+        public async Task<Order?> GetOrderDetailAsync(string orderCode)
+        {
+            return await _context.Orders
+                .Include(ot => ot.OrderItems)
+                .Include(u => u.User)
+                .FirstOrDefaultAsync(p => p.OrderCode == orderCode);
         }
     }
 }

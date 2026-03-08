@@ -2,7 +2,7 @@
 using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
-using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
+using bmak_ecommerce.Application.Features.Orders.DTOs;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;

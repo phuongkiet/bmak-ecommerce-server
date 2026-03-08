@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bmak_ecommerce.Application.Features.Products.DTOs.Sale
+namespace bmak_ecommerce.Application.Features.Orders.DTOs
 {
     public class OrderItemDto
     {

@@ -3,6 +3,7 @@ using bmak_ecommerce.Domain.Entities.Directory;
 using bmak_ecommerce.Domain.Entities.Identity;
 using bmak_ecommerce.Domain.Entities.Media;
 using bmak_ecommerce.Domain.Entities.Page;
+using bmak_ecommerce.Domain.Entities.Rules;
 using bmak_ecommerce.Domain.Entities.Sales;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,10 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<AppImage> AppImages { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<UserFavoriteProduct> UserFavoriteProducts { get; set; }
+        public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<BusinessRule> BusinessRules { get; set; }
+        public DbSet<RuleCondition> RuleConditions { get; set; }
+        public DbSet<RuleAction> RuleActions { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

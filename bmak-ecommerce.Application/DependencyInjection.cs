@@ -12,7 +12,6 @@ using bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders;
 using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
 using bmak_ecommerce.Application.Features.Products.Commands.UpdateProduct;
 using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
-using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetAllProducts;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById;
 using bmak_ecommerce.Application.Features.Products.Queries.Products.GetTopSellingProduct;

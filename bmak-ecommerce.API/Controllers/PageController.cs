@@ -1,18 +1,12 @@
 ﻿using bmak_ecommerce.API.Extensions;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
-using bmak_ecommerce.Application.Features.Orders.Queries.GetAllOrders;
 using bmak_ecommerce.Application.Features.Pages.Commands.CreatePage;
 using bmak_ecommerce.Application.Features.Pages.Commands.UpdatePage;
 using bmak_ecommerce.Application.Features.Pages.DTOs;
 using bmak_ecommerce.Application.Features.Pages.Queries.GetAllPages;
 using bmak_ecommerce.Application.Features.Pages.Queries.GetPageDetail;
-using bmak_ecommerce.Application.Features.Products.Commands.CreateProduct;
-using bmak_ecommerce.Application.Features.Products.DTOs.Catalog;
-using bmak_ecommerce.Application.Features.Products.DTOs.Sale;
-using bmak_ecommerce.Application.Features.Products.Queries.Products.GetProductById;
 using bmak_ecommerce.Domain.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bmak_ecommerce.API.Controllers

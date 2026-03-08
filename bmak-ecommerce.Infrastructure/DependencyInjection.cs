@@ -4,16 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
-using bmak_ecommerce.Domain.Interfaces;
-using bmak_ecommerce.Infrastructure.Repositories;
 using StackExchange.Redis;
 using bmak_ecommerce.Infrastructure.MessageBus.Consumers;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Infrastructure.MessageBus;
 using MassTransit;
-using bmak_ecommerce.Application.Features.Products.Queries.Products.GetCatalog.Interface;
 using bmak_ecommerce.Infrastructure.Services;
-using bmak_ecommerce.Infrastructure.Services.CloudinaryService;
 using bmak_ecommerce.Infrastructure.Extensions;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -144,6 +140,12 @@ namespace bmak_ecommerce.Infrastructure
             // 2. Lấy Assembly của tầng Infrastructure (chứa Services)
             var infrastructureAssembly = Assembly.GetExecutingAssembly();
             services.AddAutoRegisteredServices(infrastructureAssembly);
+
+            // Add SignalR
+            services.AddSignalR();
+
+            // Add Brevo
+            services.AddTransient<IEmailService, BrevoEmailService>();
 
             return services;
         }
