@@ -39,6 +39,7 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<BusinessRule> BusinessRules { get; set; }
         public DbSet<RuleCondition> RuleConditions { get; set; }
         public DbSet<RuleAction> RuleActions { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

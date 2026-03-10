@@ -114,16 +114,19 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                     await userManager.AddToRoleAsync(customerUser, "Customer");
 
                     // Seed địa chỉ mặc định cho khách (Optional)
-                    customerUser.Addresses.Add(new Address
+                    // Chỉ seed khi mã Province/Ward mẫu đã tồn tại để tránh lỗi FK.
+                    if (await context.Provinces.AnyAsync(p => p.Id == "79") && await context.Wards.AnyAsync(w => w.Id == "26734"))
                     {
-                        ReceiverName = "Nguyễn Văn Khách",
-                        Phone = "0912345678",
-                        Street = "123 Đường Số 1",
-                        Ward = "Phường An Khánh",
-                        District = "Thành phố Thủ Đức",
-                        City = "TP. Hồ Chí Minh",
-                        IsDeleted = false
-                    });
+                        customerUser.Addresses.Add(new Address
+                        {
+                            ReceiverName = "Nguyễn Văn Khách",
+                            Phone = "0912345678",
+                            Street = "123 Đường Số 1",
+                            ProvinceId = "79",
+                            WardId = "26734",
+                            IsDeleted = false
+                        });
+                    }
 
                     // Lưu lại Address
                     await userManager.UpdateAsync(customerUser);
