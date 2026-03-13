@@ -38,6 +38,7 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
         public decimal? Thickness { get; set; }
         public int? Random { get; set; } 
         public int? BoxQuantity { get; set; }
+        public int? WordPressProductId { get; set; }
         public float Weight { get; set; } // Cân nặng (kg) để tính ship
 
         // MySQL JSON Column
@@ -54,6 +55,7 @@ namespace bmak_ecommerce.Domain.Entities.Catalog
 
         public virtual ICollection<ProductAttributeSelection> AttributeSelections { get; set; } = new List<ProductAttributeSelection>();
         public virtual ICollection<ProductTierPrice> TierPrices { get; set; } = new List<ProductTierPrice>();
+        public virtual ICollection<ProductLevelDiscount> LevelDiscounts { get; set; } = new List<ProductLevelDiscount>();
         public virtual ICollection<ProductStock> Stocks { get; set; } = new List<ProductStock>();
         
         // Many-to-Many với Tag

@@ -31,7 +31,9 @@ namespace bmak_ecommerce.Application.Features.Users.Queries.GetAllUsers
         public async Task<Result<PagedList<UserSummaryDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             // Query trực tiếp từ UserManager (là IQueryable)
-            var query = _userManager.Users.AsQueryable();
+            var query = _userManager.Users
+                .Include(x => x.UserLevel)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(request.Params.Search))
             {
@@ -64,7 +66,9 @@ namespace bmak_ecommerce.Application.Features.Users.Queries.GetAllUsers
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
                     IsDeleted = user.IsDeleted,
-                    Roles = string.Join(", ", roles)
+                    Roles = string.Join(", ", roles),
+                    UserLevelId = user.UserLevelId,
+                    UserLevelName = user.UserLevel?.Name
                 });
             }
 

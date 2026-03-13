@@ -2,10 +2,15 @@
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Orders.Models;
+using bmak_ecommerce.Domain.Entities.Catalog;
+using bmak_ecommerce.Domain.Entities.Identity;
 using bmak_ecommerce.Domain.Entities.Sales;
 using bmak_ecommerce.Domain.Enums;
 using bmak_ecommerce.Domain.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,25 +25,29 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
         private readonly ICurrentUserService _currentUserService; // Lấy UserId đăng nhập
         private readonly IMessageBus _messageBus; // Service bắn sự kiện RabbitMQ
         private readonly IShippingRuleEngine _shippingRuleEngine;
+        private readonly UserManager<AppUser> _userManager;
 
         public CreateOrderHandler(
             IUnitOfWork unitOfWork,
             ICartRepository cartRepository,
             ICurrentUserService currentUserService,
             IMessageBus messageBus,
-            IShippingRuleEngine shippingRuleEngine)
+            IShippingRuleEngine shippingRuleEngine,
+            UserManager<AppUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _cartRepository = cartRepository;
             _currentUserService = currentUserService;
             _messageBus = messageBus;
             _shippingRuleEngine = shippingRuleEngine;
+            _userManager = userManager;
         }
 
         public async Task<Result<int>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             // 1. LẤY GIỎ HÀNG
-            var cart = await _cartRepository.GetCartAsync(request.CartId);
+            var effectiveCartId = ResolveEffectiveCartId(request.CartId);
+            var cart = await _cartRepository.GetCartAsync(effectiveCartId);
 
             if (cart == null || !cart.Items.Any())
             {
@@ -48,6 +57,32 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
             // 2. KIỂM TRA TỒN KHO & GIÁ (Validate Stock)
             var productIds = cart.Items.Select(x => x.ProductId).ToList();
             var dbProducts = await _unitOfWork.Products.GetByIdsAsync(productIds);
+
+            int? userLevelId = null;
+            var currentUserId = _currentUserService.UserId;
+            if (currentUserId > 0)
+            {
+                userLevelId = await _userManager.Users
+                    .Where(x => x.Id == currentUserId)
+                    .Select(x => x.UserLevelId)
+                    .FirstOrDefaultAsync(cancellationToken);
+            }
+
+            var activeLevelDiscounts = new Dictionary<int, decimal>();
+            if (userLevelId.HasValue)
+            {
+                var now = DateTime.UtcNow;
+                activeLevelDiscounts = await _unitOfWork.Repository<ProductLevelDiscount>()
+                    .GetAllAsQueryable()
+                    .Where(x =>
+                        !x.IsDeleted &&
+                        x.IsActive &&
+                        x.UserLevelId == userLevelId.Value &&
+                        productIds.Contains(x.ProductId) &&
+                        (!x.StartAt.HasValue || x.StartAt.Value <= now) &&
+                        (!x.EndAt.HasValue || x.EndAt.Value >= now))
+                    .ToDictionaryAsync(x => x.ProductId, x => x.DiscountPercent, cancellationToken);
+            }
 
             foreach (var cartItem in cart.Items)
             {
@@ -63,7 +98,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                 int currentStockPieces = dbProduct.Stocks.Sum(s => s.QuantityOnHand);
 
                 // Nếu có quản lý kho và không cho bán âm
-                if (dbProduct.ManageStock && !dbProduct.AllowBackorder && currentStockPieces < cartItem.Quantity)
+                if (!UsesSoftStock(dbProduct) && dbProduct.ManageStock && !dbProduct.AllowBackorder && currentStockPieces < cartItem.Quantity)
                 {
                     return Result<int>.Failure($"Sản phẩm '{dbProduct.Name}' không đủ hàng (Còn: {currentStockPieces}).");
                 }
@@ -97,7 +132,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                 ? request.ShippingAddress?.Ward ?? string.Empty
                 : request.BillingAddress.Ward;
 
-            var shippingContext = BuildShippingRuleContext(cart, dbProducts, shippingProvince, shippingWard);
+            var shippingContext = BuildShippingRuleContext(cart, dbProducts, shippingProvince, shippingWard, activeLevelDiscounts);
             var shippingResult = await _shippingRuleEngine.CalculateAsync(shippingContext, cancellationToken);
 
             // 4. TẠO ORDER ENTITY
@@ -143,7 +178,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                     ProductName = dbProduct.Name,
                     ProductSku = dbProduct.SKU,
                     ProductImage = dbProduct.Thumbnail,
-                    Price = dbProduct.SalePrice > 0 ? dbProduct.SalePrice : dbProduct.BasePrice,
+                    Price = CalculateFinalUnitPrice(dbProduct, activeLevelDiscounts),
 
                     // BẮT BUỘC KIỂU INT: Số viên khách mua
                     QuantityOnHand = cartItem.Quantity,
@@ -151,7 +186,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                     // KIỂU FLOAT: Số m2 quy đổi
                     QuantitySquareMeter = quantityM2,
 
-                    TotalPrice = (dbProduct.SalePrice > 0 ? dbProduct.SalePrice : dbProduct.BasePrice) * cartItem.Quantity
+                    TotalPrice = CalculateFinalUnitPrice(dbProduct, activeLevelDiscounts) * cartItem.Quantity
                 };
 
                 order.OrderItems.Add(orderItem);
@@ -160,7 +195,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                 order.SubTotal += orderItem.TotalPrice;
 
                 // TRỪ TỒN KHO THEO SỐ VIÊN (INT)
-                if (dbProduct.ManageStock)
+                if (!UsesSoftStock(dbProduct) && dbProduct.ManageStock)
                 {
                     int piecesToDeduct = cartItem.Quantity;
 
@@ -197,7 +232,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                 // 7. XÓA GIỎ HÀNG SAU KHI ĐẶT THÀNH CÔNG
-                await _cartRepository.DeleteCartAsync(request.CartId);
+                await _cartRepository.DeleteCartAsync(effectiveCartId);
 
                 // 8. BẮN EVENT SANG RABBITMQ ĐỂ GỬI MAIL & PUSH THÔNG BÁO
                 var orderEvent = new OrderCreatedEvent
@@ -227,17 +262,46 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
             }
         }
 
+        private static bool UsesSoftStock(Product product)
+        {
+            return product.WordPressProductId.HasValue || !product.ManageStock || product.AllowBackorder;
+        }
+
+        private string ResolveEffectiveCartId(string? clientCartId)
+        {
+            if (_currentUserService.UserId > 0)
+            {
+                return $"cart:user:{_currentUserService.UserId}";
+            }
+
+            return clientCartId ?? string.Empty;
+        }
+
         private string GenerateOrderCode()
         {
             // Format: ORD-yyMMdd-Random (Ví dụ: ORD-231025-5106)
             return $"ORD-{DateTime.UtcNow:yyMMdd}-{new Random().Next(1000, 9999)}";
         }
 
+        private static decimal CalculateFinalUnitPrice(Product product, IReadOnlyDictionary<int, decimal> activeLevelDiscounts)
+        {
+            var basePrice = product.SalePrice > 0 ? product.SalePrice : product.BasePrice;
+
+            if (!activeLevelDiscounts.TryGetValue(product.Id, out var percent) || percent <= 0)
+                return basePrice;
+
+            var finalPrice = basePrice * (1 - (percent / 100m));
+            if (finalPrice < 0) finalPrice = 0;
+
+            return Math.Round(finalPrice, 2, MidpointRounding.AwayFromZero);
+        }
+
         private static ShippingRuleContext BuildShippingRuleContext(
             bmak_ecommerce.Application.Features.Cart.Models.ShoppingCart cart,
             List<bmak_ecommerce.Domain.Entities.Catalog.Product> dbProducts,
             string province,
-            string ward)
+            string ward,
+            IReadOnlyDictionary<int, decimal> activeLevelDiscounts)
         {
             decimal subTotal = 0;
             decimal totalWeight = 0;
@@ -252,7 +316,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Commands.CreateOrder
                     continue;
                 }
 
-                var unitPrice = product.SalePrice > 0 ? product.SalePrice : product.BasePrice;
+                var unitPrice = CalculateFinalUnitPrice(product, activeLevelDiscounts);
                 var conversionFactor = product.ConversionFactor > 0 ? (decimal)product.ConversionFactor : 1m;
                 var productWeight = product.Weight > 0 ? (decimal)product.Weight : 0m;
 

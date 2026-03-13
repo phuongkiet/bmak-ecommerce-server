@@ -1,6 +1,50 @@
 @bmak_ecommerce.API_HostAddress = http://localhost:5263
+@wordpressWebhookToken = dev-wordpress-webhook-token
 
 GET {{bmak_ecommerce.API_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+POST {{bmak_ecommerce.API_HostAddress}}/api/webhooks/wordpress/product
+Content-Type: application/json
+X-Webhook-Token: {{wordpressWebhookToken}}
+
+{
+	"id": 175,
+	"name": "Gach op mau xam",
+	"sku": "WP-175",
+	"slug": "gach-op-mau-xam",
+	"short_description": "San pham dong bo tu WooCommerce",
+	"description": "Noi dung day du tu WordPress",
+	"regular_price": "250000",
+	"sale_price": "230000",
+	"status": "publish",
+	"extra_fields": {
+		"unit": "vien",
+		"item": 4,
+		"thick": 8,
+		"stripe": 1
+	},
+	"default_attributes": {
+		"pa_be-mat": "mo-tu-nhien",
+		"pa_kich-thuoc": "60x60-cm"
+	},
+	"tier_prices": [
+		{
+			"min_quantity": 5,
+			"price": 220000
+		},
+		{
+			"min_quantity": 20,
+			"price": 210000
+		}
+	],
+	"images": [
+		{
+			"src": "https://example.com/wp-content/uploads/2026/03/gach-op-mau-xam.jpg"
+		}
+	]
+}
 
 ###

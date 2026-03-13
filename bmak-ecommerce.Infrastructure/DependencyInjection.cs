@@ -81,6 +81,20 @@ namespace bmak_ecommerce.Infrastructure
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero // Xóa độ trễ 5 phút mặc định của token
                 };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        // Nếu request gọi tới Hub thì lấy token ra xài
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
             // =================================================================

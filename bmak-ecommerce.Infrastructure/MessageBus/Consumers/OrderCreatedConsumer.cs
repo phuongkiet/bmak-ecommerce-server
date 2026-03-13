@@ -1,7 +1,11 @@
 ﻿using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
+using bmak_ecommerce.Infrastructure.SignalR;
+
 // using bmak_ecommerce.Infrastructure.SignalR; // Nếu em đã setup SignalR
 using MassTransit;
+using Microsoft.AspNetCore.SignalR;
+
 // using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 
@@ -11,17 +15,17 @@ namespace bmak_ecommerce.Infrastructure.MessageBus.Consumers
     {
         private readonly ILogger<OrderCreatedConsumer> _logger;
         private readonly IEmailService _emailService;
-        // private readonly IHubContext<AdminNotificationHub> _hubContext;
+        private readonly IHubContext<AdminNotificationHub> _hubContext;
 
         public OrderCreatedConsumer(
             ILogger<OrderCreatedConsumer> logger,
-            IEmailService emailService
-            // IHubContext<AdminNotificationHub> hubContext
+            IEmailService emailService,
+             IHubContext<AdminNotificationHub> hubContext
             )
         {
             _logger = logger;
             _emailService = emailService;
-            // _hubContext = hubContext;
+             _hubContext = hubContext;
         }
 
         public async Task Consume(ConsumeContext<OrderCreatedEvent> context)
@@ -144,7 +148,13 @@ namespace bmak_ecommerce.Infrastructure.MessageBus.Consumers
                 await _emailService.SendEmailAsync("saleadmin@bmak.com", $"Đơn hàng mới: {message.OrderCode}", adminHtmlContent);
 
                 // 4. Bắn SignalR (Nếu có)
-                // await _hubContext.Clients.All.SendAsync(...);
+                 await _hubContext.Clients.All.SendAsync("ReceiveNewOrder", new
+                 {
+                     OrderCode = message.OrderCode,
+                     TotalAmount = message.TotalAmount,
+                     Time = message.CreatedAt,
+                     Message = $"Khách hàng vừa đặt đơn {message.OrderCode} trị giá {message.TotalAmount:N0}đ!"
+                 });
 
                 _logger.LogInformation($"[RabbitMQ] Đã xử lý xong đơn và gửi email: {message.OrderCode}");
             }

@@ -16,7 +16,6 @@ namespace bmak_ecommerce.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
     public class BusinessRulesController : BaseApiController
     {
         private readonly IQueryHandler<GetBusinessRulesQuery, PagedList<BusinessRuleDto>> _getBusinessRulesHandler;
@@ -43,8 +42,15 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<ApiResponse<PagedList<BusinessRuleDto>>>> GetBusinessRules([FromQuery] BusinessRuleSpecParams specParams)
         {
+            if (!(User.Identity?.IsAuthenticated == true && User.IsInRole("Admin")))
+            {
+                // Public callers (checkout) are only allowed to read active rules.
+                specParams.IsActive = true;
+            }
+
             var result = await _getBusinessRulesHandler.Handle(new GetBusinessRulesQuery(specParams));
 
             if (result.IsSuccess && result.Value != null)
@@ -61,6 +67,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ApiResponse<BusinessRuleDto>>> GetBusinessRuleDetail(int id)
         {
             var result = await _getBusinessRuleDetailHandler.Handle(new GetBusinessRuleDetailQuery(id));
@@ -68,6 +75,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<int>>> CreateBusinessRule([FromBody] CreateBusinessRuleCommand command)
         {
             var result = await _createBusinessRuleHandler.Handle(command);
@@ -84,6 +92,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<bool>>> UpdateBusinessRule(int id, [FromBody] UpdateBusinessRuleCommand command)
         {
             if (id != command.Id)
@@ -96,6 +105,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpPatch("{id:int}/status")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<bool>>> ToggleStatus(int id, [FromBody] ToggleBusinessRuleStatusCommand command)
         {
             command.Id = id;
@@ -104,6 +114,7 @@ namespace bmak_ecommerce.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<bool>>> DeleteBusinessRule(int id)
         {
             var result = await _deleteBusinessRuleHandler.Handle(new DeleteBusinessRuleCommand { Id = id });

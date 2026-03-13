@@ -32,6 +32,9 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
                 .HasMaxLength(255)
                 .IsUnicode(false); // Slug thường không dấu
 
+            builder.Property(x => x.WordPressProductId)
+                .IsRequired(false);
+
             builder.Property(x => x.ShortDescription)
                 .HasMaxLength(255)
                 .IsUnicode(true);
@@ -70,6 +73,9 @@ namespace bmak_ecommerce.Infrastructure.Persistence.Configuration
 
             // Tìm theo Slug cực nhanh
             builder.HasIndex(x => x.Slug);
+
+            // Khóa mapping bền vững với WordPress webhook
+            builder.HasIndex(x => x.WordPressProductId).IsUnique();
 
             // 7. Cấu hình Relationships (Quan hệ)
 

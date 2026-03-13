@@ -22,6 +22,31 @@ builder.Services.AddApplicationServices();
 // Layer Infrastructure (Database, Identity)
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
+// CORS – phải dùng specific origins + AllowCredentials để SignalR WebSocket negotiate không bị block
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:5173",
+                "https://localhost:5173",
+                "https://ak-data-management-client-n8gu.vercel.app",
+                "https://data.gachankhanh.com",
+                "https://ak-data-management-production.up.railway.app",
+                "http://api.gachankhanh.com",
+                "https://api.gachankhanh.com",
+                "http://103.72.98.140",
+                "https://103.72.98.140",
+                "http://103.216.119.43",
+                "https://103.216.119.43"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials(); // Bắt buộc cho SignalR
+    });
+});
+
 //builder.Services.AddStackExchangeRedisCache(options =>
 //{
 //    // Kết nối đến container docker đang chạy
@@ -84,8 +109,8 @@ if (app.Environment.IsDevelopment())
 // 2. Global Middleware
 app.UseHttpsRedirection();
 
-// CORS (Nếu frontend React chạy port khác)
-app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+// CORS – dùng AllowReactApp (specific origins) để SignalR WebSocket hoạt động được
+app.UseCors("AllowReactApp");
 
 // 3. Auth
 app.UseAuthentication();
@@ -94,7 +119,8 @@ app.UseAuthorization();
 // 4. Map Controllers
 app.MapControllers();
 
-app.MapHub<bmak_ecommerce.Infrastructure.SignalR.AdminNotificationHub>("/admin-hub");
+// Path phải khớp với URL FE đang gọi: /hubs/admin-notifications
+app.MapHub<bmak_ecommerce.Infrastructure.SignalR.AdminNotificationHub>("/hubs/admin-notifications");
 
 // --- 4. Run ---
 app.Run();

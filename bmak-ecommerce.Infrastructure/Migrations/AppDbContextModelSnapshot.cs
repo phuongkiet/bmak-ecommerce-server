@@ -295,12 +295,18 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<decimal?>("Width")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<int?>("WordPressProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SKU")
                         .IsUnique();
 
                     b.HasIndex("Slug");
+
+                    b.HasIndex("WordPressProductId")
+                        .IsUnique();
 
                     b.ToTable("Products", (string)null);
                 });
@@ -451,6 +457,52 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductLevelDiscount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
+
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserLevelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserLevelId");
+
+                    b.HasIndex("ProductId", "UserLevelId")
+                        .IsUnique();
+
+                    b.ToTable("ProductLevelDiscounts", (string)null);
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductStock", b =>
@@ -804,6 +856,9 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int?>("UserLevelId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -816,6 +871,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("UserLevelId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -879,6 +936,50 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("user_favorite_products", (string)null);
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.UserLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)");
+
+                    b.Property<int>("Rank")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("Rank")
+                        .IsUnique();
+
+                    b.ToTable("UserLevels", (string)null);
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Media.AppImage", b =>
@@ -1537,6 +1638,25 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductLevelDiscount", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
+                        .WithMany("LevelDiscounts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Identity.UserLevel", "UserLevel")
+                        .WithMany("ProductLevelDiscounts")
+                        .HasForeignKey("UserLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("UserLevel");
+                });
+
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Catalog.ProductStock", b =>
                 {
                     b.HasOne("bmak_ecommerce.Domain.Entities.Catalog.Product", "Product")
@@ -1614,6 +1734,16 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("User");
 
                     b.Navigation("Ward");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.AppUser", b =>
+                {
+                    b.HasOne("bmak_ecommerce.Domain.Entities.Identity.UserLevel", "UserLevel")
+                        .WithMany("Users")
+                        .HasForeignKey("UserLevelId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("UserLevel");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.UserBehaviorTracking", b =>
@@ -1725,6 +1855,8 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                 {
                     b.Navigation("AttributeSelections");
 
+                    b.Navigation("LevelDiscounts");
+
                     b.Navigation("OrderItems");
 
                     b.Navigation("ProductCategories");
@@ -1765,6 +1897,13 @@ namespace bmak_ecommerce.Infrastructure.Migrations
                     b.Navigation("FavoriteProducts");
 
                     b.Navigation("Trackings");
+                });
+
+            modelBuilder.Entity("bmak_ecommerce.Domain.Entities.Identity.UserLevel", b =>
+                {
+                    b.Navigation("ProductLevelDiscounts");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("bmak_ecommerce.Domain.Entities.NewFolder.NewsCategory", b =>

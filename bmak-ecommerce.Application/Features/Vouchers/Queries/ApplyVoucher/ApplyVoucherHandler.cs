@@ -16,17 +16,20 @@ namespace bmak_ecommerce.Application.Features.Vouchers.Queries.ApplyVoucher
         private readonly ICartRepository _cartRepository;
         private readonly IVoucherRepository _voucherRepository;
         private readonly IValidator<ApplyVoucherQuery> _validator;
+        private readonly ICurrentUserService _currentUserService;
 
         public ApplyVoucherHandler(
             IUnitOfWork unitOfWork,
             ICartRepository cartRepository,
             IVoucherRepository voucherRepository,
-            IValidator<ApplyVoucherQuery> validator)
+            IValidator<ApplyVoucherQuery> validator,
+            ICurrentUserService currentUserService)
         {
             _unitOfWork = unitOfWork;
             _cartRepository = cartRepository;
             _voucherRepository = voucherRepository;
             _validator = validator;
+            _currentUserService = currentUserService;
         }
 
         public async Task<Result<VoucherResponseDto>> Handle(ApplyVoucherQuery request, CancellationToken cancellationToken = default)
@@ -47,7 +50,8 @@ namespace bmak_ecommerce.Application.Features.Vouchers.Queries.ApplyVoucher
                 return Result<VoucherResponseDto>.Failure("Mã giảm giá đã hết hạn, bị khóa hoặc hết lượt sử dụng.");
 
             // 2. LẤY GIỎ HÀNG ĐỂ TÍNH TỔNG TIỀN (Chống FE gửi tiền láo)
-            var cart = await _cartRepository.GetCartAsync(request.CartId);
+            var effectiveCartId = ResolveEffectiveCartId(request.CartId);
+            var cart = await _cartRepository.GetCartAsync(effectiveCartId);
             if (cart == null || !cart.Items.Any())
                 return Result<VoucherResponseDto>.Failure("Giỏ hàng trống.");
 
@@ -99,6 +103,16 @@ namespace bmak_ecommerce.Application.Features.Vouchers.Queries.ApplyVoucher
                 DiscountAmount = discountAmount,
                 Message = $"Áp dụng mã thành công. Bạn được giảm {discountAmount:N0}đ, còn lại {finalTotal:N0}đ."
             });
+        }
+
+        private string ResolveEffectiveCartId(string? clientCartId)
+        {
+            if (_currentUserService.UserId > 0)
+            {
+                return $"cart:user:{_currentUserService.UserId}";
+            }
+
+            return clientCartId ?? string.Empty;
         }
     }
 }

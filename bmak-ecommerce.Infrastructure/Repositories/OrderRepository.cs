@@ -1,6 +1,7 @@
 ﻿using bmak_ecommerce.Application.Common.Attributes;
 using bmak_ecommerce.Domain.Entities.Catalog;
 using bmak_ecommerce.Domain.Entities.Sales;
+using bmak_ecommerce.Domain.Enums;
 using bmak_ecommerce.Domain.Interfaces;
 using bmak_ecommerce.Domain.Models;
 using bmak_ecommerce.Infrastructure.Persistence;
@@ -39,7 +40,6 @@ namespace bmak_ecommerce.Infrastructure.Repositories
         {
             var query = _context.Orders
                 .Include(u => u.User)
-                .Include(a => a.ShippingAddress)
                 .Include(oi => oi.OrderItems)
                 .AsQueryable();
 
@@ -90,6 +90,103 @@ namespace bmak_ecommerce.Infrastructure.Repositories
                 .Include(ot => ot.OrderItems)
                 .Include(u => u.User)
                 .FirstOrDefaultAsync(p => p.OrderCode == orderCode);
+        }
+
+        public async Task<RevenueReportResult> GetRevenueReportAsync(DateTime? fromDate, DateTime? toDate, CancellationToken cancellationToken = default)
+        {
+            var baseQuery = BuildCompletedOrdersQuery(fromDate, toDate);
+
+            var summary = await baseQuery
+                .GroupBy(_ => 1)
+                .Select(g => new
+                {
+                    TotalRevenue = g.Sum(x => x.TotalAmount),
+                    TotalOrders = g.Count()
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
+            var revenueByDate = await baseQuery
+                .GroupBy(x => x.OrderDate.Date)
+                .Select(g => new RevenueByDateItem
+                {
+                    Date = g.Key,
+                    Revenue = g.Sum(x => x.TotalAmount),
+                    Orders = g.Count()
+                })
+                .OrderBy(x => x.Date)
+                .ToListAsync(cancellationToken);
+
+            var totalRevenue = summary?.TotalRevenue ?? 0m;
+            var totalOrders = summary?.TotalOrders ?? 0;
+
+            return new RevenueReportResult
+            {
+                TotalRevenue = totalRevenue,
+                TotalOrders = totalOrders,
+                AverageOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0m,
+                RevenueByDate = revenueByDate
+            };
+        }
+
+        public async Task<ProductReportResult> GetProductReportAsync(DateTime? fromDate, DateTime? toDate, int top, CancellationToken cancellationToken = default)
+        {
+            var safeTop = top <= 0 ? 10 : Math.Min(top, 100);
+
+            var orderItemsQuery = BuildCompletedOrdersQuery(fromDate, toDate)
+                .SelectMany(o => o.OrderItems);
+
+            var summary = await orderItemsQuery
+                .GroupBy(_ => 1)
+                .Select(g => new
+                {
+                    TotalProductsSold = g.Sum(x => x.QuantityOnHand),
+                    TotalRevenue = g.Sum(x => x.TotalPrice)
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
+            var topProducts = await orderItemsQuery
+                .GroupBy(x => new { x.ProductId, x.ProductName, x.ProductSku })
+                .Select(g => new ProductReportItem
+                {
+                    ProductId = g.Key.ProductId,
+                    ProductName = g.Key.ProductName,
+                    ProductSku = g.Key.ProductSku,
+                    TotalQuantity = g.Sum(x => x.QuantityOnHand),
+                    Revenue = g.Sum(x => x.TotalPrice),
+                    Orders = g.Select(x => x.OrderId).Distinct().Count()
+                })
+                .OrderByDescending(x => x.TotalQuantity)
+                .ThenByDescending(x => x.Revenue)
+                .Take(safeTop)
+                .ToListAsync(cancellationToken);
+
+            return new ProductReportResult
+            {
+                TotalProductsSold = summary?.TotalProductsSold ?? 0,
+                TotalRevenue = summary?.TotalRevenue ?? 0m,
+                TopProducts = topProducts
+            };
+        }
+
+        private IQueryable<Order> BuildCompletedOrdersQuery(DateTime? fromDate, DateTime? toDate)
+        {
+            var query = _context.Orders
+                .AsNoTracking()
+                .Where(x => x.Status == OrderStatus.Completed);
+
+            if (fromDate.HasValue)
+            {
+                var fromDateStart = fromDate.Value.Date;
+                query = query.Where(x => x.OrderDate >= fromDateStart);
+            }
+
+            if (toDate.HasValue)
+            {
+                var toDateEndOfDay = toDate.Value.Date.AddDays(1).AddTicks(-1);
+                query = query.Where(x => x.OrderDate <= toDateEndOfDay);
+            }
+
+            return query;
         }
     }
 }

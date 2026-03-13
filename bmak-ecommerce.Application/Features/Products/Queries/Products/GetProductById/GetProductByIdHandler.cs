@@ -44,11 +44,20 @@ namespace bmak_ecommerce.Application.Features.Products.Queries.Products.GetProdu
             // Ví dụ: Tính tổng tồn kho từ list Stocks
             if (product.Stocks != null)
             {
-                productDto.StockQuantity = product.Stocks.Sum(x => x.QuantityOnHand);
+                var stockQuantity = product.Stocks.Sum(x => x.QuantityOnHand);
+                productDto.StockQuantity = ShouldExposeAsAvailable(product.WordPressProductId.HasValue, product.ManageStock, product.AllowBackorder, stockQuantity)
+                    ? Math.Max(stockQuantity, 1)
+                    : stockQuantity;
             }
 
             // 5. Trả về Success
             return Result<ProductDto?>.Success(productDto);
+        }
+
+        private static bool ShouldExposeAsAvailable(bool hasWordPressProductId, bool manageStock, bool allowBackorder, float stockQuantity)
+        {
+            return stockQuantity <= 0
+            && (hasWordPressProductId || !manageStock || allowBackorder);
         }
     }
 }

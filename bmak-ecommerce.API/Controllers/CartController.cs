@@ -20,26 +20,52 @@ namespace bmak_ecommerce.API.Controllers
         private readonly ICommandHandler<UpdateCartItemCommand, ShoppingCart> _updateCartItemHandler;
         private readonly ICommandHandler<DeleteCartItemCommand, ShoppingCart> _deleteCartItemHandler;
         private readonly ICommandHandler<ClearCartCommand, ShoppingCart> _clearCartHandler;
+        private readonly ICurrentUserService _currentUserService;
+        private readonly ILogger<CartController> _logger;
 
         public CartController(
             IQueryHandler<GetCartQuery, ShoppingCart> getCartHandler,
             ICommandHandler<AddToCartCommand, ShoppingCart> addToCartHandler,
             ICommandHandler<UpdateCartItemCommand, ShoppingCart> updateCartItemHandler,
-            ICommandHandler<DeleteCartItemCommand,ShoppingCart> deleteCartItemHandler,
-            ICommandHandler<ClearCartCommand, ShoppingCart> clearCartHandler)
+            ICommandHandler<DeleteCartItemCommand, ShoppingCart> deleteCartItemHandler,
+            ICommandHandler<ClearCartCommand, ShoppingCart> clearCartHandler,
+            ICurrentUserService currentUserService,
+            ILogger<CartController> logger)
         {
             _getCartHandler = getCartHandler;
             _addToCartHandler = addToCartHandler;
             _updateCartItemHandler = updateCartItemHandler;
             _deleteCartItemHandler = deleteCartItemHandler;
             _clearCartHandler = clearCartHandler;
+            _currentUserService = currentUserService;
+            _logger = logger;
+        }
+
+        private string GetEffectiveCartId(string clientCartId)
+        {
+            var isAuth = User.Identity?.IsAuthenticated == true;
+            if (isAuth)
+            {
+                if (string.IsNullOrWhiteSpace(_currentUserService.UserId.ToString()))
+                {
+                    _logger.LogWarning("Authenticated user but UserId is empty. clientCartId={ClientCartId}", clientCartId);
+                    throw new UnauthorizedAccessException("UserId is missing.");
+                }
+
+                var effective = $"cart:user:{_currentUserService.UserId}";
+                _logger.LogInformation("EffectiveCartId resolved for user. clientCartId={ClientCartId}, effectiveCartId={EffectiveCartId}", clientCartId, effective);
+                return effective;
+            }
+
+            _logger.LogInformation("EffectiveCartId resolved for guest. clientCartId={ClientCartId}", clientCartId);
+            return clientCartId;
         }
 
         // GET: api/cart?id=cart-123
         [HttpGet]
         public async Task<ActionResult<ApiResponse<ShoppingCart>>> GetCart([FromQuery] string id)
         {
-            var query = new GetCartQuery(id);
+            var query = new GetCartQuery(GetEffectiveCartId(id));
             var result = await _getCartHandler.Handle(query);
             return HandleResult(result);
         }
@@ -48,6 +74,7 @@ namespace bmak_ecommerce.API.Controllers
         [HttpPost]
         public async Task<ActionResult<ApiResponse<ShoppingCart>>> AddToCart([FromBody] AddToCartCommand command)
         {
+            command.CartId = GetEffectiveCartId(command.CartId);
             var result = await _addToCartHandler.Handle(command);
             return HandleResult(result);
         }
@@ -56,15 +83,16 @@ namespace bmak_ecommerce.API.Controllers
         [HttpPut]
         public async Task<ActionResult<ApiResponse<ShoppingCart>>> UpdateItem([FromBody] UpdateCartItemCommand command)
         {
+            command.CartId = GetEffectiveCartId(command.CartId);
             var result = await _updateCartItemHandler.Handle(command);
             return HandleResult(result);
         }
 
-        // DELETE: api/cart/cart-123/1 (Remove Item)
+        // PUT: api/cart/item?cartId=xxx&productId=1 (Remove Item)
         [HttpPut("item")]
-        public async Task<ActionResult<ApiResponse<ShoppingCart>>> RemoveItem(string cartId, int productId)
+        public async Task<ActionResult<ApiResponse<ShoppingCart>>> RemoveItem([FromQuery] string cartId, [FromQuery] int productId)
         {
-            var command = new DeleteCartItemCommand { CartId = cartId, ProductId = productId };
+            var command = new DeleteCartItemCommand { CartId = GetEffectiveCartId(cartId), ProductId = productId };
             var result = await _deleteCartItemHandler.Handle(command);
             return HandleResult(result);
         }
@@ -72,6 +100,7 @@ namespace bmak_ecommerce.API.Controllers
         [HttpDelete]
         public async Task<ActionResult<ApiResponse<ShoppingCart>>> ClearCart([FromQuery] ClearCartCommand command)
         {
+            command.CartId = GetEffectiveCartId(command.CartId);
             try
             {
                 var result = await _clearCartHandler.Handle(command, CancellationToken.None);

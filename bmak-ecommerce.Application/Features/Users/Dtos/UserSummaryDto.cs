@@ -14,5 +14,7 @@ namespace bmak_ecommerce.Application.Features.Users.Dtos
         public string PhoneNumber { get; set; }
         public bool IsDeleted { get; set; }
         public string Roles { get; set; } // Nối chuỗi role (vd: "Admin, Manager")
+        public int? UserLevelId { get; set; }
+        public string? UserLevelName { get; set; }
     }
 }

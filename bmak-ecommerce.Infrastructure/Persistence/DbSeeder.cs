@@ -49,6 +49,28 @@ namespace bmak_ecommerce.Infrastructure.Persistence
             RoleManager<AppRole> roleManager)
         {
 
+            if (!await context.UserLevels.AnyAsync())
+            {
+                var levels = Enumerable.Range(1, 10)
+                    .Select(i => new UserLevel
+                    {
+                        Code = $"L{i}",
+                        Name = $"Cấp {i}",
+                        Rank = i,
+                        IsActive = true,
+                        IsDeleted = false
+                    })
+                    .ToList();
+
+                await context.UserLevels.AddRangeAsync(levels);
+                await context.SaveChangesAsync();
+            }
+
+            var defaultLevelId = await context.UserLevels
+                .Where(x => x.Rank == 1)
+                .Select(x => x.Id)
+                .FirstOrDefaultAsync();
+
             // =========================================================
             // PHẦN 1: SEED IDENTITY (USER & ROLE)
             // =========================================================
@@ -81,7 +103,8 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                     PhoneNumberConfirmed = true,
                     CreatedAt = DateTime.UtcNow,
                     IsDeleted = false,
-                    CustomerType = CustomerType.Retail // Set mặc định (Lẻ) hoặc tạo Enum Admin riêng
+                    CustomerType = CustomerType.Retail, // Set mặc định (Lẻ) hoặc tạo Enum Admin riêng
+                    UserLevelId = defaultLevelId
                 };
 
                 // Password bắt buộc phải có: Chữ hoa, thường, số, ký tự đặc biệt
@@ -105,7 +128,8 @@ namespace bmak_ecommerce.Infrastructure.Persistence
                     PhoneNumber = "0912345678",
                     EmailConfirmed = true,
                     CreatedAt = DateTime.UtcNow,
-                    CustomerType = CustomerType.Retail // Khách lẻ
+                    CustomerType = CustomerType.Retail, // Khách lẻ
+                    UserLevelId = defaultLevelId
                 };
 
                 var result = await userManager.CreateAsync(customerUser, "Bmak@123");

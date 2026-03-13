@@ -15,5 +15,7 @@ namespace bmak_ecommerce.Domain.Interfaces
         Task<Order> AddAsync(Order order);
         Task<PagedList<Order>> GetOrdersWithPaginationQuery(OrderSpecParams orderSpecParams);
         Task<Order?> GetOrderDetailAsync(string orderCode);
+        Task<RevenueReportResult> GetRevenueReportAsync(DateTime? fromDate, DateTime? toDate, CancellationToken cancellationToken = default);
+        Task<ProductReportResult> GetProductReportAsync(DateTime? fromDate, DateTime? toDate, int top, CancellationToken cancellationToken = default);
     }
 }

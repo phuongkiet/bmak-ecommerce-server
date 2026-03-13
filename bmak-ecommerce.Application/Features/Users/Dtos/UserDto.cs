@@ -17,5 +17,7 @@ namespace bmak_ecommerce.Application.Features.Users.Dtos
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<string> Roles { get; set; } = new();
+        public int? UserLevelId { get; set; }
+        public string? UserLevelName { get; set; }
     }
 }

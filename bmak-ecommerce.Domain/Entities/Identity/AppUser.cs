@@ -26,6 +26,9 @@ namespace bmak_ecommerce.Domain.Entities.Identity
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
 
+        public int? UserLevelId { get; set; }
+        public virtual UserLevel? UserLevel { get; set; }
+
         public ICollection<UserFavoriteProduct> FavoriteProducts { get; set; } = new List<UserFavoriteProduct>();
     }
 }
