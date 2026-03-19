@@ -9,6 +9,8 @@ namespace bmak_ecommerce.Domain.Entities.Identity
         public string ReceiverName { get; set; }
         public string Phone { get; set; }
         public string Street { get; set; }
+        public string Lat { get; set; }
+        public string Lng { get; set; }
         public string ProvinceId { get; set; }
         public string WardId { get; set; }
 

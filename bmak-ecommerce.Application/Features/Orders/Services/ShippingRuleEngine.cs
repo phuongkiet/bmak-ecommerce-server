@@ -70,6 +70,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Services
                 "itemcount" => CompareInt(context.ItemCount, condition.Operator, conditionValue),
                 "province" => CompareString(context.Province, condition.Operator, conditionValue),
                 "ward" => CompareString(context.Ward, condition.Operator, conditionValue),
+                "zone" => CompareString(context.Zone, condition.Operator, conditionValue),
                 _ => false
             };
         }

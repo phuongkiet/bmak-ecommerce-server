@@ -5,6 +5,8 @@ using bmak_ecommerce.Domain.Entities.Media;
 using bmak_ecommerce.Domain.Entities.Page;
 using bmak_ecommerce.Domain.Entities.Rules;
 using bmak_ecommerce.Domain.Entities.Sales;
+using bmak_ecommerce.Domain.Entities.Settings;
+using bmak_ecommerce.Domain.Entities.Visualizer;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -42,6 +44,8 @@ namespace bmak_ecommerce.Infrastructure.Persistence
         public DbSet<Address> Addresses { get; set; }
         public DbSet<UserLevel> UserLevels { get; set; }
         public DbSet<ProductLevelDiscount> ProductLevelDiscounts { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
+        public DbSet<RoomScene> RoomScenes { get; set; }
         // ...
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

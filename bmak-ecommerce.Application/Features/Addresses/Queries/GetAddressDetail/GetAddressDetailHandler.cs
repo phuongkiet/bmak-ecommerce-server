@@ -1,4 +1,5 @@
 using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Helpers;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Addresses.DTOs;
@@ -65,6 +66,7 @@ namespace bmak_ecommerce.Application.Features.Addresses.Queries.GetAddressDetail
                 Street = address.Street,
                 ProvinceId = address.ProvinceId,
                 ProvinceName = address.ProvinceName,
+                Zone = ShippingZoneHelper.Resolve(address.ProvinceId, address.ProvinceName),
                 WardId = address.WardId,
                 WardName = address.WardName,
                 Type = address.Type,

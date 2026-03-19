@@ -10,6 +10,7 @@ namespace bmak_ecommerce.Application.Features.Addresses.DTOs
         public string Street { get; set; } = string.Empty;
         public string ProvinceId { get; set; } = string.Empty;
         public string ProvinceName { get; set; } = string.Empty;
+        public string Zone { get; set; } = string.Empty;
         public string WardId { get; set; } = string.Empty;
         public string WardName { get; set; } = string.Empty;
         public AddressType Type { get; set; }

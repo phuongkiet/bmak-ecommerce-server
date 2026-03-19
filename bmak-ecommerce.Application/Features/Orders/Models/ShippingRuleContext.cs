@@ -8,5 +8,6 @@ namespace bmak_ecommerce.Application.Features.Orders.Models
         public int ItemCount { get; set; }
         public string Province { get; set; } = string.Empty;
         public string Ward { get; set; } = string.Empty;
+        public string Zone { get; set; } = string.Empty;
     }
 }

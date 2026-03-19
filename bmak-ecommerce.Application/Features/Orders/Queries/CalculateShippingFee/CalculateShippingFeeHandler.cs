@@ -1,4 +1,5 @@
 using bmak_ecommerce.Application.Common.Attributes;
+using bmak_ecommerce.Application.Common.Helpers;
 using bmak_ecommerce.Application.Common.Interfaces;
 using bmak_ecommerce.Application.Common.Models;
 using bmak_ecommerce.Application.Features.Orders.DTOs;
@@ -112,7 +113,8 @@ namespace bmak_ecommerce.Application.Features.Orders.Queries.CalculateShippingFe
                 TotalSquareMeter = totalSquareMeter,
                 ItemCount = itemCount,
                 Province = request.Province,
-                Ward = request.Ward
+                Ward = request.Ward,
+                Zone = ShippingZoneHelper.Resolve(request.Province)
             };
 
             var shippingResult = await _shippingRuleEngine.CalculateAsync(context, cancellationToken);
@@ -123,6 +125,7 @@ namespace bmak_ecommerce.Application.Features.Orders.Queries.CalculateShippingFe
                 SubTotal = subTotal,
                 TotalWeight = totalWeight,
                 TotalSquareMeter = totalSquareMeter,
+                ResolvedZone = context.Zone,
                 MatchedRules = shippingResult.MatchedRules
             });
         }
